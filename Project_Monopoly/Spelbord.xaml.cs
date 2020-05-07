@@ -20,8 +20,8 @@ namespace Project_Monopoly
     public partial class Spelbord : Window
     {
         private const int V = 70;
-        private const int BottomRight = 870;
-        private const int BottomLeft = 50;
+        private const int BottomRight = 875;
+        private const int BottomLeft = 45;
         private const int BottomTop = 92;
         private const int BottomBottom = 924;
 
@@ -82,6 +82,8 @@ namespace Project_Monopoly
             SetCardText("Rue\nSt.Léonard\nLiège", "€ 220", 250, 270);
 
             SetCardText("Parking", null, 180, 225);
+
+            SetCardText("Op bezoek", null, 160, 176);
         }
 
         private void SetCardText(string name, string price, int position, int degrees)
@@ -90,6 +92,7 @@ namespace Project_Monopoly
             Label priceLabel = new Label();
             Image afbeelding = new Image();
             RotateTransform rotateTransform = new RotateTransform(degrees);
+            nameLabel.RenderTransform = rotateTransform;
 
             int left = position;
             int top = position;
@@ -162,7 +165,27 @@ namespace Project_Monopoly
             else if (degrees == 225)
             {
                 left = BottomRight;
+                imgCornerLeft = BottomRight - 20;
+                imgCornerTop = top - 15;
                 nameLeft = left - V + 20;
+            }
+
+            else if(degrees == 176)
+            {
+                nameLeft = left - 110;
+                nameTop = top - 95;
+                RotateTransform rotate90 = new RotateTransform(90);
+                nameLabel.RenderTransform = rotate90;
+                nameLabel.FontSize = 35;
+                
+                
+                imgCornerLeft = 70;
+                imgCornerTop = 120;
+                
+            }
+
+            else if(degrees == 45)
+            {
 
             }
 
@@ -184,62 +207,68 @@ namespace Project_Monopoly
             nameLabel.VerticalAlignment = VerticalAlignment.Top;
             nameLabel.FontSize = 11;
 
-
-            if (name == "Kans")
-            {
-                nameLabel.FontSize = 20;
-
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/vraagteken.JPG";
-                afbeelding.Margin = new Thickness(imgCrdLeft, imgCrdTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-
-            }
-
-            else if (name == "Algemeen\nFonds")
-            {
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/proxy.JPG";
-                afbeelding.Margin = new Thickness(imgCrdLeft + 4, imgCrdTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-
-            }
-
-            else if (name.Contains("centrale"))
-            {
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/elektriciteit.JPG";
-                afbeelding.Margin = new Thickness(imgCanBuyLeft - 5, imgCanBuyTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-            }
-
-            else if (name.Contains("Station") || name.Contains("Spoorwegen"))
-            {
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/trein.JPG";
-                afbeelding.Margin = new Thickness(imgCanBuyLeft, imgCanBuyTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-            }
-
-            else if (name.Contains("Maatschappij"))
-            {
-                nameLabel.FontSize = 10;
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/Kraan.JPG";
-                afbeelding.Margin = new Thickness(imgCanBuyLeft, imgCanBuyTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-            }
-
-            else if (name == "Parking")
-            {
-                nameLabel.FontSize = 10;
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/Parking.gif";
-                afbeelding.Margin = new Thickness(imgCornerLeft, imgCornerTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-            }
-
             afbeelding.Width = 60;
 
             afbeelding.HorizontalAlignment = HorizontalAlignment.Left;
             afbeelding.VerticalAlignment = VerticalAlignment.Top;
             afbeelding.RenderTransform = rotateTransform;
+            if (name == "Kans")
+            {
+                nameLabel.FontSize = 20;
 
-            nameLabel.RenderTransform = rotateTransform;
+                afbeelding.Margin = new Thickness(imgCrdLeft, imgCrdTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/vraagteken.JPG", UriKind.Relative));
+
+            }
+
+            else if (name == "Algemeen\nFonds")
+            {
+                afbeelding.Margin = new Thickness(imgCrdLeft + 4, imgCrdTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/proxy.JPG", UriKind.Relative));
+
+            }
+
+            else if (name.Contains("centrale"))
+            {
+                afbeelding.Margin = new Thickness(imgCanBuyLeft - 5, imgCanBuyTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/elektriciteit.JPG", UriKind.Relative));
+            }
+
+            else if (name.Contains("Station") || name.Contains("Spoorwegen"))
+            {
+                
+                afbeelding.Margin = new Thickness(imgCanBuyLeft, imgCanBuyTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/trein.JPG", UriKind.Relative));
+            }
+
+            else if (name.Contains("Maatschappij"))
+            {
+                nameLabel.FontSize = 10;
+                afbeelding.Margin = new Thickness(imgCanBuyLeft - 5, imgCanBuyTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/Kraan.JPG", UriKind.Relative));
+            }
+
+            else if (name == "Parking")
+            {
+                nameLabel.FontSize = 10;
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/parking.gif", UriKind.Relative));
+                afbeelding.Margin = new Thickness(imgCornerLeft, imgCornerTop, 0, 0);
+                
+            }
+
+            else if (name.Contains("bezoek"))
+            {
+                afbeelding.Margin = new Thickness(imgCornerLeft, imgCornerTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/gevangenis.png", UriKind.Relative));
+                RotateTransform rotate0 = new RotateTransform(0);
+                afbeelding.RenderTransform = rotate0;
+                nameLabel.FontSize = 20;
+                nameLabel.Width = 120;
+            }
+
+            
+
+            
             testgrid.Children.Add(nameLabel);
             testgrid.Children.Add(afbeelding);
 

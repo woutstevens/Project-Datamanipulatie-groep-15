@@ -16,13 +16,23 @@ using System.Windows.Shapes;
 namespace Project_Monopoly
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Startscherm.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Startscherm : Window
     {
-        public MainWindow()
+        public Startscherm()
         {
             
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSpelerToevoegen_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
