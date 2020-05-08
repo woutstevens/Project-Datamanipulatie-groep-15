@@ -20,6 +20,10 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Startscherm : Window
     {
+        Spelbord spelbord = new Spelbord();
+        Instellingen instellingen = new Instellingen();
+        
+
         public Startscherm()
         {
             
@@ -30,9 +34,22 @@ namespace Project_Monopoly
 
         }
 
-        private void btnSpelerToevoegen_Click(object sender, RoutedEventArgs e)
+        private void btnStart_Click(object sender, RoutedEventArgs e)
         {
+            spelbord.Show();
+            this.Close();
+        }
 
+        private void btnQuit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+            
+        }
+
+        private void btnOptions_Click(object sender, RoutedEventArgs e)
+        {
+            instellingen.Show();
+            this.Close();
         }
     }
 }

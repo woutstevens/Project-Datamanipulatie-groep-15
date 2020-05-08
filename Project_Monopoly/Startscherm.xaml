@@ -16,11 +16,8 @@
         Title="Startscherm" Height="500" Width="500" Loaded="Window_Loaded">
     <Grid>
         <Image HorizontalAlignment="Center" Height="50" Margin="0,0,0,0" VerticalAlignment="Top" Width="100" Source="afbeeldingen/logoMonopoly.jpg"/>
-        <Label Name="lblNummerSpeler" Content="Speler .../..." HorizontalAlignment="Center" Margin="40" VerticalAlignment="Top" Height="25" Width="auto"/>
-        <Label Name="lblNaamSpeler" Content="Naam speler:" HorizontalAlignment="Left" Margin="70" VerticalAlignment="Top" Height="25" Width="auto"/>
-        <TextBox x:Name="txtNaamSpeler" HorizontalAlignment="Center" Margin="70" VerticalAlignment="Top" Width="100"/>
-        <Button x:Name="btnSpelerToevoegen" Content ="Toevoegen" Margin="70" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btnSpelerToevoegen_Click"/>
-        
-
+        <Button x:Name="btnStart" Content="Start" Width="80" VerticalAlignment="Top" Margin="0,50,0,0" Click="btnStart_Click"/>
+        <Button x:Name="btnQuit" Content="Quit" Width="80" VerticalAlignment="Top" Margin="0,90,0,0" Click="btnQuit_Click"/>
+        <Button x:Name="btnOptions" Content="Options" Width="90" VerticalAlignment="Top" Margin="0,130,0,0" Click="btnOptions_Click"/>
     </Grid>
 </Window>
