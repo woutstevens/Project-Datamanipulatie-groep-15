@@ -13,8 +13,120 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Eindscherm" Height="1000" Width="1000" Loaded="Window_Loaded">
+        Title="Eindscherm" Height="390" Width="500" Loaded="Window_Loaded">
     <Grid>
+        <StackPanel Orientation="Horizontal">
+            <!--Tweede-->
+            <Grid MinHeight="312" MinWidth="144" VerticalAlignment="Bottom" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Background="#FFEEE8E8">
+                    <TextBlock VerticalAlignment="Top" Text="NAAM" TextAlignment="Center"  Background="#FF333333" Foreground="WhiteSmoke" MinWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Background="#FFEEE8E8">
+                    <TextBlock VerticalAlignment="Center" Text="Overschot van het geld" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="2" Background="#FFEEE8E8">
+                    <TextBlock VerticalAlignment="Center" Text="Totaal aantal straten" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Background="#FFEEE8E8">
+                    <TextBlock VerticalAlignment="Center" Text="Waarde van straten en huizen + hotels" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="4" Background="#FFEEE8E8">
+                    <TextBlock VerticalAlignment="Center" Text="Aantal keren in de gevangenis" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="5" Background="#FFEEE8E8">
+                    <TextBlock VerticalAlignment="Center" Text="Geld verzameld door straten" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+
+
+
+            </Grid>
+            <!--Eerste-->
+            <Grid MinHeight="340" MinWidth="144" VerticalAlignment="Bottom" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Background="#FFFFF2CC">
+                    <TextBlock VerticalAlignment="Top" Text="NAAM" TextAlignment="Center"  Background="#FF333333" Foreground="WhiteSmoke" MinWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Background="#FFFFF2CC">
+                    <TextBlock VerticalAlignment="Center" Text="Overschot van het geld" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="2" Background="#FFFFF2CC">
+                    <TextBlock VerticalAlignment="Center" Text="Totaal aantal straten" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Background="#FFFFF2CC">
+                    <TextBlock VerticalAlignment="Center" Text="Waarde van straten en huizen + hotels" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="4" Background="#FFFFF2CC">
+                    <TextBlock VerticalAlignment="Center" Text="Aantal keren in de gevangenis" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="5" Background="#FFFFF2CC">
+                    <TextBlock VerticalAlignment="Center" Text="Geld verzameld door straten" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+            </Grid>
+
+            <!--Derde-->
+            <Grid MinHeight="284" MinWidth="144" VerticalAlignment="Bottom" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                    <RowDefinition Height = "*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Background="#FFFFE6CC">
+                    <TextBlock VerticalAlignment="Top" Text="NAAM" TextAlignment="Center"  Background="#FF333333" Foreground="WhiteSmoke" MinWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Background="#FFFFE6CC">
+                    <TextBlock VerticalAlignment="Center" Text="Overschot van het geld" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="2" Background="#FFFFE6CC">
+                    <TextBlock VerticalAlignment="Center" Text="Totaal aantal straten" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Background="#FFFFE6CC">
+                    <TextBlock VerticalAlignment="Center" Text="Waarde van straten en huizen + hotels" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="4" Background="#FFFFE6CC">
+                    <TextBlock VerticalAlignment="Center" Text="Aantal keren in de gevangenis" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+
+                <Grid Grid.Row="5" Background="#FFFFE6CC">
+                    <TextBlock VerticalAlignment="Center" Text="Geld verzameld door straten" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
+                </Grid>
+            </Grid>
+        </StackPanel>
 
     </Grid>
 </Window>
