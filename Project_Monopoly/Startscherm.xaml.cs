@@ -16,13 +16,45 @@ using System.Windows.Shapes;
 namespace Project_Monopoly
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Startscherm.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Startscherm : Window
     {
-        public MainWindow()
+        Spelbord spelbord = new Spelbord();
+        Instellingen instellingen = new Instellingen();
+        
+
+        public Startscherm()
         {
             
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            spelbord.Show();
+            this.Close();
+        }
+
+        private void btnQuit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+            
+        }
+
+        private void btnOptions_Click(object sender, RoutedEventArgs e)
+        {
+            instellingen.Show();
+            this.Close();
+        }
+
+        private void btnToevoegen_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
