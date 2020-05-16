@@ -51,5 +51,10 @@ namespace Project_Monopoly
             instellingen.Show();
             this.Close();
         }
+
+        private void btnToevoegen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
