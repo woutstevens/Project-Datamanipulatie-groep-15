@@ -54,7 +54,7 @@
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="2">
-            <Slider x:Name="spelerAantal" Minimum="1" Maximum="10" Style="{StaticResource MaterialDesignDiscreteSlider}" ToolTip="MaterialDesignDiscreteSlider" Value="1" Foreground="#FF296AED" />
+            <Slider x:Name="spelerAantal" Minimum="2" Maximum="10" Style="{StaticResource MaterialDesignDiscreteSlider}" ToolTip="MaterialDesignDiscreteSlider" Value="1" Foreground="#FF296AED" />
         </Grid>
 
         <!--Geld verzamelen in gevangenis-->
@@ -83,7 +83,7 @@
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="5">
-            <Button x:Name="knopInstellingenDoorgaan" Content="Doorgaan" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF008CFF" Margin="0" MinWidth="155" MinHeight="50"/>
+            <Button x:Name="knopInstellingenDoorgaan" Content="Doorgaan" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF008CFF" Margin="0" MinWidth="155" MinHeight="50" Click="knopInstellingenDoorgaan_Click"/>
         </Grid>
 
     </Grid>
