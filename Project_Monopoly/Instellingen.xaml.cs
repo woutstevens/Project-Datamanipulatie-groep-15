@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_Monopoly_Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Project_Monopoly_Models;
 
 namespace Project_Monopoly
 {
@@ -20,7 +20,7 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Instellingen : Window
     {
-        Instellingen inst = new Instellingen();
+        Settings instellingen = new Settings(2000, 2, false, false);
 
         public Instellingen()
         {
@@ -36,7 +36,12 @@ namespace Project_Monopoly
         {
             if (int.TryParse(spelerBedrag.Text, out int bedrag))
             {
-                
+                instellingen.Bedrag = int.Parse(spelerBedrag.Text);
+                instellingen.Spelers = spelerAantal.Value;
+                instellingen.Gevangenis = geldGevangenis.IsEnabled;
+                instellingen.Parking = geldParking.IsEnabled;
+
+                this.Close();
             }
         }
 

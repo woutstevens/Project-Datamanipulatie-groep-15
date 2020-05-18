@@ -207,9 +207,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Project_Monopoly_Models\Project_Monopoly_Models.csproj">
-      <Project>{f6eca928-2041-4113-b762-1083183e773a}</Project>
-      <Name>Project_Monopoly_Models</Name>
+    <ProjectReference Include="..\Monopoly_Models\Monopoly_Models.csproj">
+      <Project>{f017d82f-92a2-4999-b961-0fce74256126}</Project>
+      <Name>Monopoly_Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Project_Monopoly_Models")]
+[assembly: AssemblyTitle("Monopoly_Models")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Project_Monopoly_Models")]
+[assembly: AssemblyProduct("Monopoly_Models")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f6eca928-2041-4113-b762-1083183e773a")]
+[assembly: Guid("f017d82f-92a2-4999-b961-0fce74256126")]
 
 // Version information for an assembly consists of the following four values:
 //
