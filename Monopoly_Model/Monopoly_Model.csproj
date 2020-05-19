@@ -7,8 +7,8 @@
     <ProjectGuid>{F017D82F-92A2-4999-B961-0FCE74256126}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Monopoly_Models</RootNamespace>
-    <AssemblyName>Monopoly_Models</AssemblyName>
+    <RootNamespace>Monopoly_Model</RootNamespace>
+    <AssemblyName>Monopoly_Model</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
