@@ -13,10 +13,11 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Spelbord" Height="1000" Width="1000" Loaded="Window_Loaded">
+        Title="Spelbord" Height="1000" Width="1150" Loaded="Window_Loaded">
     <Grid x:Name="testgrid">
         <Image HorizontalAlignment="Left" Height="900" Margin="10,59,0,0" VerticalAlignment="Top" Width="900" Source="afbeeldingen/monopoly.jpg"/>
-
-
+        <Label Content="" Name="lblTest" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500" Height="500"/>
+        <Label x:Name="lblOverzicht" VerticalAlignment="Center" HorizontalAlignment="Right" Width="200" Height="auto" BorderBrush="Black" BorderThickness="2" Margin="0,0,10,0"/>
+        <Button x:Name="showInfrastructuur" Content="Infrastructuur" VerticalAlignment="Top" HorizontalAlignment="Right" Width="200" Margin="0,10,10,0" Click="showInfrastructuur_Click"/>
     </Grid>
 </Window>

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Monopoly_Model;
 
 namespace Project_Monopoly
 {
@@ -19,80 +20,133 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Spelbord : Window
     {
+        List<Spelvak> spelvakken = new List<Spelvak>();
         private const int V = 70;
-        private const int BottomRight = 870;
-        private const int BottomLeft = 50;
-        private const int BottomTop = 92;
-        private const int BottomBottom = 924;
+        private const int stapGrootte = 70;
+        List<Speler> spelerslijst;
 
-        public Spelbord()
+        public Spelbord(List<Speler> spelers)
         {
             InitializeComponent();
+            spelerslijst = spelers;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             initializeSpelbord();
+            SetOverzichtSaldi();
+        }
+
+        private void SetOverzichtSaldi()
+        {
+            string overzicht="";
+            foreach(Speler speler in spelerslijst)
+            {
+                if(speler != spelerslijst[spelerslijst.Count-1])
+                {
+                    overzicht += speler.Naam + " : €" + speler.HuidigSaldo + "\n";
+
+                }
+
+                else
+                {
+                    overzicht += speler.Naam + " : €" + speler.HuidigSaldo;
+                }
+            }
+
+            lblOverzicht.Content = overzicht;
+        }
+
+        private void initializePionnen()
+        {
+            
         }
 
         private void initializeSpelbord()
         {
-            SetCardText("Nieuwstraat\nBrussel", "€ 400", 142, 0);
-            SetCardText("Extra\nBelasting", "€ 100", 210, 0);
-            SetCardText("Meir\nAntwerpen", "€ 350", 280, 0);
-            SetCardText("Kans", null, 360, 0);
-            SetCardText("Zuid\nStation", "€ 200", 440, 0);
-            SetCardText("Boulevard\nD'Avroy\nLiège", "€ 320", 505, 0);
-            SetCardText("Algemeen\nFonds", null, 570, 0);
-            SetCardText("Boulevard\nTirou\nCharleroi", "€ 300", 650, 0);
-            SetCardText("Veldstraat\nGent", "€ 300", 720, 0);
-
-
-            SetCardText("Rue\nGrande\nDinant", "€ 60", 765, 90);
-            SetCardText("Algemeen\nFonds", null, 695, 90);
-            SetCardText("Diestse-\nstraat\nLeuven", "€ 60", 615, 90);
-            SetCardText("Inkomsten\nBelasting", "€ 200", 550, 90);
-            SetCardText("Noord\nStation", "€ 200", 480, 90);
-            SetCardText("Steenstraat\nBrugge", "€ 100", 400, 90);
-            SetCardText("Kans", null, 335, 90);
-            SetCardText("Place du\nMonument\nSpa", "€ 100", 260, 90);
-            SetCardText("Kapelle-\nstraat\nOostende", "€ 120", 190, 90);
+            Ellipse pion1 = new Ellipse();
+            pion1.Width = 30;
+            pion1.Height = 30;
+            pion1.Fill = new SolidColorBrush(Colors.Blue);
+            pion1.Margin = new Thickness(25, 840, 0, 0);
+            pion1.VerticalAlignment = VerticalAlignment.Top;
+            pion1.HorizontalAlignment = HorizontalAlignment.Left;
+            pion1.Stroke = new SolidColorBrush(Colors.Black);
+            pion1.StrokeThickness = 2;
 
 
 
-            SetCardText("Rue de\nDiekirch\nArlon", "€ 140", 210, 180);
-            SetCardText("Elektriciteits-\ncentrale", "€ 150", 280, 180);
-            SetCardText("Bruul\nMechelen", "€ 140", 350, 180);
-            SetCardText("Place Verte\nVerviers", "€ 160", 420, 180);
-            SetCardText("Centraal\nStation", "€ 200", 490, 180);
-            SetCardText("Lippenslaan\nKnokke", "€ 180", 563, 180);
-            SetCardText("Algemeen\nFonds", null, 630, 180);
-            SetCardText("Rue Royale\nTournai", "€ 180", 705, 180);
-            SetCardText("Groenplaats\nAntwerpen", "€ 200", 780, 180);
+            testgrid.Children.Add(pion1);
 
+            toevoegenKaarten();
 
-            SetCardText("Hoogstraat\nBrussel", "€ 280", 820, 270);
-            SetCardText("Water-\nMaatschappij", "€ 150", 755, 270);
-            SetCardText("Place\nDe l'ange\nNamur", "€ 260", 680, 270);
-            SetCardText("Grote Markt\nHasselt", "€ 260", 610, 270);
-            SetCardText("Buurt\nSpoorwegen", "€ 200", 540, 270);
-            SetCardText("Grand Place\nMons", "€ 240", 470, 270);
-            SetCardText("Lange\nSteenstraat\nKortrijk", "€ 220", 395, 270);
-            SetCardText("Kans", null, 320, 270);
-            SetCardText("Rue\nSt.Léonard\nLiège", "€ 220", 250, 270);
-
-            SetCardText("Parking", null, 180, 225);
+            KanskaartenStapel kanskaarten = new KanskaartenStapel();
+            lblTest.Content = kanskaarten.neemKansKaart().Omschrijving;
+            foreach (Spelvak huidigvak in spelvakken)
+            {
+                SetCardText(huidigvak);
+            }
         }
 
-        private void SetCardText(string name, string price, int position, int degrees)
+        private void toevoegenKaarten()
+        {
+            spelvakken.Add(new StraatVak("donkerblauw", "Nieuwstraat\nBrussel", 50, 200, 600, 1400, 1700, 2000, 200, 200, 400, 142, 39));
+            spelvakken.Add(new Belangstingvak("Extra\nBelasting", 38, 213, 100));
+            spelvakken.Add(new StraatVak("donkerblauw", "Meir\nAntwerpen", 35, 175, 500, 1100, 1300, 1500, 200, 175, 350, 283, 37));
+            spelvakken.Add(new KanskaartVak(36, 360));
+            spelvakken.Add(new StationVak(200, 25, 100, 440, 35, "Zuid\nStation"));
+            spelvakken.Add(new StraatVak("groen", "Boulevard\nD'Avroy\nLiège", 28, 150, 450, 1000, 1200, 1400, 200, 160, 320, 505, 34));
+            spelvakken.Add(new AlgemeenFondsKaartVak(33, 570));
+            spelvakken.Add(new StraatVak("groen", "Boulevard\nTirou\nCharleroi", 26, 130, 390, 900, 1100, 1275, 200, 150, 300, 645, 32));
+            spelvakken.Add(new StraatVak("groen", "Veldstraat\nGent", 26, 130, 390, 900, 1100, 1275, 200, 150, 300, 720, 31));
+
+            spelvakken.Add(new HoekVak("Naar de\ngevangenis", 30, 790));
+
+            spelvakken.Add(new StraatVak("geel", "Hoogstraat\nBrussel", 24, 120, 360, 850, 1025, 1200, 150, 140, 280, 820, 29));
+            spelvakken.Add(new Energievak(150, 75, 28, 750, "Water-\nMaatschappij","Water"));
+            spelvakken.Add(new StraatVak("geel", "Place\nDe l'ange\nNamur", 22, 110, 330, 800, 975, 1150, 150, 130, 260, 680, 27));
+            spelvakken.Add(new StraatVak("geel", "Grote Markt\nHasselt", 22, 110, 330, 800, 975, 1150, 150, 130, 260, 610, 26));
+            spelvakken.Add(new StationVak(200, 25, 100, 540, 25, "Buurt\nSpoorwegen"));
+            spelvakken.Add(new StraatVak("rood", "Grand Place\nMons", 20, 100, 300, 750, 925, 1100, 150, 100, 240, 470, 24));
+            spelvakken.Add(new StraatVak("rood", "Lange\nSteenstraat\nKortrijk", 18, 90, 250, 700, 875, 1050, 150, 110, 220, 395, 23));
+            spelvakken.Add(new KanskaartVak(22, 320));
+            spelvakken.Add(new StraatVak("rood", "Rue\nSt.Léonard\nLiège", 18, 90, 250, 700, 875, 1050, 150, 110, 220, 250, 21));
+
+            spelvakken.Add(new HoekVak("Gratis\nParking", 20, 180));
+
+            spelvakken.Add(new StraatVak("oranje", "Groenplaats\nAntwerpen", 16, 80, 220, 600, 800, 1000, 100, 100, 200, 780, 19));
+            spelvakken.Add(new StraatVak("oranje", "Rue Royale\nTournai", 14, 70, 200, 550, 750, 1000, 100, 90, 180, 705, 18));
+            spelvakken.Add(new AlgemeenFondsKaartVak(17, 630));
+            spelvakken.Add(new StraatVak("oranje", "Lippenslaan\nKnokke", 14, 70, 200, 550, 750, 950, 100, 90, 180, 563, 16));
+            spelvakken.Add(new StationVak(200, 25, 100, 490, 15, "Centraal\nStation"));
+            spelvakken.Add(new StraatVak("roze", "Place Verte\nVerviers", 12, 60, 180, 500, 700, 900, 100, 80, 160, 420, 14));
+            spelvakken.Add(new StraatVak("roze", "Bruul\nMechelen", 10, 50, 150, 450, 625, 750, 100, 70, 140, 350, 13));
+            spelvakken.Add(new Energievak(150, 75, 12, 280, "Elektriciteits-\ncentrale","Elektriciteit"));
+            spelvakken.Add(new StraatVak("roze", "Rue de\nDiekirch\nArlon", 10, 50, 150, 450, 625, 750, 100, 70, 140, 200, 11));
+
+            spelvakken.Add(new GevangenisVak(10, 160));
+
+            spelvakken.Add(new StraatVak("lichtblauw", "Kapelle-\nstraat\nOostende", 8, 40, 100, 300, 450, 600, 50, 60, 120, 190, 9));
+            spelvakken.Add(new StraatVak("lichtblauw", "Place du\nMonument\nSpa", 6, 30, 90, 270, 400, 550, 50, 50, 100, 260, 8));
+            spelvakken.Add(new KanskaartVak(7, 335));
+            spelvakken.Add(new StraatVak("lichtblauw", "Steenstraat\nBrugge", 6, 30, 90, 270, 400, 550, 50, 50, 100, 400, 6));
+            spelvakken.Add(new StationVak(200, 25, 100, 480, 5, "Noord\nStation"));
+            spelvakken.Add(new Belangstingvak("Inkomsten\nBelasting", 4, 550, 200));
+            spelvakken.Add(new StraatVak("bruin", "Diestse-\nstraat\nLeuven", 4, 20, 60, 180, 320, 450, 50, 30, 60, 615, 3));
+            spelvakken.Add(new AlgemeenFondsKaartVak(2, 695));
+            spelvakken.Add(new StraatVak("bruin", "Rue\nGrande\nDinant", 2, 10, 30, 90, 160, 250, 50, 30, 60, 765, 1));
+        }
+
+        private void SetCardText(Spelvak huidigvak)
         {
             Label nameLabel = new Label();
             Label priceLabel = new Label();
             Image afbeelding = new Image();
-            RotateTransform rotateTransform = new RotateTransform(degrees);
+            RotateTransform rotateTransform = new RotateTransform(huidigvak.Graden);
+            nameLabel.RenderTransform = rotateTransform;
 
-            int left = position;
-            int top = position;
+            int left = huidigvak.Left;
+            int top = huidigvak.Top;
 
             int nameLeft = left;
             int nameTop = top;
@@ -103,73 +157,96 @@ namespace Project_Monopoly
             int imgCornerLeft = left;
             int imgCornerTop = top;
 
-            if (degrees == 0)
+            if (huidigvak.Positie > 30 && huidigvak.Positie < 40)
             {
-                top = BottomBottom;
                 nameTop = top - V;
                 imgCrdLeft = nameLeft;
                 imgCrdTop = nameTop + 20;
                 imgCanBuyLeft = nameLeft - 10;
                 imgCanBuyTop = nameTop + 20;
-                if (isSpecialCard(name))
+                if (isSpecialCard(huidigvak.Naam))
                 {
                     nameTop -= 20;
                 }
             }
 
-            else if (degrees == 90)
+            else if (huidigvak.Graden == 90)
             {
-                left = BottomLeft;
                 nameLeft = left + V;
                 imgCrdLeft = nameLeft - 20;
                 imgCrdTop = nameTop - 4;
                 imgCanBuyLeft = nameLeft - 20;
                 imgCanBuyTop = nameTop - 4;
-                if (isSpecialCard(name))
+                if (isSpecialCard(huidigvak.Naam))
                 {
                     nameLeft += 20;
                 }
             }
 
-            else if (degrees == 180)
+            else if (huidigvak.Graden == 180)
             {
-                top = BottomTop;
                 nameTop = top + V;
                 imgCrdTop = nameTop;
                 imgCrdLeft = nameLeft;
                 imgCanBuyTop = nameTop - 20;
                 imgCanBuyLeft = nameLeft;
-                if (isSpecialCard(name))
+                if (isSpecialCard(huidigvak.Naam))
                 {
                     nameTop += 20;
                 }
             }
 
-            else if (degrees == 270)
+            else if (huidigvak.Graden == 270)
             {
-                left = BottomRight;
                 nameLeft = left - V;
                 imgCrdLeft = nameLeft + 20;
                 imgCrdTop = nameTop + 2;
                 imgCanBuyLeft = nameLeft + 20;
                 imgCanBuyTop = nameTop - 3;
-                if (isSpecialCard(name))
+                if (isSpecialCard(huidigvak.Naam))
                 {
                     nameLeft -= 20;
                 }
             }
 
-            else if (degrees == 225)
+            else if (huidigvak.Graden == 225)
             {
-                left = BottomRight;
+                imgCornerLeft = huidigvak.Left - 20;
+                imgCornerTop = top - 15;
                 nameLeft = left - V + 20;
+            }
 
+            else if (huidigvak.Graden == 176)
+            {
+                nameLeft = left - 110;
+                nameTop = top - 90;
+                RotateTransform rotate90 = new RotateTransform(90);
+                nameLabel.RenderTransform = rotate90;
+                nameLabel.FontSize = 35;
+                
+
+                imgCornerLeft = 70;
+                imgCornerTop = 120;
+
+            }
+
+            else if(huidigvak.Positie == 30)
+            {
+                nameTop = 910;
+                imgCrdLeft = nameLeft;
+                imgCrdTop = nameTop + 20;
+                imgCornerLeft = left;
+                imgCornerTop = top;
+                if (isSpecialCard(huidigvak.Naam))
+                {
+                    nameTop -= 20;
+                }
             }
 
 
 
             priceLabel.Width = 69;
-            priceLabel.Content = price;
+            priceLabel.Content = "€" + huidigvak.Prijs;
             priceLabel.Margin = new Thickness(left, top, 0, 0);
             priceLabel.HorizontalAlignment = HorizontalAlignment.Left;
             priceLabel.VerticalAlignment = VerticalAlignment.Top;
@@ -178,68 +255,95 @@ namespace Project_Monopoly
             testgrid.Children.Add(priceLabel);
 
             nameLabel.Width = 70;
-            nameLabel.Content = name;
+            nameLabel.Content = huidigvak.Naam;
             nameLabel.Margin = new Thickness(nameLeft, nameTop, 0, 0);
             nameLabel.HorizontalAlignment = HorizontalAlignment.Left;
             nameLabel.VerticalAlignment = VerticalAlignment.Top;
             nameLabel.FontSize = 11;
-
-
-            if (name == "Kans")
-            {
-                nameLabel.FontSize = 20;
-
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/vraagteken.JPG";
-                afbeelding.Margin = new Thickness(imgCrdLeft, imgCrdTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-
-            }
-
-            else if (name == "Algemeen\nFonds")
-            {
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/proxy.JPG";
-                afbeelding.Margin = new Thickness(imgCrdLeft + 4, imgCrdTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-
-            }
-
-            else if (name.Contains("centrale"))
-            {
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/elektriciteit.JPG";
-                afbeelding.Margin = new Thickness(imgCanBuyLeft - 5, imgCanBuyTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-            }
-
-            else if (name.Contains("Station") || name.Contains("Spoorwegen"))
-            {
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/trein.JPG";
-                afbeelding.Margin = new Thickness(imgCanBuyLeft, imgCanBuyTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-            }
-
-            else if (name.Contains("Maatschappij"))
-            {
-                nameLabel.FontSize = 10;
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/Kraan.JPG";
-                afbeelding.Margin = new Thickness(imgCanBuyLeft, imgCanBuyTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-            }
-
-            else if (name == "Parking")
-            {
-                nameLabel.FontSize = 10;
-                string imgUri = "C:/Users/vanvl/source/repos/Monopoly/Monopoly/afbeeldingen/Parking.gif";
-                afbeelding.Margin = new Thickness(imgCornerLeft, imgCornerTop, 0, 0);
-                afbeelding.Source = new ImageSourceConverter().ConvertFromString(imgUri) as ImageSource;
-            }
 
             afbeelding.Width = 60;
 
             afbeelding.HorizontalAlignment = HorizontalAlignment.Left;
             afbeelding.VerticalAlignment = VerticalAlignment.Top;
             afbeelding.RenderTransform = rotateTransform;
+            if (huidigvak.Naam == "Kans")
+            {
+                nameLabel.FontSize = 20;
 
-            nameLabel.RenderTransform = rotateTransform;
+                afbeelding.Margin = new Thickness(imgCrdLeft, imgCrdTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/vraagteken.JPG", UriKind.Relative));
+
+            }
+
+            else if (huidigvak.Naam == "Algemeen\nFonds")
+            {
+                afbeelding.Margin = new Thickness(imgCrdLeft, imgCrdTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/proxy.JPG", UriKind.Relative));
+                priceLabel.Content = "";
+
+            }
+
+            else if (huidigvak.Naam == "Algemeen\nFonds" && huidigvak.Positie == 17)
+            {
+                afbeelding.Margin = new Thickness(imgCrdLeft + 5, 40, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/proxy.JPG", UriKind.Relative));
+                priceLabel.Content = "";
+
+            }
+
+            else if (huidigvak.Naam.Contains("centrale"))
+            {
+                afbeelding.Margin = new Thickness(imgCanBuyLeft - 5, imgCanBuyTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/elektriciteit.JPG", UriKind.Relative));
+            }
+
+            else if (huidigvak.Naam.Contains("Station") || huidigvak.Naam.Contains("Spoorwegen"))
+            {
+                
+                afbeelding.Margin = new Thickness(imgCanBuyLeft, imgCanBuyTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/trein.JPG", UriKind.Relative));
+            }
+
+            else if (huidigvak.Naam.Contains("Maatschappij"))
+            {
+                nameLabel.FontSize = 10;
+                afbeelding.Margin = new Thickness(imgCanBuyLeft - 5, imgCanBuyTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/Kraan.JPG", UriKind.Relative));
+                afbeelding.Width = 58;
+            }
+
+            else if (huidigvak.Positie == 20)
+            {
+                nameLabel.FontSize = 10;
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/parking.gif", UriKind.Relative));
+                afbeelding.Margin = new Thickness(imgCornerLeft, imgCornerTop, 0, 0);
+                priceLabel.Content = "";
+            }
+
+            else if (huidigvak.Positie == 10)
+            {
+                afbeelding.Margin = new Thickness(imgCornerLeft, imgCornerTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/gevangenis.png", UriKind.Relative));
+                RotateTransform rotate0 = new RotateTransform(0);
+                afbeelding.RenderTransform = rotate0;
+                nameLabel.FontSize = 20;
+                nameLabel.Width = 120;
+            }
+
+            else if(huidigvak.Positie == 30)
+            {
+                afbeelding.Margin = new Thickness(imgCornerLeft, imgCornerTop, 0, 0);
+                afbeelding.Source = new BitmapImage(new Uri("/afbeeldingen/agent.jpg", UriKind.Relative));
+                RotateTransform rotate0 = new RotateTransform(0);
+                afbeelding.RenderTransform = rotate0;
+                nameLabel.FontSize = 14;
+                nameLabel.Width = 120;
+                priceLabel.Content = "";
+            }
+
+            
+
+            
             testgrid.Children.Add(nameLabel);
             testgrid.Children.Add(afbeelding);
 
@@ -247,9 +351,19 @@ namespace Project_Monopoly
 
         }
 
+        
+
         private static bool isSpecialCard(string name)
         {
             return name == "Kans" || name.Contains("Station") || name == "Algemeen\nFonds" || name.Contains("Belasting") || name.Contains("centrale") || name.Contains("Spoorwegen") || name.Contains("Maatschappij");
+        }
+
+        private void showInfrastructuur_Click(object sender, RoutedEventArgs e)
+        {
+            //Infrastructuur infrastructuur = new Infrastructuur(new StraatVak("donkerblauw", "Nieuwstraat\nBrussel", 50, 200, 600, 1400, 1700, 2000, 200, 200, 400, 142, 39), this);
+            Infrastructuur infrastructuur = new Infrastructuur(new StationVak(200, 25, 100, 480, 5, "Noord\nStation"),this);
+            //Infrastructuur infrastructuur = new Infrastructuur(new Energievak(150, 75, 12, 280, "Elektriciteits-\ncentrale", "Elektriciteit"), this);
+            infrastructuur.Show();
         }
     }
 }

@@ -193,6 +193,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitIgnore" />
+    <Resource Include="afbeeldingen\logoMonopoly.jpg" />
+    <Resource Include="afbeeldingen\gevangenis.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -207,9 +209,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Monopoly_Models\Monopoly_Models.csproj">
-      <Project>{f017d82f-92a2-4999-b961-0fce74256126}</Project>
-      <Name>Monopoly_Models</Name>
+    <ProjectReference Include="..\Monopoly_Model\Monopoly_Model.csproj">
+      <Project>{b6b59677-a48c-4bf2-9a7c-c9d2f864e585}</Project>
+      <Name>Monopoly_Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

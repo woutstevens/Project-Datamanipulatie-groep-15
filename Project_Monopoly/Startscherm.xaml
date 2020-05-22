@@ -13,8 +13,15 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Startscherm" Height="1000" Width="1000">
+        Title="Startscherm" Height="500" Width="500" Loaded="Window_Loaded">
     <Grid>
-        
+        <Image HorizontalAlignment="Center" Height="50" Margin="0,0,0,0" VerticalAlignment="Top" Width="100" Source="afbeeldingen/logoMonopoly.jpg"/>
+        <Button x:Name="btnStart" Content="Start" Width="80" VerticalAlignment="Top" Margin="0,50,0,0" Click="btnStart_Click"/>
+        <Button x:Name="btnQuit" Content="Quit" Width="80" VerticalAlignment="Top" Margin="0,90,0,0" Click="btnQuit_Click"/>
+        <Button x:Name="btnOptions" Content="Options" Width="90" VerticalAlignment="Top" Margin="0,130,0,0" Click="btnOptions_Click"/>
+        <ComboBox Name="CbxPionnen" Margin="0,170,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200" SelectionChanged="CbxPionnen_SelectionChanged"></ComboBox>
+            <Label Name="lblNaamSpeler" Content="Naam speler:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="90,210,0,0" BorderBrush="Black" BorderThickness="2"/>
+        <TextBox x:Name="txtNaamSpeler" VerticalAlignment="Top" HorizontalAlignment="Center" Width="100" Margin="0,210,0,0" BorderBrush="Gray" BorderThickness="2"/>
+        <Button x:Name="btnToevoegen" Content="Toevoegen" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,210,80,0" Click="btnToevoegen_Click"/>
     </Grid>
 </Window>

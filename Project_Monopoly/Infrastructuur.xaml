@@ -13,8 +13,30 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Infrastructuur" Height="1000" Width="1000" Loaded="Window_Loaded">
+        Title="Infrastructuur" Height="575" Width="356" Loaded="Window_Loaded">
     <Grid>
-
+        <Rectangle x:Name="Kaart" Fill="White" Height="340" Width="300" HorizontalAlignment="Left" Margin="20,20,0,0"  VerticalAlignment="Top"/>
+        <Rectangle x:Name="Color" Fill="White" Height="90" Width="300" HorizontalAlignment="Left" Margin="20,20,0,0"  VerticalAlignment="Top"/>
+        <Label Name="lblStraatnaam" Content="Straatnaam" Height="100" Width="300" HorizontalAlignment="Left" Margin="20,20,0,0"  VerticalAlignment="Top" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblHuur" Content="Onbebouwd" Height="30" Width="150" HorizontalAlignment="Left" Margin="20,120,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblHuurPrijs" Content="Huurprijs" Height="30" Width="150" HorizontalAlignment="Left" Margin="170,120,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblMet1Huis" Content="Met 1 huis" Height="30" Width="150" HorizontalAlignment="Left" Margin="20,150,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblPrijs1Huis" Content="1 Huis" Height="30" Width="150" HorizontalAlignment="Left" Margin="170,150,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblMet2Huizen" Content="Met 2 huizen" Height="30" Width="150" HorizontalAlignment="Left" Margin="20,180,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblPrijs2Huizen" Content="2 huizen" Height="30" Width="150" HorizontalAlignment="Left" Margin="170,180,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblMet3Huizen" Content="Met 3 huizen" Height="30" Width="150" HorizontalAlignment="Left" Margin="20,210,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblPrijs3Huizen" Content="3 huizen" Height="30" Width="150" HorizontalAlignment="Left" Margin="170,210,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblMet4Huizen" Content="Met 4 huizen" Height="30" Width="150" HorizontalAlignment="Left" Margin="20,240,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblPrijs4Huizen" Content="4 huizen" Height="30" Width="150" HorizontalAlignment="Left" Margin="170,240,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblMet1Hotel" Content="Met 1 Hotel" Height="30" Width="150" HorizontalAlignment="Left" Margin="20,270,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblPrijs1Hotel" Content="1 Hotel" Height="30" Width="150" HorizontalAlignment="Left" Margin="170,270,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblHuis" Content="Prijs van een huis" Height="30" Width="150" HorizontalAlignment="Left" Margin="20,300,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblPrijsHuis" Content="... + 4 huizen" Height="30" Width="150" HorizontalAlignment="Left" Margin="170,300,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblHypotheekwaarde" Content="Hypotheekwaarde" Height="30" Width="150" HorizontalAlignment="Left" Margin="20,330,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblPrijsHypotheek" Content="Waarde hypotheek" Height="30" Width="150" HorizontalAlignment="Left" Margin="170,330,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="lblBoodschap" Content="Boodschap" Height="75" Width="300" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="20,378,0,70" BorderBrush="Black" BorderThickness="1"/>
+        <Button x:Name="btnKopen" Content="Kopen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,20" Click="btnKopen_Click"/>
+        <Button x:Name="btnNietKopen" Content="Niet kopen" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" Click="btnNietKopen_Click"/>
+        <Button x:Name="btnBetalen" Content="Betalen" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" Click="btnBetalen_Click"/>
     </Grid>
 </Window>

@@ -1,0 +1,129 @@
+@startuml
+
+title Monopoly
+
+
+class Speler {
+
+}
+
+package "Tabel Kanskaart"
+{
+     class KansKaart {
+    +Int kansKaartID
+    }
+    
+}
+
+EigendomVak "*" --> "0-1" Speler : inBezitVan
+
+package "TABEL Spelvak" {
+class EigendomVak {
+    +int gebruikerID
+    +string kleur
+    +string type
+    +int aankoopWaarde
+    +Int hypotheekWaarde
+     +aanpassingSaldo()
+    }
+    
+    class SpelVak {
+      +Int postitie
+      +String type
+      
+    }
+    
+    
+    class BelastingVak {
+    
+    }
+    
+    
+    class EnergieVak{
+    +int aantalKeerOgen
+    }
+    
+    
+    
+    class StraatVak {
+  +String straatNaam
+  +Int prijsMet1Huis
+  +Int prijsMet2Huizen
+  +Int prijsMet3Huizen
+  +Int prijsMet4Huizen
+  +Int prijsMet1Hotel
+  +Int prijsPerHuis
+  +Int prijsPerHotel
+
+}
+
+    class StationVak{
+    }
+    
+    EigendomVak <|-- StraatVak
+    EigendomVak <|-- EnergieVak
+    EigendomVak <|-- StationVak
+    SpelVak <|-- EigendomVak
+    SpelVak <|-- GevangenisVak
+    SpelVak <|-- BelastingVak
+    SpelVak <|-- AlgemeenFondsKaartVak
+    SpelVak <|-- KanskaartVak
+        
+    class GevangenisVak{
+    }
+    Spelbord "1" -- "40" SpelVak : bestaatUit
+}
+
+
+
+class Spelbord
+
+Spelbord -- "20" KansKaart : bestaatUit
+Spelbord -- "20" AlgemeenFondsKaart : bestaatUit
+Spelbord -- "2-6" Speler : heeft
+
+package "TABEL AlgemeenfondsKaart"{
+    class AlgemeenFondsKaart {
+    
+    }
+
+}
+
+
+package "TABEL KAART"{
+
+    class Kaart{
+    int bedrag
+    int aantalPosities
+    string type
+    string naam
+    string omschrijving
+    bool houBij
+    }
+    Kaart --|> KansKaart
+    
+}    
+class Speler{
+string naam
+String Figuur
+int vakID
+Int huidigSaldo
+Bool gevangenis
+int verlaatGevangenis
+}
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml
