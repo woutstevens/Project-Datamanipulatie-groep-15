@@ -1,0 +1,42 @@
+@startuml
+
+title Monopoly logica
+
+Speler -> "Start\nScherm" : start application
+Create Spelbord
+"Start\nScherm" -> Spelbord : new Spelbord(List <Speler>)
+
+
+Spelbord -> Spelbord : InitializeSpelbord()
+
+Create "Gooi\nScherm"
+Spelbord -> "Gooi\nScherm" : Gooien(Spelbord)
+"Gooi\nScherm" -> Spelbord :IsDubbelGegooid()
+"Gooi\nScherm" -> Spelbord :VerzetSpeler()
+"Gooi\nScherm" -> "Gooi\nScherm" : Close()
+
+Create Infrastructuur
+Spelbord -> Infrastructuur : [IsEigendomVak]\nnew Infrastructuur(Eigendomvak,Spelbord)
+Infrastructuur -> Spelbord : KaartIsGekocht()
+Infrastructuur -> Spelbord : KaartIsBetaald()
+Infrastructuur -> Infrastructuur : Close()
+
+Create Kans
+Spelbord -> Kans : [IsKansKaartVak]\nnew Kans()
+Kans -> Spelbord : VerzetSpeler()
+Kans -> Spelbord : WijzigSaldo()
+Kans -> Kans : CLose()
+
+Create "Algemeen\nFonds"
+Spelbord -> "Algemeen\nFonds" : [IsAlgemeenFondsKaartVak]\nnew AlgemeenFonds()
+"Algemeen\nFonds" -> Spelbord : VerzetSpeler()
+"Algemeen\nFonds" -> Spelbord : WijzigSaldo()
+"Algemeen\nFonds" -> "Algemeen\nFonds" : Close()
+
+Spelbord -> Spelbord : IsDubbelGegooid()
+Spelbord -> Spelbord : IsFailliet()
+Spelbord -> Spelbord : VolgendeSpeler()
+
+Spelbord -> Spelbord : NaarDeGevangenis()
+
+@enduml

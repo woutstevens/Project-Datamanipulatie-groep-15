@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Monopoly_Model;
 
 namespace Project_Monopoly
 {
@@ -20,18 +21,42 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Startscherm : Window
     {
-        Spelbord spelbord = new Spelbord();
-        Instellingen instellingen = new Instellingen();
         
-
+        Instellingen instellingen = new Instellingen();
+        List<Speler> spelerslijst = new List<Speler>();
+        Spelbord spelbord;
+        int aantal = 2;
+        List<Pion> pionnen = new List<Pion>();
         public Startscherm()
         {
-            
+
+        }
+
+        private void setPionnenLijst()
+        {
+            pionnen.Add(new Pion("Rood"));
+            pionnen.Add(new Pion("Blauw"));
+            pionnen.Add(new Pion("groen"));
+            pionnen.Add(new Pion("Paars"));
+            pionnen.Add(new Pion("Zwart"));
+            pionnen.Add(new Pion("Geel"));
+        }
+
+        private void SetComboBox()
+        {
+            setPionnenLijst();
+            foreach (Pion pion in pionnen)
+            {
+                CbxPionnen.Items.Add(pion);
+            }
+            CbxPionnen.SelectedItem = CbxPionnen.Items[0];
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            spelbord = new Spelbord(spelerslijst);
+            btnStart.IsEnabled = false;
+            SetComboBox();
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
@@ -43,7 +68,6 @@ namespace Project_Monopoly
         private void btnQuit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-            
         }
 
         private void btnOptions_Click(object sender, RoutedEventArgs e)
@@ -53,6 +77,21 @@ namespace Project_Monopoly
         }
 
         private void btnToevoegen_Click(object sender, RoutedEventArgs e)
+        {
+            Speler huidigeSpeler = new Speler(txtNaamSpeler.Text);
+            huidigeSpeler.Pion = pionnen[CbxPionnen.SelectedIndex];
+            spelerslijst.Add(huidigeSpeler);
+            CbxPionnen.Items.Remove(CbxPionnen.SelectedItem);
+            if (spelerslijst.Count == aantal)
+            {
+                btnToevoegen.IsEnabled = false;
+                btnStart.IsEnabled = true;
+            }
+            CbxPionnen.SelectedItem = CbxPionnen.Items[0];
+            txtNaamSpeler.Text = "";
+        }
+
+        private void CbxPionnen_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
