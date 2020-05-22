@@ -20,5 +20,13 @@ namespace Monopoly_Model
             _3Stations = _2Stations * 2;
             _4Stations = _3Stations * 2;
         }
+
+        public int Huur { get => _huur; set => _huur = value; }
+        public int Prijs4Stations { get => _4Stations; set => _4Stations = value; }
+
+        public int Prijs3Stations { get => _3Stations; set => _3Stations = value; }
+
+        public int Prijs2Stations { get => _2Stations; set => _2Stations = value; }
+    
     }
 }

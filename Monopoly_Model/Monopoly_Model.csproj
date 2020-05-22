@@ -31,8 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Properties.Resources.Designer.cs">
+      <HintPath>..\Project_Monopoly\obj\Debug\TempPE\Properties.Resources.Designer.cs.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +57,7 @@
     <Compile Include="KansKaart.cs" />
     <Compile Include="KanskaartenStapel.cs" />
     <Compile Include="KanskaartVak.cs" />
+    <Compile Include="Pion.cs" />
     <Compile Include="Speler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spelvak.cs" />
