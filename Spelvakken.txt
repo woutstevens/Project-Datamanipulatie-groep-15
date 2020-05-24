@@ -1,0 +1,206 @@
+// voorbeeld insert into AlgemeenFonds (naam, type, houbij) values ('a', 'b', 0);
+            //insert into Spelvak(id, naam, type, kleur, spelerID, prijsMet1Huis, prijsMet2Huizen, prijsMet3Huizen, prijsMet4Huizen, prijsMet1Hotel, aantalHuizen, aantalHotels, prijsPerHotel, prijsPerHuis, aankoopwaarde, hypotheekwaarde, aantalOgen, prijsZonderHuis, positionLeft, positionTop) values(1, 'Rue\nGrande\nDinant', 'Eigendom', 'Bruin', null, 10, 30, 90, 160, 250, 0, 0, 50, 50, 60, 30, 0, 2, 45, 765);
+
+            String sqlString = "";
+            foreach (Spelvak huidigvak in spelvakken)
+            {
+                StraatVak straat;
+                StationVak station;
+                Belangstingvak belasting;
+                HoekVak hoek;
+                KanskaartVak kansVak;
+                AlgemeenFondsKaartVak algemeenFondsVak;
+                Energievak energie;
+
+                sqlString = sqlString + "insert into Spelvak(id, naam, type, kleur, spelerID, prijsMet1Huis, prijsMet2Huizen, prijsMet3Huizen, prijsMet4Huizen, prijsMet1Hotel, aantalHuizen, aantalHotels, prijsPerHotel, prijsPerHuis, aankoopwaarde, hypotheekwaarde, aantalOgen, prijsZonderHuis, positionLeft, positionTop,prijs1Station,prijs2Stations,prijs3Stations,prijs4Stations) values( ";
+                sqlString = sqlString + huidigvak.Positie + ",";
+                sqlString = sqlString + "'" +  huidigvak.Naam + "',";
+                sqlString = sqlString + "'" +  huidigvak.Type + "',";
+                if (huidigvak.GetType() == typeof(StraatVak))
+                {
+                    straat = (StraatVak)huidigvak;
+                    sqlString = sqlString + "'" + straat.Kleur + "',";
+                    sqlString = sqlString + "null" + ",";
+                    sqlString = sqlString + straat.PrijsMet1Huis + ",";
+                    sqlString = sqlString + straat.PrijsMet2Huizen + ",";
+                    sqlString = sqlString + straat.PrijsMet3Huizen + ",";
+                    sqlString = sqlString + straat.PrijsMet4Huizen + ",";
+                    sqlString = sqlString + straat.PrijsMet1Hotel + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + straat.PrijsPerHuis + ",";
+                    sqlString = sqlString + straat.PrijsPerHuis + ",";
+                    sqlString = sqlString + straat.Prijs + ",";
+                    sqlString = sqlString + straat.HypotheekWaarde + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + straat.PrijsZonderHuis + ",";
+                    sqlString = sqlString + straat.Left + ",";
+                    sqlString = sqlString + straat.Top + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0;
+                }
+
+                if (huidigvak.GetType() == typeof(Energievak))
+                {
+                    energie = (Energievak)huidigvak;
+                    sqlString = sqlString + "'" + energie.Kleur + "',";
+                    sqlString = sqlString + "null" + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + energie.Prijs + ",";
+                    sqlString = sqlString + energie.HypotheekWaarde + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + energie.Left + ",";
+                    sqlString = sqlString + energie.Top + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0;
+                }
+
+                else if (huidigvak.GetType() == typeof(Belangstingvak))
+                {
+                    belasting = (Belangstingvak)huidigvak;
+                    sqlString = sqlString + "'Wit',";
+                    sqlString = sqlString + "null" + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + belasting.Prijs + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + belasting.Left + ",";
+                    sqlString = sqlString + belasting.Top + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                }
+
+                else if (huidigvak.GetType() == typeof(StationVak))
+                {
+                    station = (StationVak)huidigvak;
+                    sqlString = sqlString + station.Kleur + ",";
+                    sqlString = sqlString + "null" + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + station.Prijs + ",";
+                    sqlString = sqlString + station.HypotheekWaarde + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + station.Left + ",";
+                    sqlString = sqlString + station.Top + ",";
+                    sqlString = sqlString + station.Huur + ",";
+                    sqlString = sqlString + station.Prijs2Stations + ",";
+                    sqlString = sqlString + station.Prijs3Stations + ",";
+                    sqlString = sqlString + station.Prijs4Stations;
+                }
+
+                else if (huidigvak.GetType() == typeof(HoekVak))
+                {
+                    hoek = (HoekVak)huidigvak;
+                    sqlString = sqlString + "'Wit',";
+                    sqlString = sqlString + "null" + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + hoek.Prijs + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + hoek.Left + ",";
+                    sqlString = sqlString + hoek.Top + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                }
+
+                else if (huidigvak.GetType() == typeof(AlgemeenFondsKaartVak))
+                {
+                    algemeenFondsVak = (AlgemeenFondsKaartVak)huidigvak;
+                    sqlString = sqlString + "'Wit',";
+                    sqlString = sqlString + "null" + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + algemeenFondsVak.Prijs + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + algemeenFondsVak.Left + ",";
+                    sqlString = sqlString + algemeenFondsVak.Top + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                }
+
+                else if (huidigvak.GetType() == typeof(KanskaartVak))
+                {
+                    kansVak=(KanskaartVak)huidigvak;
+                    sqlString = sqlString + "'Wit',";
+                    sqlString = sqlString + "null" + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + kansVak.Prijs + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + kansVak.Left + ",";
+                    sqlString = sqlString + kansVak.Top + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                    sqlString = sqlString + 0 + ",";
+                }
+
+                
+
+                sqlString = sqlString + ");\n";
+            }
+
+            txtSQL.Text = sqlString;

@@ -1,0 +1,16 @@
+string sqlString = "";
+            for(int i=1;i<=6;i++)
+            {
+                sqlString += "insert into Speler(naam, figuur, spelvakId, gevangenis, verlaatGevangenis) values(";
+                sqlString += "'Speler" + i + "',";
+                sqlString += "'',";
+                sqlString += 0;
+                sqlString += 0;
+                sqlString += 0;
+                sqlString += ");\n";
+            }
+
+            
+        
+
+         txtSQL.Text = sqlString;
