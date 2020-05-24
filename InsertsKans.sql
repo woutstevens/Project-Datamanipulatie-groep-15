@@ -1,0 +1,15 @@
+﻿insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Reis naar centraal station.\nindien u langs start komt,\nontvangt u €200',0,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Ga verder naar Grand place (Mons).\nIndien u langs start komt,\nontvangt u €200',0,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Betaal schoolgeld €150',150,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Opgepakt wegens dronkenschap:\n€ 20 boete',-20,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','De bank betaald u\n€50 dividend',50,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','U wordt aangeslagen voor straatgeld\nbetaal €40 per huis',0,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Ga direct naar de gevangenis.\nGa niet langs "start",\nu ontvangt geen €200',0,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Boete voor te snel rijden: €15',-15,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Ga verder naar Rue de Diekirch (Arlon).\nIndien u langs start komt,\nontvangt u €200',0,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Verlaat de gevangenis zonder betalen',0,0,1);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Ga drie plaatsen terug',0,3,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Herstel uw huizen.\nBetaal voor elk huis €25',0,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Ga verder naar Nieuwstraat (Brussel)',0,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Ga verder naar Start',0,0,0);
+insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values ('Kans','Uw bouwverzekering vervalt,\nU ontvangt €150',150,0,0);

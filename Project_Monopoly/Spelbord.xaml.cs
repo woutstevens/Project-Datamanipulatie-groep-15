@@ -24,6 +24,8 @@ namespace Project_Monopoly
         private const int V = 70;
         private const int stapGrootte = 70;
         List<Speler> spelerslijst;
+        bool dubbelGegooid;
+        
 
         public Spelbord(List<Speler> spelers)
         {
@@ -57,9 +59,24 @@ namespace Project_Monopoly
             lblOverzicht.Content = overzicht;
         }
 
-        private void initializePionnen()
+        public void SetDubbelGegooid()
         {
-            
+
+        }
+
+        private void Gooien()
+        {
+             
+        }
+
+        private void beweegSpeler(int aantalVakjes)
+        {
+
+        }
+
+        private void getUitkomstVakSpeler()
+        {
+
         }
 
         private void initializeSpelbord()
@@ -87,6 +104,8 @@ namespace Project_Monopoly
                 SetCardText(huidigvak);
             }
         }
+
+        
 
         private void toevoegenKaarten()
         {

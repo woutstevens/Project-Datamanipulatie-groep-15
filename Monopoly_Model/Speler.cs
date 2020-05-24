@@ -8,6 +8,7 @@ namespace Monopoly_Model
 {
     public class Speler
     {
+        private int spelerID;
         private string _naam;
         int _vakID;
         int _huidigSaldo;

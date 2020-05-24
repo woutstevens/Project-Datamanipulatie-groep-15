@@ -9,7 +9,7 @@ namespace Monopoly_Model
     public class AlgemeenFondsKaartenStapel
     {
         List<AlgemeenFondsKaart> algemeenFondsKaarten = new List<AlgemeenFondsKaart>();
-
+        Random random = new Random();
         public AlgemeenFondsKaartenStapel()
         {
             algemeenFondsKaarten.Add(new AlgemeenFondsKaart(200, 0, "Een vergissing van de bank in uw voordeel,\nu ontvangt €200", false));
@@ -27,6 +27,32 @@ namespace Monopoly_Model
             algemeenFondsKaarten.Add(new AlgemeenFondsKaart(100, 0, "Een vergissing van de bank in uw voordeel,\nu ontvangt €100", false));
             algemeenFondsKaarten.Add(new AlgemeenFondsKaart(0, 0, "Ga verder naar Start", false));
             algemeenFondsKaarten.Add(new AlgemeenFondsKaart(0, 0, "Ga direct naar de gevangenis.\nGa niet langs \"start\",\nu ontvangt geen €200", false));
+            algemeenFondsKaarten = algemeenFondsKaarten.OrderBy(x => random.Next(0, 15)).ToList();
+        }
+
+        public string generateSQL()
+        {
+            string sqlString = "";
+            foreach (AlgemeenFondsKaart algemeenfondskaart in algemeenFondsKaarten)
+            {
+                sqlString += "insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values (";
+                sqlString += "'Algemeen Fonds'" + ",";
+                sqlString += "'" + algemeenfondskaart.Omschrijving + "',";
+                sqlString += algemeenfondskaart.Bedrag + ",";
+                sqlString += algemeenfondskaart.AantalPosities + ",";
+                if (algemeenfondskaart.HouBij == false)
+                {
+                    sqlString += 0;
+                }
+
+                else
+                {
+                    sqlString += 1;
+                }
+                sqlString += ");\n";
+            }
+
+            return sqlString;
         }
     }
 }
