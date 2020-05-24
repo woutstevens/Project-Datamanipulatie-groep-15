@@ -64,17 +64,37 @@ namespace Project_Monopoly
 
         }
 
-        private void Gooien()
-        {
-             
-        }
-
-        private void beweegSpeler(int aantalVakjes)
+        public void verzetSpeler(int aantalVakjes)
         {
 
         }
 
-        private void getUitkomstVakSpeler()
+        private void IfUitkomstVakIsEigendomVak()
+        {
+
+        }
+
+        public void WijzigSaldo(int bedrag)
+        {
+
+        }
+
+        public void NaarDeGevangenis()
+        {
+
+        }
+
+        private void IsDubbelGegooid()
+        {
+
+        }
+
+        private void IsFailliet()
+        {
+
+        }
+
+        private void VolgendeSpeler()
         {
 
         }
