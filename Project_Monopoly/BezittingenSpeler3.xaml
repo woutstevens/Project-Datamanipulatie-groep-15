@@ -1,0 +1,106 @@
+﻿<Window x:Class="Project_Monopoly.BezittingenSpeler3"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Monopoly"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Bezittingen" Height="800" Width="1320" Loaded="Window_Loaded">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="125"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="125"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="125"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="125"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="125"></RowDefinition>
+
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="125"></ColumnDefinition>
+
+            <ColumnDefinition Width="125"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="Straten" Content="Straten" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Margin="10"></Label>
+
+        <Label x:Name="Straat1Kaart1"  Grid.Column="0" Grid.Row="1" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat1Kaart1Eigenschappen" Grid.Column="0" Grid.Row="2" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+        <Label x:Name="Straat1Kaart2" Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat1Kaart2Eigenschappen" Grid.Column="1" Grid.Row="2" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+        <Label x:Name="Straat1Kaart3" Grid.Column="2" Grid.Row="1" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 35 0"></Label>
+        <Label x:Name="Straat1Kaart3Eigenschappen" Grid.Column="2" Grid.Row="2" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 35 25"></Label>
+        <Label x:Name="Straat2Kaart1" Grid.Column="3" Grid.Row="1" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="35 10 10 0"></Label>
+        <Label x:Name="Straat2Kaart1Eigenschappen" Grid.Column="3" Grid.Row="2" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="35 0 10 25"></Label>
+        <Label x:Name="Straat2Kaart2" Grid.Column="4" Grid.Row="1" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat2Kaart2Eigenschappen" Grid.Column="4" Grid.Row="2" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+        <Label x:Name="Straat2Kaart3" Grid.Column="5" Grid.Row="1" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat2Kaart3Eigenschappen" Grid.Column="5" Grid.Row="2" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+
+        <Label x:Name="Straat3Kaart1" Grid.Column="0" Grid.Row="3" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat3Kaart1Eigenschappen" Grid.Column="0" Grid.Row="4" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+        <Label x:Name="Straat3Kaart2" Grid.Column="1" Grid.Row="3" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat3Kaart2Eigenschappen" Grid.Column="1" Grid.Row="4" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+        <Label x:Name="Straat3Kaart3" Grid.Column="2" Grid.Row="3" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 35 0"></Label>
+        <Label x:Name="Straat3Kaart3Eigenschappen" Grid.Column="2" Grid.Row="4" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 35 25"></Label>
+        <Label x:Name="Straat4Kaart1" Grid.Column="3" Grid.Row="3" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="35 10 10 0"></Label>
+        <Label x:Name="Straat4Kaart1Eigenschappen" Grid.Column="3" Grid.Row="4" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="35 0 10 25"></Label>
+        <Label x:Name="Straat4Kaart2" Grid.Column="4" Grid.Row="3" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat4Kaart2Eigenschappen" Grid.Column="4" Grid.Row="4" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+        <Label x:Name="Straat4Kaart3" Grid.Column="5" Grid.Row="3" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat4Kaart3Eigenschappen" Grid.Column="5" Grid.Row="4" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+
+        <Label x:Name="Straat5Kaart1" Grid.Column="0" Grid.Row="5" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat5Kaart1Eigenschappen" Grid.Column="0" Grid.Row="6" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+        <Label x:Name="Straat5Kaart2" Grid.Column="1" Grid.Row="5" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat5Kaart2Eigenschappen" Grid.Column="1" Grid.Row="6" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+        <Label x:Name="Straat5Kaart3" Grid.Column="2" Grid.Row="5" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 35 0"></Label>
+        <Label x:Name="Straat5Kaart3Eigenschappen" Grid.Column="2" Grid.Row="6" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 35 25"></Label>
+        <Label x:Name="Straat6Kaart1" Grid.Column="3" Grid.Row="5" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="35 10 10 0"></Label>
+        <Label x:Name="Straat6Kaart1Eigenschappen" Grid.Column="3" Grid.Row="6" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="35 0 10 25"></Label>
+        <Label x:Name="Straat6Kaart2" Grid.Column="4" Grid.Row="5" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat6Kaart2Eigenschappen" Grid.Column="4" Grid.Row="6" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+
+        <Label x:Name="Straat7Kaart1" Grid.Column="0" Grid.Row="7" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat7Kaart1Eigenschappen" Grid.Column="0" Grid.Row="8" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+        <Label x:Name="Straat7Kaart2" Grid.Column="1" Grid.Row="7" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat7Kaart2Eigenschappen" Grid.Column="1" Grid.Row="8" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+        <Label x:Name="Straat7Kaart3" Grid.Column="2" Grid.Row="7" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 35 0"></Label>
+        <Label x:Name="Straat7Kaart3Eigenschappen" Grid.Column="2" Grid.Row="8" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 35 25"></Label>
+        <Label x:Name="Straat8Kaart1" Grid.Column="3" Grid.Row="7" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="35 10 10 0"></Label>
+        <Label x:Name="Straat8Kaart1Eigenschappen" Grid.Column="3" Grid.Row="8" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="35 0 10 25"></Label>
+        <Label x:Name="Straat8Kaart2" Grid.Column="4" Grid.Row="7" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 0"></Label>
+        <Label x:Name="Straat8Kaart2Eigenschappen" Grid.Column="4" Grid.Row="8" BorderThickness="1" BorderBrush="Black" Opacity="0.5" Margin="10 0 10 25"></Label>
+
+        <Label x:Name="Stations" Content="Stations" Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="4" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Margin="110 10 10 10"></Label>
+
+        <Label x:Name="Station1" Grid.Column="6" Grid.Row="1" Grid.RowSpan="2" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="110 10 10 25"></Label>
+        <Label x:Name="Station2" Grid.Column="7" Grid.Row="1" Grid.RowSpan="2" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 25"></Label>
+        <Label x:Name="Station3" Grid.Column="8" Grid.Row="1" Grid.RowSpan="2" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 25"></Label>
+        <Label x:Name="Station4" Grid.Column="9" Grid.Row="1" Grid.RowSpan="2" BorderThickness="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Opacity="0.5" Margin="10 10 10 25"></Label>
+
+    </Grid>
+</Window>
