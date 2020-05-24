@@ -19,14 +19,53 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Gooien : Window
     {
+        int Dobbelsteen1 = 0;
+        int Dobbelsteen2 = 0;
+        int AantalStappen = 0;
+        int AantalKeerDubbel = 0;
+
         public Gooien()
         {
-            InitializeComponent();
+
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            btnGooien.IsEnabled = true;
 
+        }
+
+        private void BtnGooien_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            Random gooien = new Random();
+
+            Dobbelsteen1 = gooien.Next(1, 7);
+            Dobbelsteen2 = gooien.Next(1, 7);
+            lblDobbelsteen1.Content = Dobbelsteen1.ToString();
+            lblDobbelsteen2.Content = Dobbelsteen2.ToString();
+            AantalStappen += Dobbelsteen1 + Dobbelsteen2;
+            AantalKeerDubbel += 1;
+
+            if (AantalKeerDubbel == 3)
+            {
+                btnGooien.IsEnabled = false;
+                MessageBox.Show("u moet naar de gevangenis");
+            }
+
+            if (Dobbelsteen1 != Dobbelsteen2)
+            {
+                btnGooien.IsEnabled = false;
+            }
+
+
+        }
+
+        private void BtnDoorgaan_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
