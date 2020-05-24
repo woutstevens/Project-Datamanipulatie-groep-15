@@ -25,18 +25,104 @@ namespace Project_Monopoly
         private const int stapGrootte = 70;
         List<Speler> spelerslijst;
         bool dubbelGegooid;
-        
+        int pot;
+        Speler huidigeSpeler;
 
         public Spelbord(List<Speler> spelers)
         {
             InitializeComponent();
             spelerslijst = spelers;
+            pot = 0;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            initializeSpelbord();
+            InitializeSpelbord();
             SetOverzichtSaldi();
+            StartSpel();
+        }
+
+        private void StartSpel()
+        {
+            while(spelerslijst.Count >1)
+            {
+                foreach (Speler speler in spelerslijst)
+                {
+                    huidigeSpeler = speler;
+                    do
+                    {
+                        SpeelMetSpeler(speler);
+                        if(IsFailliet())
+                        {
+                            spelerslijst.Remove(speler);
+                        }
+                        SetOverzichtSaldi();
+                    } while (dubbelGegooid);
+                    
+                }
+            }
+            
+        }
+
+        private void SpeelMetSpeler(Speler speler)
+        {
+            //Gooien gooien = new Gooien(this);
+            //gooien.Show();
+            Random rd = new Random();
+            VerzetSpeler(rd.Next(1, 13));
+
+            Spelvak spelvak = HaalSpelvakOp(speler.VakID);
+            if(spelvak.Type == "eigendom")
+            {
+                EigendomVak eigendom = (EigendomVak)spelvak;
+                Infrastructuur infrastructuur = new Infrastructuur(eigendom, this);
+                infrastructuur.ShowDialog();
+            }
+
+            else if (spelvak.GetType() == typeof(KanskaartVak))
+            {
+                //Kans kans = new Kans(this);
+                WijzigSaldo(100);
+            }
+
+            else if (spelvak.GetType() == typeof(AlgemeenFondsKaartVak))
+            {
+                //AlgemeenFonds algemeenFonds = new AlgemeenFonds(this);
+                WijzigSaldo(-50);
+                pot += (-50);
+            }
+
+            else if (spelvak.GetType() == typeof(Belangstingvak))
+            {
+                Belangstingvak belangstingvak = (Belangstingvak)spelvak;
+                WijzigSaldo(belangstingvak.Prijs * -1);
+                pot += belangstingvak.Prijs;
+            }
+
+            else if (spelvak.GetType() == typeof(HoekVak) && spelvak.Positie == 30)
+            {
+                NaarDeGevangenis();
+            }
+
+            else if (spelvak.GetType() == typeof(HoekVak) && spelvak.Positie == 20)
+            {
+                WijzigSaldo(pot);
+            }
+        }
+
+        private Spelvak HaalSpelvakOp(int vakID)
+        {
+            Spelvak huidigVak = null;
+            foreach(Spelvak spelvak in spelvakken)
+            {
+                if(spelvak.Positie == vakID)
+                {
+                    huidigVak = spelvak;
+                    return huidigVak;
+                }
+            }
+
+            return huidigVak;
         }
 
         private void SetOverzichtSaldi()
@@ -44,62 +130,56 @@ namespace Project_Monopoly
             string overzicht="";
             foreach(Speler speler in spelerslijst)
             {
-                if(speler != spelerslijst[spelerslijst.Count-1])
-                {
-                    overzicht += speler.Naam + " : €" + speler.HuidigSaldo + "\n";
-
-                }
-
-                else
-                {
-                    overzicht += speler.Naam + " : €" + speler.HuidigSaldo;
-                }
+                overzicht += speler.Naam + " : €" + speler.HuidigSaldo +" Vakid: " + speler.VakID +"\n";
             }
-
+            overzicht += "Pot:" + pot;
             lblOverzicht.Content = overzicht;
         }
 
-        public void SetDubbelGegooid()
+        public void SetDubbelGegooid(bool dubbel)
         {
-
+            dubbelGegooid = dubbel;
         }
 
-        public void verzetSpeler(int aantalVakjes)
+        public void VerzetSpeler(int aantalVakjes)
         {
-
+            huidigeSpeler.VakID += aantalVakjes;
+            if(huidigeSpeler.VakID >=spelvakken.Count)
+            {
+                GaLangsStart();
+            }
         }
 
-        private void IfUitkomstVakIsEigendomVak()
+        private void GaLangsStart()
         {
-
+            huidigeSpeler.VakID = huidigeSpeler.VakID - spelvakken.Count;
+            huidigeSpeler.aanpassingSaldo(200);
         }
 
         public void WijzigSaldo(int bedrag)
         {
-
+            huidigeSpeler.aanpassingSaldo(bedrag);
         }
 
         public void NaarDeGevangenis()
         {
-
+            huidigeSpeler.VakID = 10;
         }
 
-        private void IsDubbelGegooid()
+        private bool IsFailliet()
         {
-
+            return huidigeSpeler.HuidigSaldo <= 0;
         }
 
-        private void IsFailliet()
+        private void VolgendeRonde()
         {
-
+            if(spelerslijst[spelerslijst.Count -1] == huidigeSpeler)
+            {
+                StartSpel();
+            }
         }
 
-        private void VolgendeSpeler()
-        {
-
-        }
-
-        private void initializeSpelbord()
+        private void InitializeSpelbord()
         {
             Ellipse pion1 = new Ellipse();
             pion1.Width = 30;
@@ -111,11 +191,9 @@ namespace Project_Monopoly
             pion1.Stroke = new SolidColorBrush(Colors.Black);
             pion1.StrokeThickness = 2;
 
-
-
             testgrid.Children.Add(pion1);
 
-            toevoegenKaarten();
+            ToevoegenKaarten();
 
             KanskaartenStapel kanskaarten = new KanskaartenStapel();
             lblTest.Content = kanskaarten.neemKansKaart().Omschrijving;
@@ -127,7 +205,7 @@ namespace Project_Monopoly
 
         
 
-        private void toevoegenKaarten()
+        private void ToevoegenKaarten()
         {
             spelvakken.Add(new StraatVak("donkerblauw", "Nieuwstraat\nBrussel", 50, 200, 600, 1400, 1700, 2000, 200, 200, 400, 142, 39));
             spelvakken.Add(new Belangstingvak("Extra\nBelasting", 38, 213, 100));
@@ -203,7 +281,7 @@ namespace Project_Monopoly
                 imgCrdTop = nameTop + 20;
                 imgCanBuyLeft = nameLeft - 10;
                 imgCanBuyTop = nameTop + 20;
-                if (isSpecialCard(huidigvak.Naam))
+                if (IsSpecialCard(huidigvak.Naam))
                 {
                     nameTop -= 20;
                 }
@@ -216,7 +294,7 @@ namespace Project_Monopoly
                 imgCrdTop = nameTop - 4;
                 imgCanBuyLeft = nameLeft - 20;
                 imgCanBuyTop = nameTop - 4;
-                if (isSpecialCard(huidigvak.Naam))
+                if (IsSpecialCard(huidigvak.Naam))
                 {
                     nameLeft += 20;
                 }
@@ -229,7 +307,7 @@ namespace Project_Monopoly
                 imgCrdLeft = nameLeft;
                 imgCanBuyTop = nameTop - 20;
                 imgCanBuyLeft = nameLeft;
-                if (isSpecialCard(huidigvak.Naam))
+                if (IsSpecialCard(huidigvak.Naam))
                 {
                     nameTop += 20;
                 }
@@ -242,7 +320,7 @@ namespace Project_Monopoly
                 imgCrdTop = nameTop + 2;
                 imgCanBuyLeft = nameLeft + 20;
                 imgCanBuyTop = nameTop - 3;
-                if (isSpecialCard(huidigvak.Naam))
+                if (IsSpecialCard(huidigvak.Naam))
                 {
                     nameLeft -= 20;
                 }
@@ -276,13 +354,11 @@ namespace Project_Monopoly
                 imgCrdTop = nameTop + 20;
                 imgCornerLeft = left;
                 imgCornerTop = top;
-                if (isSpecialCard(huidigvak.Naam))
+                if (IsSpecialCard(huidigvak.Naam))
                 {
                     nameTop -= 20;
                 }
             }
-
-
 
             priceLabel.Width = 69;
             priceLabel.Content = "€" + huidigvak.Prijs;
@@ -380,19 +456,13 @@ namespace Project_Monopoly
                 priceLabel.Content = "";
             }
 
-            
-
-            
             testgrid.Children.Add(nameLabel);
             testgrid.Children.Add(afbeelding);
-
-
-
         }
 
         
 
-        private static bool isSpecialCard(string name)
+        private static bool IsSpecialCard(string name)
         {
             return name == "Kans" || name.Contains("Station") || name == "Algemeen\nFonds" || name.Contains("Belasting") || name.Contains("centrale") || name.Contains("Spoorwegen") || name.Contains("Maatschappij");
         }
