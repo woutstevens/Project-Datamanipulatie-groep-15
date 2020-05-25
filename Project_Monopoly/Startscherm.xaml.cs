@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Monopoly_Model;
+using Project_Monopoly_Models;
 
 namespace Project_Monopoly
 {
@@ -22,14 +23,22 @@ namespace Project_Monopoly
     public partial class Startscherm : Window
     {
         
+        Settings settings = new Settings();        
         Instellingen instellingen = new Instellingen();
         List<Speler> spelerslijst = new List<Speler>();
         Spelbord spelbord;
         int aantal = 2;
         List<Pion> pionnen = new List<Pion>();
+        
         public Startscherm()
         {
-
+            InitializeComponent();
+        }
+        
+        public Startscherm(Settings settings)
+        {
+            this.settings = settings;
+            InitializeComponent();
         }
 
         private void setPionnenLijst()

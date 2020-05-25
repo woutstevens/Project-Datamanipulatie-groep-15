@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Monopoly_Model;
 
 namespace Project_Monopoly
 {
@@ -19,9 +20,78 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Eindscherm : Window
     {
-        public Eindscherm()
+        Speler eerst = new Speler();
+        Speler tweede = new Speler();
+        Speler derde = new Speler();
+
+        public Eindscherm(List<Speler> spelers)
         {
+            BepaalRang(spelers);
+            GegevensPrinten();
             InitializeComponent();
+        }
+
+        private void BepaalRang(List<Speler> spelers)
+        {
+            List<Speler> lijst = spelers;
+            lijst = lijst.OrderByDescending(speler => speler.HuidigSaldo).ToList();
+
+            eerst = lijst[0];
+            tweede = lijst[1];
+            if(lijst.Count > 2)
+            {
+                derde = lijst[2];
+            }           
+            
+        }
+
+        private void GegevensPrinten()
+        {
+            if (eerst != null)
+            {
+                eersteNaam.Text = eerst.Naam;
+                eersteOverschot.Text = eerst.HuidigSaldo.ToString();
+                eersteGevangenis.Text = eerst.VerlaatGevangenis.ToString();
+            } else
+            {
+                eersteNaam.Text = "Niet Beschikbaar";
+                eersteOverschot.Text = "";
+                eersteStraten.Text = "";
+                eersteHypotheek.Text = "";
+                eersteGevangenis.Text = "";
+                eersteVerzameld.Text = "";
+            }
+
+            if (tweede != null)
+            {
+                tweedeNaam.Text = tweede.Naam;
+                tweedeOverschot.Text = tweede.HuidigSaldo.ToString();
+                tweedeGevangenis.Text = tweede.VerlaatGevangenis.ToString();
+            } else
+            {
+                tweedeNaam.Text = "Niet Beschikbaar";
+                tweedeOverschot.Text = "";
+                tweedeStraten.Text = "";
+                tweedeHypotheek.Text = "";
+                tweedeGevangenis.Text = "";
+                tweedeVerzameld.Text = "";
+            }
+
+            if (derde != null)
+            {
+                derdeNaam.Text = derde.Naam;
+                derdeOverschot.Text = derde.HuidigSaldo.ToString();
+                derdeGevangenis.Text = derde.VerlaatGevangenis.ToString();
+            } else
+            {
+                derdeNaam.Text = "Niet Beschikbaar";
+                derdeOverschot.Text = "";
+                derdeStraten.Text = "";
+                derdeHypotheek.Text = "";
+                derdeGevangenis.Text = "";
+                derdeVerzameld.Text = "";
+            }
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
