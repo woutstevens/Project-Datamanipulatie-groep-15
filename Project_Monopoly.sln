@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UML", "UML", "{23EE07E9-57F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sqlQueriesGeneratorsInserts", "sqlQueriesGeneratorsInserts", "{FEC0ADF5-FD19-4722-9BAB-440668FBCE3D}"
 	ProjectSection(SolutionItems) = preProject
+		InsertsAlgemeenFonds.sql = InsertsAlgemeenFonds.sql
+		InsertsKans.sql = InsertsKans.sql
+		InsertsSpeler.sql = InsertsSpeler.sql
+		InsertsSpelvak.sql = InsertsSpelvak.sql
 		Speler.txt = Speler.txt
 		Spelvakken.txt = Spelvakken.txt
 	EndProjectSection
