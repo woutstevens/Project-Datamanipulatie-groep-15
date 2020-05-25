@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Monopoly_Model;
+using Project_Monopoly_Models;
 
 namespace Project_Monopoly
 {
@@ -24,9 +26,17 @@ namespace Project_Monopoly
         Instellingen instellingen = new Instellingen();
         
 
+        Settings settings = new Settings();
+
+        public Startscherm(Settings settings)
+        {
+            this.settings = settings;
+            InitializeComponent();
+        }
+
         public Startscherm()
         {
-            
+            InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

@@ -13,8 +13,35 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Kans" Height="1000" Width="1000" Loaded="Window_Loaded">
+        Title="Kans" Height="250" Width="180" Loaded="Window_Loaded">
     <Grid>
+        <StackPanel Orientation="Vertical">
+
+            <!--Kanskaart titel-->
+            <Grid MinHeight="40" MinWidth="150" VerticalAlignment="Top" Margin="10,5">
+
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="#FFFFE6CC" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+                <TextBlock Text="KANS" FontFamily="Montserrat" FontSize="17pt" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
+
+            </Grid>
+
+            <!--Kanskaart inhoud-->
+            <Grid MinHeight="100" MinWidth="150" VerticalAlignment="Center" Margin="10,5">
+                <Label Name="lblKansKaart" Content="" FontFamily="Montserrat" VerticalAlignment="Top"/>
+
+            </Grid>
+
+            <!--Kanskaart doorgaan-->
+            <Grid MinHeight="40" MinWidth="150" Margin="10,5" VerticalAlignment="Bottom">
+                <Button x:Name="btnDoorgaan" Content="Doorgaan" Background="#FFF5F5F5" Foreground="Black" BorderBrush="DarkGray" Click="btnDoorgaan_Click"/>
+            </Grid>
+        </StackPanel>
 
     </Grid>
 </Window>

@@ -44,7 +44,7 @@
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="1">
-            <TextBox x:Name="spelerBedrag" Background="WhiteSmoke" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" MinWidth="155" MinHeight="50" FontFamily="Montserrat" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="1" CaretBrush="#FF296AED"/>
+            <TextBox x:Name="spelerBedrag" Text="2000" Background="WhiteSmoke" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" MinWidth="155" MinHeight="50" FontFamily="Montserrat" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="1" CaretBrush="#FF296AED"/>
         </Grid>
 
         <!--Aantal spelers-->
@@ -79,7 +79,7 @@
 
         <!--Terug of Doorgaan-->
         <Grid Grid.Column="0" Grid.Row="5">
-            <Button x:Name="knopInstellingenTerug" Content="Terug" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF008CFF" Margin="0" MinWidth="155" MinHeight="50"/>
+            <Button x:Name="knopInstellingenTerug" Content="Terug" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF008CFF" Margin="0" MinWidth="155" MinHeight="50" Click="knopInstellingenTerug_Click"/>
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="5">
