@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Monopoly_Model
 {
-    public class EigendomVak:Spelvak
+    public abstract class EigendomVak:Spelvak
     {
         private Speler _eigenaar;
         private string _kleur;
@@ -17,6 +17,11 @@ namespace Monopoly_Model
         public string Kleur { get => _kleur; set => _kleur = value; }
         public string TypeEigendomVak { get => _typeEigendomvak; set => _typeEigendomvak = value; }
         public int HypotheekWaarde { get => _hypotheekWaarde; set => _hypotheekWaarde = value; }
+
+        public EigendomVak()
+        {
+
+        }
 
         public EigendomVak(Speler eigenaar, string kleur,string typeEigendomVak,int aankoopWaarde,int hypotheekWaarde,int positie,int variabeleWaarde,string naam):base(naam,"eigendom",positie,variabeleWaarde,aankoopWaarde)
         {

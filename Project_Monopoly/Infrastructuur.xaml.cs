@@ -21,12 +21,53 @@ namespace Project_Monopoly
     public partial class Infrastructuur : Window
     {
         EigendomVak huidigVak;
+        StraatVak huidigStraatVak;
         Spelbord spelbord;
         public Infrastructuur(EigendomVak eigendomVak,Spelbord spelBord)
         {
             InitializeComponent();
             huidigVak = eigendomVak;
             spelbord = spelBord;
+        }
+
+        private void EnableDisableButtons()
+        {
+            if(huidigVak.Eigenaar != null && huidigVak.Eigenaar != spelbord.getHuidigeSpeler())
+            {
+                btnHuisKopen.IsEnabled = false;
+                btnKopen.IsEnabled = false;
+                btnNietKopen.IsEnabled = false;
+                btnBetalen.IsEnabled = true;
+            }
+
+            else if(huidigVak.Eigenaar != null && huidigVak.Eigenaar == spelbord.getHuidigeSpeler())
+            {
+                if(huidigVak.GetType() == typeof(StraatVak))
+                {
+                    huidigStraatVak = (StraatVak)huidigVak;
+                    if(spelbord.getHuidigeSpeler().HuidigSaldo > huidigStraatVak.PrijsPerHuis)
+                    {
+                        btnHuisKopen.IsEnabled = true;
+                        btnKopen.IsEnabled = false;
+                        btnNietKopen.IsEnabled = false;
+                        btnBetalen.IsEnabled = false;
+                    }
+                }
+                else
+                {
+                    btnHuisKopen.IsEnabled = false;
+                    btnKopen.IsEnabled = false;
+                    btnNietKopen.IsEnabled = false;
+                    btnBetalen.IsEnabled = false;
+                }
+            }
+            else
+            {
+                btnHuisKopen.IsEnabled = false;
+                btnKopen.IsEnabled = false;
+                btnNietKopen.IsEnabled = false;
+                btnBetalen.IsEnabled = false;
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -185,17 +226,24 @@ namespace Project_Monopoly
 
         private void btnKopen_Click(object sender, RoutedEventArgs e)
         {
-
+            spelbord.Kopen(huidigVak);
+            this.Close();
         }
 
         private void btnNietKopen_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnBetalen_Click(object sender, RoutedEventArgs e)
         {
+            spelbord.Betalen(huidigVak);
+            this.Close();
+        }
 
+        private void btnHuisKopen_Click(object sender, RoutedEventArgs e)
+        {
+            spelbord.KoopHuis(huidigStraatVak);
         }
     }
     }

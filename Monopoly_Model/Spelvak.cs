@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Monopoly_Model
 {
-    public class Spelvak
+    public abstract class Spelvak
     {
         private string _naam;
         private int _positie;
@@ -36,6 +36,11 @@ namespace Monopoly_Model
         public int VariabeleWaarde { get => _variabeleWaarde; set => _variabeleWaarde = value; }
         public string Naam { get => _naam; set => _naam = value; }
         public int Prijs { get => _prijs; set => _prijs = value; }
+
+        public Spelvak()
+        {
+
+        }
 
         public Spelvak(string naam,string type, int positie,int variabeleWaarde,int prijs)
         {

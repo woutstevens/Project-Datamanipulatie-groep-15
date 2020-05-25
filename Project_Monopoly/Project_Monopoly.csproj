@@ -86,6 +86,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BezittingenSpeler1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BezittingenSpeler2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BezittingenSpeler3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BezittingenSpeler4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Eindscherm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,6 +144,19 @@
     <Compile Include="Bezittingen.xaml.cs">
       <DependentUpon>Bezittingen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BezittingenSpeler1.xaml.cs">
+      <DependentUpon>BezittingenSpeler1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BezittingenSpeler2.xaml.cs">
+      <DependentUpon>BezittingenSpeler2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BezittingenSpeler3.xaml.cs">
+      <DependentUpon>BezittingenSpeler3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BezittingenSpeler4.xaml.cs">
+      <DependentUpon>BezittingenSpeler4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpelLogica.cs" />
     <Compile Include="Eindscherm.xaml.cs">
       <DependentUpon>Eindscherm.xaml</DependentUpon>
     </Compile>

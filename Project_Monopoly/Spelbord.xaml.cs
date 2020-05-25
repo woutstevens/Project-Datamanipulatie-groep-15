@@ -27,12 +27,14 @@ namespace Project_Monopoly
         bool dubbelGegooid;
         int pot;
         Speler huidigeSpeler;
+        SpelLogica spelLogica;
 
         public Spelbord(List<Speler> spelers)
         {
             InitializeComponent();
             spelerslijst = spelers;
             pot = 0;
+            spelLogica = new SpelLogica(spelvakken);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -49,10 +51,11 @@ namespace Project_Monopoly
                 foreach (Speler speler in spelerslijst)
                 {
                     huidigeSpeler = speler;
+                    spelLogica.setHuidigeSpeler(huidigeSpeler);
                     do
                     {
                         SpeelMetSpeler(speler);
-                        if(IsFailliet())
+                        if(huidigeSpeler.IsFailliet())
                         {
                             spelerslijst.Remove(speler);
                         }
@@ -64,14 +67,25 @@ namespace Project_Monopoly
             
         }
 
+        public Speler getHuidigeSpeler()
+        {
+            return huidigeSpeler;
+        }
+
         private void SpeelMetSpeler(Speler speler)
         {
             //Gooien gooien = new Gooien(this);
-            //gooien.Show();
+            //gooien.ShowDialog();
             Random rd = new Random();
             VerzetSpeler(rd.Next(1, 13));
 
-            Spelvak spelvak = HaalSpelvakOp(speler.VakID);
+            Spelvak spelvak = spelLogica.HaalSpelvakOp(speler.VakID);
+
+            if(speler.VakID == 0)
+            {
+                return;
+            }
+            
             if(spelvak.Type == "eigendom")
             {
                 EigendomVak eigendom = (EigendomVak)spelvak;
@@ -110,21 +124,6 @@ namespace Project_Monopoly
             }
         }
 
-        private Spelvak HaalSpelvakOp(int vakID)
-        {
-            Spelvak huidigVak = null;
-            foreach(Spelvak spelvak in spelvakken)
-            {
-                if(spelvak.Positie == vakID)
-                {
-                    huidigVak = spelvak;
-                    return huidigVak;
-                }
-            }
-
-            return huidigVak;
-        }
-
         private void SetOverzichtSaldi()
         {
             string overzicht="";
@@ -143,32 +142,28 @@ namespace Project_Monopoly
 
         public void VerzetSpeler(int aantalVakjes)
         {
-            huidigeSpeler.VakID += aantalVakjes;
-            if(huidigeSpeler.VakID >=spelvakken.Count)
-            {
-                GaLangsStart();
-            }
+            spelLogica.VerzetSpeler(aantalVakjes);
         }
 
-        private void GaLangsStart()
-        {
-            huidigeSpeler.VakID = huidigeSpeler.VakID - spelvakken.Count;
-            huidigeSpeler.aanpassingSaldo(200);
-        }
 
         public void WijzigSaldo(int bedrag)
         {
-            huidigeSpeler.aanpassingSaldo(bedrag);
+            spelLogica.WijzigSaldo(bedrag);
         }
 
         public void NaarDeGevangenis()
         {
-            huidigeSpeler.VakID = 10;
+            spelLogica.NaarDeGevangenis();
         }
 
-        private bool IsFailliet()
+        public void Kopen(EigendomVak eigendom)
         {
-            return huidigeSpeler.HuidigSaldo <= 0;
+            spelLogica.Betalen(eigendom);
+        }
+
+        public void Betalen(EigendomVak eigendom)
+        {
+            spelLogica.Betalen(eigendom);
         }
 
         private void VolgendeRonde()
@@ -177,6 +172,11 @@ namespace Project_Monopoly
             {
                 StartSpel();
             }
+        }
+
+        public void KoopHuis(StraatVak straat)
+        {
+            spelLogica.huisKopen(straat);
         }
 
         private void InitializeSpelbord()
@@ -220,7 +220,7 @@ namespace Project_Monopoly
             spelvakken.Add(new HoekVak("Naar de\ngevangenis", 30, 790));
 
             spelvakken.Add(new StraatVak("geel", "Hoogstraat\nBrussel", 24, 120, 360, 850, 1025, 1200, 150, 140, 280, 820, 29));
-            spelvakken.Add(new Energievak(150, 75, 28, 750, "Water-\nMaatschappij","Water"));
+            spelvakken.Add(new Energievak(150, 75, 28, 750, "Water-\nMaatschappij", "Water"));
             spelvakken.Add(new StraatVak("geel", "Place\nDe l'ange\nNamur", 22, 110, 330, 800, 975, 1150, 150, 130, 260, 680, 27));
             spelvakken.Add(new StraatVak("geel", "Grote Markt\nHasselt", 22, 110, 330, 800, 975, 1150, 150, 130, 260, 610, 26));
             spelvakken.Add(new StationVak(200, 25, 100, 540, 25, "Buurt\nSpoorwegen"));
@@ -238,7 +238,7 @@ namespace Project_Monopoly
             spelvakken.Add(new StationVak(200, 25, 100, 490, 15, "Centraal\nStation"));
             spelvakken.Add(new StraatVak("roze", "Place Verte\nVerviers", 12, 60, 180, 500, 700, 900, 100, 80, 160, 420, 14));
             spelvakken.Add(new StraatVak("roze", "Bruul\nMechelen", 10, 50, 150, 450, 625, 750, 100, 70, 140, 350, 13));
-            spelvakken.Add(new Energievak(150, 75, 12, 280, "Elektriciteits-\ncentrale","Elektriciteit"));
+            spelvakken.Add(new Energievak(150, 75, 12, 280, "Elektriciteits-\ncentrale", "Elektriciteit"));
             spelvakken.Add(new StraatVak("roze", "Rue de\nDiekirch\nArlon", 10, 50, 150, 450, 625, 750, 100, 70, 140, 200, 11));
 
             spelvakken.Add(new GevangenisVak(10, 160));
@@ -252,6 +252,7 @@ namespace Project_Monopoly
             spelvakken.Add(new StraatVak("bruin", "Diestse-\nstraat\nLeuven", 4, 20, 60, 180, 320, 450, 50, 30, 60, 615, 3));
             spelvakken.Add(new AlgemeenFondsKaartVak(2, 695));
             spelvakken.Add(new StraatVak("bruin", "Rue\nGrande\nDinant", 2, 10, 30, 90, 160, 250, 50, 30, 60, 765, 1));
+
         }
 
         private void SetCardText(Spelvak huidigvak)

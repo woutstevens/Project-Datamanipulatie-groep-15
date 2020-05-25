@@ -8,7 +8,6 @@ namespace Monopoly_Model
 {
     public class Speler
     {
-        private int spelerID;
         private string _naam;
         int _vakID;
         int _huidigSaldo;
@@ -21,6 +20,7 @@ namespace Monopoly_Model
         public int HuidigSaldo { get => _huidigSaldo; set => _huidigSaldo = value; }
         public int VerlaatGevangenis { get => _verlaatGevangenis; set => _verlaatGevangenis = value; }
         public Pion Pion { get => _pion; set => _pion = value; }
+        public bool Gevangenis { get => _gevangenis; set => _gevangenis = value; }
 
         public Speler(string naam)
         {
@@ -34,6 +34,11 @@ namespace Monopoly_Model
         public void aanpassingSaldo(int aanpassing)
         {
             _huidigSaldo += aanpassing;
+        }
+
+        public bool IsFailliet()
+        {
+            return HuidigSaldo <= 0;
         }
     }
 }

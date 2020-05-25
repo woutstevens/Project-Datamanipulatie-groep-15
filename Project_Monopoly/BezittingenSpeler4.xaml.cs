@@ -23,5 +23,10 @@ namespace Project_Monopoly
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
