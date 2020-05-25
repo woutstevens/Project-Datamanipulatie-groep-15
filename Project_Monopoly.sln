@@ -1,11 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Monopoly", "Project_Monopoly\Project_Monopoly.csproj", "{B4961BF6-0103-49C9-8E12-5AB3737879A8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly_Model", "Monopoly_Model\Monopoly_Model.csproj", "{F017D82F-92A2-4999-B961-0FCE74256126}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D419A59D-A594-4789-B151-6C32182D838E} = {D419A59D-A594-4789-B151-6C32182D838E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly_DAL", "Monopoly_DAL\Monopoly_DAL.csproj", "{D419A59D-A594-4789-B151-6C32182D838E}"
 EndProject
@@ -28,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sqlQueriesGeneratorsInserts
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly_UnitTests", "Monopoly_UnitTests\Monopoly_UnitTests.csproj", "{2A89EF3B-0CB4-46D3-87D6-BDFDFD87F298}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly_Model", "Monopoly_Model\Monopoly_Model.csproj", "{F017D82F-92A2-4999-B961-0FCE74256126}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,14 +41,18 @@ Global
 		{B4961BF6-0103-49C9-8E12-5AB3737879A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4961BF6-0103-49C9-8E12-5AB3737879A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4961BF6-0103-49C9-8E12-5AB3737879A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B6B59677-A48C-4BF2-9A7C-C9D2F864E585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6B59677-A48C-4BF2-9A7C-C9D2F864E585}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6B59677-A48C-4BF2-9A7C-C9D2F864E585}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6B59677-A48C-4BF2-9A7C-C9D2F864E585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D419A59D-A594-4789-B151-6C32182D838E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D419A59D-A594-4789-B151-6C32182D838E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D419A59D-A594-4789-B151-6C32182D838E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D419A59D-A594-4789-B151-6C32182D838E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2A89EF3B-0CB4-46D3-87D6-BDFDFD87F298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2A89EF3B-0CB4-46D3-87D6-BDFDFD87F298}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A89EF3B-0CB4-46D3-87D6-BDFDFD87F298}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A89EF3B-0CB4-46D3-87D6-BDFDFD87F298}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F017D82F-92A2-4999-B961-0FCE74256126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F017D82F-92A2-4999-B961-0FCE74256126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F017D82F-92A2-4999-B961-0FCE74256126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F017D82F-92A2-4999-B961-0FCE74256126}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

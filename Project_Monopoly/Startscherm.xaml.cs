@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Monopoly_Model;
-using Project_Monopoly_Models;
 
 namespace Project_Monopoly
 {

@@ -20,9 +20,9 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Eindscherm : Window
     {
-        Speler eerst = new Speler();
-        Speler tweede = new Speler();
-        Speler derde = new Speler();
+        Speler eerst = null;
+        Speler tweede = null;
+        Speler derde = null;
 
         public Eindscherm(List<Speler> spelers)
         {

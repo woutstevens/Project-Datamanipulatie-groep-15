@@ -20,7 +20,7 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Kans : Window
     {
-        Speler speler = new Speler();
+        Speler speler = null;
 
         public Kans(Speler speler)
         {

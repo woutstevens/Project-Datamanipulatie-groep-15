@@ -32,6 +32,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -246,7 +247,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Monopoly_Model\Monopoly_Model.csproj">
       <Project>{f017d82f-92a2-4999-b961-0fce74256126}</Project>
-      <Name>Monopoly_Models</Name>
+      <Name>Monopoly_Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -61,7 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Monopoly_Model\Monopoly_Model.csproj">
-      <Project>{b6b59677-a48c-4bf2-9a7c-c9d2f864e585}</Project>
+      <Project>{F017D82F-92A2-4999-B961-0FCE74256126}</Project>
       <Name>Monopoly_Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Project_Monopoly\Project_Monopoly.csproj">
