@@ -35,6 +35,30 @@ namespace Monopoly_Model
             return kanskaarten[0];
         }
 
-         
+        public string generateSQL()
+        {
+            string sqlString = "";
+            foreach (KansKaart kanskaart in kanskaarten)
+            {
+                sqlString += "insert into Kans(type,omschrijving,bedrag,aantalPosities,houbij) values (";
+                sqlString += "'Kans'" + ",";
+                sqlString += "'" + kanskaart.Omschrijving + "',";
+                sqlString += kanskaart.Bedrag + ",";
+                sqlString += kanskaart.AantalPosities + ",";
+                sqlString += "'Kans'" + ",";
+                if(kanskaart.HouBij == false)
+                {
+                    sqlString += 0;
+                }
+
+                else
+                {
+                    sqlString += 1;
+                }
+                sqlString += ");\n";
+            }
+
+            return sqlString;
+        }
     }
 }

@@ -22,24 +22,118 @@ namespace Project_Monopoly
     {
         List<Spelvak> spelvakken = new List<Spelvak>();
         private const int V = 70;
+        private const int stapGrootte = 70;
+        List<Speler> spelerslijst;
+        bool dubbelGegooid;
+        
 
-        public Spelbord()
+        public Spelbord(List<Speler> spelers)
         {
             InitializeComponent();
+            spelerslijst = spelers;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             initializeSpelbord();
+            SetOverzichtSaldi();
+        }
+
+        private void SetOverzichtSaldi()
+        {
+            string overzicht="";
+            foreach(Speler speler in spelerslijst)
+            {
+                if(speler != spelerslijst[spelerslijst.Count-1])
+                {
+                    overzicht += speler.Naam + " : €" + speler.HuidigSaldo + "\n";
+
+                }
+
+                else
+                {
+                    overzicht += speler.Naam + " : €" + speler.HuidigSaldo;
+                }
+            }
+
+            lblOverzicht.Content = overzicht;
+        }
+
+        public void SetDubbelGegooid()
+        {
+
+        }
+
+        public void verzetSpeler(int aantalVakjes)
+        {
+
+        }
+
+        private void IfUitkomstVakIsEigendomVak()
+        {
+
+        }
+
+        public void WijzigSaldo(int bedrag)
+        {
+
+        }
+
+        public void NaarDeGevangenis()
+        {
+
+        }
+
+        private void IsDubbelGegooid()
+        {
+
+        }
+
+        private void IsFailliet()
+        {
+
+        }
+
+        private void VolgendeSpeler()
+        {
+
         }
 
         private void initializeSpelbord()
+        {
+            Ellipse pion1 = new Ellipse();
+            pion1.Width = 30;
+            pion1.Height = 30;
+            pion1.Fill = new SolidColorBrush(Colors.Blue);
+            pion1.Margin = new Thickness(25, 840, 0, 0);
+            pion1.VerticalAlignment = VerticalAlignment.Top;
+            pion1.HorizontalAlignment = HorizontalAlignment.Left;
+            pion1.Stroke = new SolidColorBrush(Colors.Black);
+            pion1.StrokeThickness = 2;
+
+
+
+            testgrid.Children.Add(pion1);
+
+            toevoegenKaarten();
+
+            KanskaartenStapel kanskaarten = new KanskaartenStapel();
+            lblTest.Content = kanskaarten.neemKansKaart().Omschrijving;
+            foreach (Spelvak huidigvak in spelvakken)
+            {
+                SetCardText(huidigvak);
+            }
+        }
+
+        
+
+        private void toevoegenKaarten()
         {
             spelvakken.Add(new StraatVak("donkerblauw", "Nieuwstraat\nBrussel", 50, 200, 600, 1400, 1700, 2000, 200, 200, 400, 142, 39));
             spelvakken.Add(new Belangstingvak("Extra\nBelasting", 38, 213, 100));
             spelvakken.Add(new StraatVak("donkerblauw", "Meir\nAntwerpen", 35, 175, 500, 1100, 1300, 1500, 200, 175, 350, 283, 37));
             spelvakken.Add(new KanskaartVak(36, 360));
-            spelvakken.Add(new StationVak(200, 25, 100, 440, 35,"Zuid\nStation"));
+            spelvakken.Add(new StationVak(200, 25, 100, 440, 35, "Zuid\nStation"));
             spelvakken.Add(new StraatVak("groen", "Boulevard\nD'Avroy\nLiège", 28, 150, 450, 1000, 1200, 1400, 200, 160, 320, 505, 34));
             spelvakken.Add(new AlgemeenFondsKaartVak(33, 570));
             spelvakken.Add(new StraatVak("groen", "Boulevard\nTirou\nCharleroi", 26, 130, 390, 900, 1100, 1275, 200, 150, 300, 645, 32));
@@ -48,7 +142,7 @@ namespace Project_Monopoly
             spelvakken.Add(new HoekVak("Naar de\ngevangenis", 30, 790));
 
             spelvakken.Add(new StraatVak("geel", "Hoogstraat\nBrussel", 24, 120, 360, 850, 1025, 1200, 150, 140, 280, 820, 29));
-            spelvakken.Add(new Energievak(150, 75, 28, 750, "Water-\nMaatschappij"));
+            spelvakken.Add(new Energievak(150, 75, 28, 750, "Water-\nMaatschappij","Water"));
             spelvakken.Add(new StraatVak("geel", "Place\nDe l'ange\nNamur", 22, 110, 330, 800, 975, 1150, 150, 130, 260, 680, 27));
             spelvakken.Add(new StraatVak("geel", "Grote Markt\nHasselt", 22, 110, 330, 800, 975, 1150, 150, 130, 260, 610, 26));
             spelvakken.Add(new StationVak(200, 25, 100, 540, 25, "Buurt\nSpoorwegen"));
@@ -66,59 +160,20 @@ namespace Project_Monopoly
             spelvakken.Add(new StationVak(200, 25, 100, 490, 15, "Centraal\nStation"));
             spelvakken.Add(new StraatVak("roze", "Place Verte\nVerviers", 12, 60, 180, 500, 700, 900, 100, 80, 160, 420, 14));
             spelvakken.Add(new StraatVak("roze", "Bruul\nMechelen", 10, 50, 150, 450, 625, 750, 100, 70, 140, 350, 13));
-            spelvakken.Add(new Energievak(150, 75, 12, 280, "Elektriciteits-\ncentrale"));
+            spelvakken.Add(new Energievak(150, 75, 12, 280, "Elektriciteits-\ncentrale","Elektriciteit"));
             spelvakken.Add(new StraatVak("roze", "Rue de\nDiekirch\nArlon", 10, 50, 150, 450, 625, 750, 100, 70, 140, 200, 11));
 
             spelvakken.Add(new GevangenisVak(10, 160));
 
             spelvakken.Add(new StraatVak("lichtblauw", "Kapelle-\nstraat\nOostende", 8, 40, 100, 300, 450, 600, 50, 60, 120, 190, 9));
             spelvakken.Add(new StraatVak("lichtblauw", "Place du\nMonument\nSpa", 6, 30, 90, 270, 400, 550, 50, 50, 100, 260, 8));
-            spelvakken.Add(new KanskaartVak(7, 355));
+            spelvakken.Add(new KanskaartVak(7, 335));
             spelvakken.Add(new StraatVak("lichtblauw", "Steenstraat\nBrugge", 6, 30, 90, 270, 400, 550, 50, 50, 100, 400, 6));
             spelvakken.Add(new StationVak(200, 25, 100, 480, 5, "Noord\nStation"));
             spelvakken.Add(new Belangstingvak("Inkomsten\nBelasting", 4, 550, 200));
             spelvakken.Add(new StraatVak("bruin", "Diestse-\nstraat\nLeuven", 4, 20, 60, 180, 320, 450, 50, 30, 60, 615, 3));
             spelvakken.Add(new AlgemeenFondsKaartVak(2, 695));
             spelvakken.Add(new StraatVak("bruin", "Rue\nGrande\nDinant", 2, 10, 30, 90, 160, 250, 50, 30, 60, 765, 1));
-
-            //SetCardText("Rue\nGrande\nDinant", "€ 60", 765, 90);
-            //SetCardText("Algemeen\nFonds", null, 695, 90);
-            //SetCardText("Diestse-\nstraat\nLeuven", "€ 60", 615, 90);
-
-            //SetCardText("Rue de\nDiekirch\nArlon", "€ 140", 210, 180);
-            //SetCardText("Elektriciteits-\ncentrale", "€ 150", 280, 180);
-            //SetCardText("Bruul\nMechelen", "€ 140", 350, 180);
-            //SetCardText("Place Verte\nVerviers", "€ 160", 420, 180);
-            //SetCardText("Centraal\nStation", "€ 200", 490, 180);
-            //SetCardText("Lippenslaan\nKnokke", "€ 180", 563, 180);
-            //SetCardText("Algemeen\nFonds", null, 630, 180);
-            //SetCardText("Rue Royale\nTournai", "€ 180", 705, 180);
-            //SetCardText("Groenplaats\nAntwerpen", "€ 200", 780, 180);
-
-
-            //SetCardText("Hoogstraat\nBrussel", "€ 280", 820, 270);
-            //SetCardText("Water-\nMaatschappij", "€ 150", 755, 270);
-            //SetCardText("Place\nDe l'ange\nNamur", "€ 260", 680, 270);
-            //SetCardText("Grote Markt\nHasselt", "€ 260", 610, 270);
-            //SetCardText("Buurt\nSpoorwegen", "€ 200", 540, 270);
-            //SetCardText("Grand Place\nMons", "€ 240", 470, 270);
-            //SetCardText("Lange\nSteenstraat\nKortrijk", "€ 220", 395, 270);
-            //SetCardText("Kans", null, 320, 270);
-            //SetCardText("Rue\nSt.Léonard\nLiège", "€ 220", 250, 270);
-
-            //SetCardText("Parking", null, 180, 225);
-
-            //SetCardText("Op bezoek", null, 160, 176);
-
-
-
-            KanskaartenStapel kanskaarten = new KanskaartenStapel();
-            lblTest.Content = kanskaarten.neemKansKaart().Omschrijving;
-            foreach (Spelvak huidigvak in spelvakken)
-            {
-                SetCardText(huidigvak);
-            }
-
         }
 
         private void SetCardText(Spelvak huidigvak)
@@ -335,9 +390,19 @@ namespace Project_Monopoly
 
         }
 
+        
+
         private static bool isSpecialCard(string name)
         {
             return name == "Kans" || name.Contains("Station") || name == "Algemeen\nFonds" || name.Contains("Belasting") || name.Contains("centrale") || name.Contains("Spoorwegen") || name.Contains("Maatschappij");
+        }
+
+        private void showInfrastructuur_Click(object sender, RoutedEventArgs e)
+        {
+            //Infrastructuur infrastructuur = new Infrastructuur(new StraatVak("donkerblauw", "Nieuwstraat\nBrussel", 50, 200, 600, 1400, 1700, 2000, 200, 200, 400, 142, 39), this);
+            Infrastructuur infrastructuur = new Infrastructuur(new StationVak(200, 25, 100, 480, 5, "Noord\nStation"),this);
+            //Infrastructuur infrastructuur = new Infrastructuur(new Energievak(150, 75, 12, 280, "Elektriciteits-\ncentrale", "Elektriciteit"), this);
+            infrastructuur.Show();
         }
     }
 }

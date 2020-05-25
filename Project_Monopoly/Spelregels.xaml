@@ -13,8 +13,68 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Spelregels" Height="1000" Width="1000" Loaded="Window_Loaded">
+        Title="Spelregels" Height="1000" Width="auto" Loaded="Window_Loaded">
     <Grid>
+        <ScrollViewer>
+            <TextBlock FontFamily="Verdana"
+                       LineStackingStrategy="MaxHeight" 
+                       LineHeight="10" 
+                       TextWrapping="Wrap">
+                    <Run FontSize="30">Monopoly regels</Run> <LineBreak/><LineBreak/>
+                
+                    Monopoly is een bordspel wat over straten, huizen en onderhandelen gaat en wat nog steeds vaak uit de kast wordt getrokken om samen te spelen. En hoewel het een bordspel is waar veel geluk bij komt kijken, of misschien juist wel om dat deze geluksfactor aantrekkelijk is, blijft het een spel wat met plezier wordt gespeeld.<LineBreak/><LineBreak/>
+                    Nadeel van monopoly is soms de wat lange zit, omdat de winnaar bepaald wordt als die eigenlijk alle andere spelers financiel opgeslokt heeft, maar ook daarvoor zijn handige tips om het spel te verkorten.<LineBreak/><LineBreak/>
+                    Wij proberen je hier zo kort en bondig mogelijk de spelregels van monopoly mee te geven zodat je direct kunt spelen als je het even niet meer wist. Wat ook belangrijk is om te weten is dat er twee 'huisregels' zijn ontstaan binnen monopoly waardoor er vaak niet helemaal goed gespeeld wordt.
+                
+                    <LineBreak/><LineBreak/><Run FontSize="30">Monopoly geld en start</Run> <LineBreak/><LineBreak/>
+                
+                    Het aantal spelers is van 1 t/m 6, maar als er 6 spelers zijn dan is het eigenlijk de bedoeling dat een 6e speler alleen maar als bank meespeelt en de eigendommen en het geld verzorgt. Alle spelers kiezen een pion en zetten deze op start. Alle kanskaarten en algemeen fonds kaarten worden geschud en op de tafel gelegd.<LineBreak/><LineBreak/>
+                    Eén speler wordt gekozen om (ook) de bankier te spelen. Deze verdeeld ook het geld vooraf. Iedere speler krijgt het volgende monopoly geld in de volgende biljetten:<Run FontWeight="Bold">2 x 500, 4 x 100, 1 x 50, 1 x 20, 2 x 10, 1 x 5, 5 x 1</Run>. De bank beheert alles dus ook de eigendommen etc. De bank kan nooit failliet gaan, desnoods worden geldschulden onthouden of opgeschreven als de kas leeg raakt. <Run FontWeight="Bold">Tip:</Run> Als je tijd wil inkorten bij geldtransacties, rond bedragen dan af en haal de 1-tjes uit het spel.<LineBreak/><LineBreak/>
+                    Wie het hoogst gooit met beide dobbelsten mag als eerste beginnen. Spelers gooien om beurten met 2 dobbelstenen en verplaatsen de pion het aantal stappen gelijk aan het aantal ogen van de dobbelstenen. Er wordt met de klok mee gespeeld en spelers mogen op hetzelfde vakje terecht komen.<LineBreak/><LineBreak/>
+                    Gooi je dubbel dan mag je eerst de handeling op je uitgekomen plek afmaken, maar daarna nog een keer gooien. Gooi je darna weer dubbel, dan herhaalt dit zich. Gooi je 3 keer achter elkaar dubbel dan moet je rechtstreeks naar de gevangenis, niet langs start / af.
+                
+                    <LineBreak/><LineBreak/> <Run FontSize="30">Monopoly spelverloop</Run> <LineBreak/><LineBreak/>
+                
+                    Onderweg zijn er een aantal verschillende vakken en actie die je kunt of moet doen in monopoly:<LineBreak/><LineBreak/>
+                        • De grond (straat, station, nutsbedrijf) waarop uw pion staat kopen (als deze nog vrij is).<LineBreak/>
+                        • Huur betalen (als een andere speler deze grond bezit).<LineBreak/>
+                        • Belasting betalen.<LineBreak/>
+                        • Een Algemeen Fonds- of Kans-kaart pakken.<LineBreak/>
+                        • Naar de gevangenis moeten.<LineBreak/>
+                        • Slechts op bezoek zijn in de gevangenis (hier hoef je verder niks te doen).<LineBreak/>
+                        • Vrij parkeren (hier hoef je niks te doen en sta je vrij, zie ook 'huisregels' en de pot).<LineBreak/>
+                        • Op start / af, ontvangt u elke ronde 200 van de bank als u hier opkomt of deze passeert.<LineBreak/><LineBreak/>
+                    <Run FontWeight="Bold">Tip:</Run> Wil je eigendommen sneller verdeeld in het spel, volg dan de veiling regel op een goede manier! (zie huisregels).
+                
+                    <LineBreak/><LineBreak/><Run FontSize="30">Huisregels en de pot</Run> <LineBreak/><LineBreak/>
+                
+                    Het is goed om even stil te staan bij twee vaak voorkomende eigen gemaakte 'huisregels' die eigenlijk fout zijn. De effecten van deze huisregels zijn verschillend en het is goed om ze even toe te lichten omdat ze wel effect hebben op de beleving van het spel, en vaak ook de snelheid.<LineBreak/><LineBreak/>
+                    <Run FontWeight="Bold">• De pot</Run> - Deze huisregel bestaat eruit dat boetes en belastingen telkens in het midden van het bord worden gelegd en dat degene die op 'vrij parkeren' komt deze pot wint. Dit is een leuke kansrijke uitdaging en ook leuk als je net uit de gevangenis komt. De geluksfactor wordt echter wel verhoogd en de balans in het spel bij een grote pot kan wel ineens verstoord worden. In de basisregels ontvangt de bank ook gewoon zelf alle boetes en belastingen.<LineBreak/><LineBreak/>
+                    <Run FontWeight="Bold">• Geen veiling van grond</Run> - Deze huisregel is er bij velen waarschijlijk vanzelf ingegroeid, maar dit is wel een cruciale factor als je het spel voldoende kort en spannend wil houden. Monopoly gaat nou eenmaal om onderhandlen en aankopen. Het weglaten van de optie tot veiling heeft als resultaat dat het ellenlang duurt voordat alle straten zijn verdeeld. De basis regel is namelijk dat als een speler op een grondvak komt deze speler mag kiezen de grond te kopen voor de prijs die het kost, of om dat niet te doen. Maar... als deze speler er voor kiest om dat niet te doen, dan mogen alle andere spelers (met de klok mee, en ook de speler die niet voor de koopprijs wilde aanschaffen) op basis van opbod deze grond wel kopen. Dus alleen als iedereen er vanaf ziet om deze grond te kopen blijft een vakje in bezit van de bank!
+                    
+                    <LineBreak/><LineBreak/> <Run FontSize="30">Straten en huur</Run> <LineBreak/><LineBreak/>
+                
+                    Spelers betalen huur als ze op een vakje komen dat in eigendom zijn van een andere speler. De hoogte van de huur is op bais van de eigendomskaartjes. Voor stations geldt bijvoorbeeld dat als een speler er meer dan één in bezit heeft, de prijs hoger wordt. De hoogste prijs wordt betaald als iemand alle stations in bezit heeft (monopoly zoals de NS nu heeft...). Voor straten is het zo dat de huurprijs duurder wordt als iemand alle straten en dus de stad bezit, en nog meer als daar huizen of zelfs hotels op staan. Huizen en hotels mag je per beurt kopen als je de straat bezit. Een hotel mag je pas bouwen nadat je het maximaal aantal huizen hebt gekocht.<LineBreak/><LineBreak/>
+                    Kans en Algemeen fonds<LineBreak/><LineBreak/>
+                    Komt je op kans of algemeen fonds dan moet je de opdracht van de kaart oplezen en deze direct uitvoeren. Hierna gaat deze kaart weer onderop de stapel. Behalve als het een 'verlaat de gevangenis.. ' kaart is, die mag je bewaren.<LineBreak/><LineBreak/>
+                    <Run FontSize="20" FontWeight="Bold">De gevangenis</Run><LineBreak/><LineBreak/>
+                    Als u naar de gevangenis moet, dan kunt u hier op de volgende manieren weer uitkomen:
+                    Direct 50 boete betalen en bij u volgende beurt weer verder.
+                    Een 'verlaat de gevangenis zonder te betalen' kaart inleveren (mag ook gekocht worden bij een medespeler).
+                    Dubbel proberen te gooien. Gooit u dubbel dan mag u direct de pion het aantal zetten verplaatsen. Gooit u na 3 keer geen dubbel dan moet u alsnog 50 betalen, maar mag u er de volgende beurt wel weer uit.
+                    
+                    <LineBreak/><LineBreak/><Run FontSize="30">Betalen, failliet en einde spel.</Run> <LineBreak/><LineBreak/>
+                
+                    Door het spelen van de rondes moeten spelers elkaar betalen. Ben je niet meer in staat te betalen dan kun je dit soms oplossen op de volgende manieren:<LineBreak/>
+                    
+                    • Huizen en hotels verkopen aan de bank voor de helft van de prijs.
+                    • Hypotheek op onbebouwde grond (hierdoor mag je geen huur meer innen totdat je de hypotheek weer hebt afbetaald).
+                    • Verkopen van onbebouwde grond aan een andere speler (onderling prijs overeenkomen).<LineBreak/>
+                
+                    Lukt het ook met deze maatregelen niet meer om huur of kosten te betalen, dan bent u failliet en moet u het spel stoppen. Uw huizen worden voor de helft verkocht. En dit geld en de eigendomskaarten zijn voor de schuldeiser. (dit is meestal een speler, maar kan ook de bank zijn).
+                    De speler die als laatste overblijft is de winnaar! Tip: je kunt een verkorte variant spelen door een vaste tijd af te spreken en na verloop daarvan al het geld en eigendommen te tellen en te kijken wie het rijkst is op dat moment.
+            </TextBlock>
 
+        </ScrollViewer>
     </Grid>
 </Window>

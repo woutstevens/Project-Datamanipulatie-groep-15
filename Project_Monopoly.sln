@@ -9,6 +9,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly_Model", "Monopoly_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly_DAL", "Monopoly_DAL\Monopoly_DAL.csproj", "{D419A59D-A594-4789-B151-6C32182D838E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UML", "UML", "{23EE07E9-57F4-4D3F-8F42-C72AFEC0C734}"
+	ProjectSection(SolutionItems) = preProject
+		klassediagram.txt = klassediagram.txt
+		..\..\..\OneDrive\Afbeeldingen\SequenceDiagram.png = ..\..\..\OneDrive\Afbeeldingen\SequenceDiagram.png
+		sequenceDiagram.txt = sequenceDiagram.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sqlQueriesGeneratorsInserts", "sqlQueriesGeneratorsInserts", "{FEC0ADF5-FD19-4722-9BAB-440668FBCE3D}"
+	ProjectSection(SolutionItems) = preProject
+		Speler.txt = Speler.txt
+		Spelvakken.txt = Spelvakken.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
