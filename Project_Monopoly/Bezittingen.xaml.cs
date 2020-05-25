@@ -28,5 +28,29 @@ namespace Project_Monopoly
         {
 
         }
+
+        private void Speler1_Click(object sender, RoutedEventArgs e)
+        {
+            BezittingenSpeler1 BezittingenSpeler1 = new BezittingenSpeler1();
+            BezittingenSpeler1.Show();
+        }
+
+        private void Speler2_Click(object sender, RoutedEventArgs e)
+        {
+            BezittingenSpeler2 BezittingenSpeler2 = new BezittingenSpeler2();
+            BezittingenSpeler2.Show();
+        }
+
+        private void Speler3_Click(object sender, RoutedEventArgs e)
+        {
+            BezittingenSpeler3 BezittingenSpeler3 = new BezittingenSpeler3();
+            BezittingenSpeler3.Show();
+        }
+
+        private void Speler4_Click(object sender, RoutedEventArgs e)
+        {
+            BezittingenSpeler4 BezittingenSpeler4 = new BezittingenSpeler4();
+            BezittingenSpeler4.Show();
+        }
     }
 }

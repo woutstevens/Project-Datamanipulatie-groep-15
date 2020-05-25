@@ -13,8 +13,20 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Gooien" Height="1000" Width="1000" Loaded="Window_Loaded">
+        Title="Gooien" Height="360" Width="400" Loaded="Window_Loaded">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label x:Name="lblDobbelsteen1" Width="150" Height="150" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50" BorderThickness="1" BorderBrush="Black"></Label>
+        <Label x:Name="lblDobbelsteen2" Width="150" Height="150" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="50" BorderThickness="1" BorderBrush="Black"></Label>
+        <Button x:Name="btnGooien" Content="_Gooien" Width="200" Height="50" Grid.Row="1" Grid.ColumnSpan="2" Click="btnGooien_Click"></Button>
+        <Button x:Name="btnDoorgaan" Content="_Doorgaan" Width="200" Height="50" Grid.Row="2" Grid.ColumnSpan="2" Click="btnDoorgaan_Click"></Button>
     </Grid>
 </Window>

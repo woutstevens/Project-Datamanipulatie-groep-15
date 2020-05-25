@@ -15,23 +15,13 @@ using System.Windows.Shapes;
 namespace Project_Monopoly
 {
     /// <summary>
-    /// Interaction logic for AlgemeenFonds.xaml
+    /// Interaction logic for BezittingenSpeler4.xaml
     /// </summary>
-    public partial class AlgemeenFonds : Window
+    public partial class BezittingenSpeler4 : Window
     {
-        public AlgemeenFonds()
+        public BezittingenSpeler4()
         {
             InitializeComponent();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnDoorgaan_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }
