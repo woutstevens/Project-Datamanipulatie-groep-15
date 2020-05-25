@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_Monopoly_Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,40 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Instellingen : Window
     {
+        Settings instellingen = new Settings();
+
         public Instellingen()
         {
             InitializeComponent();
         }
 
+
+        private void knopInstellingenDoorgaan_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(spelerBedrag.Text, out int bedrag))
+            {
+                instellingen.Bedrag = int.Parse(spelerBedrag.Text);
+                instellingen.Spelers = (int)spelerAantal.Value;
+                instellingen.Gevangenis = geldGevangenis.IsEnabled;
+                instellingen.Parking = geldParking.IsEnabled;
+
+                Startscherm startscherm = new Startscherm(instellingen);
+                startscherm.Show();
+
+                this.Close();
+            }
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void knopInstellingenTerug_Click(object sender, RoutedEventArgs e)
+        {
+            Startscherm startscherm = new Startscherm();
+            startscherm.Show();
+            this.Close();
         }
     }
 }

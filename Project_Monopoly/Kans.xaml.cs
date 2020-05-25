@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Monopoly_Model;
 
 namespace Project_Monopoly
 {
@@ -19,14 +20,28 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Kans : Window
     {
-        public Kans()
+        Speler speler = new Speler();
+
+        public Kans(Speler speler)
         {
+            this.speler = speler;
+
+            KanskaartenStapel kanskaart = new KanskaartenStapel();
+            lblKansKaart.Content = kanskaart.neemKansKaart().Omschrijving;
+
+            this.speler.aanpassingSaldo(kanskaart.neemKansKaart().Bedrag);
+
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnDoorgaan_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
