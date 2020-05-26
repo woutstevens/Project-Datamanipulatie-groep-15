@@ -94,6 +94,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BezittingenSpeler1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BezittingenSpeler2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BezittingenSpeler3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BezittingenSpeler4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Eindscherm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +151,18 @@
     </Compile>
     <Compile Include="Bezittingen.xaml.cs">
       <DependentUpon>Bezittingen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BezittingenSpeler1.xaml.cs">
+      <DependentUpon>BezittingenSpeler1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BezittingenSpeler2.xaml.cs">
+      <DependentUpon>BezittingenSpeler2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BezittingenSpeler3.xaml.cs">
+      <DependentUpon>BezittingenSpeler3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BezittingenSpeler4.xaml.cs">
+      <DependentUpon>BezittingenSpeler4.xaml</DependentUpon>
     </Compile>
     <Compile Include="Eindscherm.xaml.cs">
       <DependentUpon>Eindscherm.xaml</DependentUpon>
@@ -187,7 +215,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="afbeeldingen\agent.JPG" />
@@ -215,9 +245,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Monopoly_DAL\Monopoly_DAL.csproj">
+      <Project>{d419a59d-a594-4789-b151-6c32182d838e}</Project>
+      <Name>Monopoly_DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Monopoly_Model\Monopoly_Model.csproj">
       <Project>{f017d82f-92a2-4999-b961-0fce74256126}</Project>
-      <Name>Monopoly_Models</Name>
+      <Name>Monopoly_Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

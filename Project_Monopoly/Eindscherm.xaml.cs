@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Monopoly_Model;
+using Monopoly_DAL;
 
 namespace Project_Monopoly
 {
@@ -20,38 +21,33 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Eindscherm : Window
     {
-        Speler eerst = new Speler();
-        Speler tweede = new Speler();
-        Speler derde = new Speler();
+        
 
-        public Eindscherm(List<Speler> spelers)
+
+        public Eindscherm()
         {
-            BepaalRang(spelers);
-            GegevensPrinten();
+            List<Monopoly_DAL.Speler> spelers = DatabaseOperations.OphalenBesteSpelers();
+            GegevensPrinten(spelers);
             InitializeComponent();
         }
 
-        private void BepaalRang(List<Speler> spelers)
+        private void GegevensPrinten(List<Monopoly_DAL.Speler> spelers)
         {
-            List<Speler> lijst = spelers;
-            lijst = lijst.OrderByDescending(speler => speler.HuidigSaldo).ToList();
-
-            eerst = lijst[0];
-            tweede = lijst[1];
-            if(lijst.Count > 2)
+            if (spelers[0] != null)
             {
-                derde = lijst[2];
-            }           
-            
-        }
+                List<Monopoly_DAL.Spelvak> straten = DatabaseOperations.OphalenStraten(spelers[0].naam);
+                int hypotheek = 0;
+                foreach(Monopoly_DAL.Spelvak spelvak in straten)
+                {
+                    hypotheek += spelvak.hypotheekwaarde;
+                }
 
-        private void GegevensPrinten()
-        {
-            if (eerst != null)
-            {
-                eersteNaam.Text = eerst.Naam;
-                eersteOverschot.Text = eerst.HuidigSaldo.ToString();
-                eersteGevangenis.Text = eerst.VerlaatGevangenis.ToString();
+                eersteNaam.Text = spelers[0].naam;
+                eersteOverschot.Text = spelers[0].huidigSaldo.ToString();
+                eersteGevangenis.Text = spelers[0].verlaatGevangenis.ToString();
+                eersteStraten.Text = straten.Count().ToString();
+                eersteHypotheek.Text = hypotheek.ToString();
+                
             } else
             {
                 eersteNaam.Text = "Niet Beschikbaar";
@@ -62,12 +58,23 @@ namespace Project_Monopoly
                 eersteVerzameld.Text = "";
             }
 
-            if (tweede != null)
+            if (spelers[1] != null)
             {
-                tweedeNaam.Text = tweede.Naam;
-                tweedeOverschot.Text = tweede.HuidigSaldo.ToString();
-                tweedeGevangenis.Text = tweede.VerlaatGevangenis.ToString();
-            } else
+                List<Monopoly_DAL.Spelvak> straten = DatabaseOperations.OphalenStraten(spelers[1].naam);
+                int hypotheek = 0;
+                foreach (Monopoly_DAL.Spelvak spelvak in straten)
+                {
+                    hypotheek += spelvak.hypotheekwaarde;
+                }
+
+                tweedeNaam.Text = spelers[1].naam;
+                tweedeOverschot.Text = spelers[1].huidigSaldo.ToString();
+                tweedeGevangenis.Text = spelers[1].verlaatGevangenis.ToString();
+                tweedeStraten.Text = straten.Count().ToString();
+                tweedeHypotheek.Text = hypotheek.ToString();
+
+            }
+            else
             {
                 tweedeNaam.Text = "Niet Beschikbaar";
                 tweedeOverschot.Text = "";
@@ -77,12 +84,23 @@ namespace Project_Monopoly
                 tweedeVerzameld.Text = "";
             }
 
-            if (derde != null)
+            if (spelers[2] != null)
             {
-                derdeNaam.Text = derde.Naam;
-                derdeOverschot.Text = derde.HuidigSaldo.ToString();
-                derdeGevangenis.Text = derde.VerlaatGevangenis.ToString();
-            } else
+                List<Monopoly_DAL.Spelvak> straten = DatabaseOperations.OphalenStraten(spelers[2].naam);
+                int hypotheek = 0;
+                foreach (Monopoly_DAL.Spelvak spelvak in straten)
+                {
+                    hypotheek += spelvak.hypotheekwaarde;
+                }
+
+                derdeNaam.Text = spelers[2].naam;
+                derdeOverschot.Text = spelers[2].huidigSaldo.ToString();
+                derdeGevangenis.Text = spelers[2].verlaatGevangenis.ToString();
+                derdeStraten.Text = straten.Count().ToString();
+                derdeHypotheek.Text = hypotheek.ToString();
+
+            }
+            else
             {
                 derdeNaam.Text = "Niet Beschikbaar";
                 derdeOverschot.Text = "";
