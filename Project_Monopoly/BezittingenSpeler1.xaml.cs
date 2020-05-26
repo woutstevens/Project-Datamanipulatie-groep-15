@@ -22,6 +22,12 @@ namespace Project_Monopoly
         public BezittingenSpeler1()
         {
             InitializeComponent();
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

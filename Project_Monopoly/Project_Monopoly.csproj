@@ -217,7 +217,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="afbeeldingen\agent.JPG" />
@@ -245,6 +247,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Monopoly_DAL\Monopoly_DAL.csproj">
+      <Project>{d419a59d-a594-4789-b151-6c32182d838e}</Project>
+      <Name>Monopoly_DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Monopoly_Model\Monopoly_Model.csproj">
       <Project>{f017d82f-92a2-4999-b961-0fce74256126}</Project>
       <Name>Monopoly_Model</Name>

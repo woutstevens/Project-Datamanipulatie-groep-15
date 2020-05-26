@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Monopoly_Model;
+using Monopoly_DAL;
 
 namespace Project_Monopoly
 {
@@ -20,16 +21,14 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Kans : Window
     {
-        Speler speler = null;
-
-        public Kans(Speler speler)
+        public Kans()
         {
-            this.speler = speler;
+            List<Monopoly_DAL.Kans> kanskaarten = DatabaseOperations.OphalenKanskaarten();
+            Monopoly_DAL.Kans kans = null;
+            Random rand = new Random();
+            kans = kanskaarten[rand.Next(0,kanskaarten.Count())];
 
-            KanskaartenStapel kanskaart = new KanskaartenStapel();
-            lblKansKaart.Content = kanskaart.neemKansKaart().Omschrijving;
-
-            this.speler.aanpassingSaldo(kanskaart.neemKansKaart().Bedrag);
+            lblKansKaart.Content = kans.omschrijving;
 
             InitializeComponent();
         }
