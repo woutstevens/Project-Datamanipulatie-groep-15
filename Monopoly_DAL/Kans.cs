@@ -15,7 +15,6 @@ namespace Monopoly_DAL
     public partial class Kans
     {
         public int id { get; set; }
-        public string naam { get; set; }
         public string type { get; set; }
         public string omschrijving { get; set; }
         public Nullable<int> bedrag { get; set; }

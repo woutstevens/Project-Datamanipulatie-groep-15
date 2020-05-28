@@ -11,6 +11,7 @@ namespace Project_Monopoly
     {
         List<Spelvak> spelvakken;
         Speler huidigeSpeler;
+
         public SpelLogica(List<Spelvak> spelvakken)
         {
             this.spelvakken = spelvakken;
@@ -58,6 +59,15 @@ namespace Project_Monopoly
             }
         }
 
+        public void VerzetSpelerNaarVak(int vakID)
+        {
+            if (huidigeSpeler.VakID > vakID)
+            {
+                huidigeSpeler.aanpassingSaldo(200);
+            }
+            huidigeSpeler.VakID = vakID;
+        }
+
         public void WijzigSaldo(int bedrag)
         {
             huidigeSpeler.aanpassingSaldo(bedrag);
@@ -72,18 +82,18 @@ namespace Project_Monopoly
 
         public void Kopen(EigendomVak huidigVak)
         {
-            huidigeSpeler.aanpassingSaldo(huidigVak.Prijs);
+            huidigeSpeler.aanpassingSaldo(huidigVak.Prijs * -1);
             huidigVak.Eigenaar = huidigeSpeler;
         }
 
-        public void Betalen(EigendomVak huidigVak)
+        public void Betalen(EigendomVak huidigVak,int aantalGegooid)
         {
-            int prijs = BerekenPrijs(huidigVak);
+            int prijs = BerekenPrijs(huidigVak,aantalGegooid);
             huidigeSpeler.aanpassingSaldo(prijs * -1);
             huidigVak.Eigenaar.aanpassingSaldo(prijs);
         }
 
-        private int BerekenPrijs(EigendomVak huidigVak)
+        public int BerekenPrijs(EigendomVak huidigVak,int aantalGegooid)
         {
             int prijs = 0;
             StraatVak straatVak;
@@ -99,19 +109,64 @@ namespace Project_Monopoly
             else if (huidigVak.GetType() == typeof(StationVak))
             {
                 stationVak = (StationVak)huidigVak;
+                int aantal = aantalInBezit(huidigVak.Eigenaar, stationVak.TypeEigendomVak);
+                if(aantal == 1)
+                {
+                    prijs = stationVak.Huur;
+                }
 
+                else if(aantal == 2)
+                {
+                    prijs = stationVak.Prijs2Stations;
+                }
+
+                else if (aantal == 3)
+                {
+                    prijs = stationVak.Prijs3Stations;
+                }
+
+                else if (aantal == 4)
+                {
+                    prijs = stationVak.Prijs4Stations;
+                }
             }
 
             else if (huidigVak.GetType() == typeof(Energievak))
             {
                 energievak = (Energievak)huidigVak;
+                int aantal = aantalInBezit(energievak.Eigenaar, energievak.TypeEigendomVak);
+                if(aantal == 1)
+                {
+                    prijs = 4 * aantalGegooid;
+                }
 
-
-
-
+                else if(aantal == 2)
+                {
+                    prijs = 10 * aantalGegooid;
+                }
             }
 
             return prijs;
         }
+
+        private int aantalInBezit(Speler eigenaarHuidigVak, string type)
+        {
+            int aantal = 0;
+            foreach(Spelvak spelvak in spelvakken)
+            {
+                if(spelvak.GetType() == typeof(EigendomVak))
+                {
+                    EigendomVak eigendom = (EigendomVak)spelvak;
+                    if(eigendom.TypeEigendomVak == type && eigendom.Eigenaar == eigenaarHuidigVak)
+                    {
+                        aantal++;
+                    }
+                }
+            }
+
+            return aantal;
+        }
+
+        
     }
 }

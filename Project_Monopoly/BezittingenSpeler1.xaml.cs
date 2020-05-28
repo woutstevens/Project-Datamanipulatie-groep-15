@@ -29,10 +29,5 @@ namespace Project_Monopoly
         {
 
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

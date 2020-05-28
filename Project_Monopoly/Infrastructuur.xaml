@@ -35,7 +35,7 @@
         <Label Name="lblHypotheekwaarde" Content="Hypotheekwaarde" Height="30" Width="150" HorizontalAlignment="Left" Margin="20,330,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Name="lblPrijsHypotheek" Content="Waarde hypotheek" Height="30" Width="150" HorizontalAlignment="Left" Margin="170,330,0,0" FontSize="14" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label Name="lblBoodschap" Content="Boodschap" Height="75" Width="300" HorizontalAlignment="Left"  FontSize="14" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="20,378,0,110" BorderBrush="Black" BorderThickness="1"/>
-        <Button x:Name="btnHuisKopen" Content="Kopen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,60" Click="btnHuisKopen_Click" Width="308"/>
+        <Button x:Name="btnHuisKopen" Content="Huis Kopen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,60" Click="btnHuisKopen_Click" Width="308"/>
         <Button x:Name="btnKopen" Content="Kopen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,20" Click="btnKopen_Click"/>
         <Button x:Name="btnNietKopen" Content="Niet kopen" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" Click="btnNietKopen_Click"/>
         <Button x:Name="btnBetalen" Content="Betalen" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" Click="btnBetalen_Click"/>

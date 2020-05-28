@@ -28,6 +28,7 @@ namespace Project_Monopoly
             InitializeComponent();
             huidigVak = eigendomVak;
             spelbord = spelBord;
+            EnableDisableButtons();
         }
 
         private void EnableDisableButtons()
@@ -64,8 +65,8 @@ namespace Project_Monopoly
             else
             {
                 btnHuisKopen.IsEnabled = false;
-                btnKopen.IsEnabled = false;
-                btnNietKopen.IsEnabled = false;
+                btnKopen.IsEnabled = true;
+                btnNietKopen.IsEnabled = true;
                 btnBetalen.IsEnabled = false;
             }
         }
@@ -85,8 +86,15 @@ namespace Project_Monopoly
             StraatVak straatVak;
             Energievak energievak;
             StationVak stationVak;
-
-            lblBoodschap.Content = "Deze kaart is nog niet in iemands bezit.\nU kunt deze kaart dus kopen.";
+            if(huidigVak.Eigenaar == null)
+            {
+                lblBoodschap.Content = "Deze kaart is nog niet in iemands bezit.\nU kunt deze kaart dus kopen.";
+            }
+            
+            else
+            {
+                lblBoodschap.Content = "Deze kaart is van " + huidigVak.Eigenaar.Naam + "Betaal €" + spelbord.Berekenprijs(huidigVak, spelbord.aantalgegooid); 
+            }
 
             lblStraatnaam.Content = huidigVak.Naam;
 
@@ -237,7 +245,7 @@ namespace Project_Monopoly
 
         private void btnBetalen_Click(object sender, RoutedEventArgs e)
         {
-            spelbord.Betalen(huidigVak);
+            spelbord.Betalen(huidigVak,spelbord.aantalgegooid);
             this.Close();
         }
 

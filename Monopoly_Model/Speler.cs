@@ -8,6 +8,7 @@ namespace Monopoly_Model
 {
     public class Speler
     {
+        private int spelerID;
         private string _naam;
         int _vakID;
         int _huidigSaldo;
@@ -21,6 +22,7 @@ namespace Monopoly_Model
         public int VerlaatGevangenis { get => _verlaatGevangenis; set => _verlaatGevangenis = value; }
         public Pion Pion { get => _pion; set => _pion = value; }
         public bool Gevangenis { get => _gevangenis; set => _gevangenis = value; }
+        public int SpelerID { get => spelerID; set => spelerID = value; }
 
         public Speler(string naam)
         {
