@@ -36,11 +36,11 @@ namespace Monopoly_Model
             {
                 if(value > 6 || value < 2)
                 {
-                    _spelers = value;
+                    _spelers = 2;
                 }
                 else
                 {
-                    _spelers = 2;
+                    _spelers = value;
                 }
             }
         }
