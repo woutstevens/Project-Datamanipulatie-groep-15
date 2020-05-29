@@ -31,6 +31,13 @@ namespace Monopoly_DAL
         public int aankoopwaarde { get; set; }
         public int hypotheekwaarde { get; set; }
         public Nullable<int> aantalOgen { get; set; }
+        public Nullable<int> prijsZonderHuis { get; set; }
+        public Nullable<int> positionLeft { get; set; }
+        public Nullable<int> prijs1Station { get; set; }
+        public Nullable<int> prijs2Stations { get; set; }
+        public Nullable<int> prijs3Stations { get; set; }
+        public Nullable<int> prijs4Stations { get; set; }
+        public Nullable<int> positionTop { get; set; }
     
         public virtual Speler Speler { get; set; }
     }

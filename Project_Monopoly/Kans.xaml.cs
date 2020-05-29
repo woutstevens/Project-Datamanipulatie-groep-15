@@ -21,10 +21,12 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Kans : Window
     {
-        
+        int verzet = 0;
 
-        public Kans()
+        public Kans(Spelbord spelbord)
         {
+            InitializeComponent();
+
             List<Monopoly_DAL.Kans> kanskaarten = DatabaseOperations.OphalenKanskaarten();
             Monopoly_DAL.Kans kans = null;
             Random rand = new Random();
@@ -32,7 +34,15 @@ namespace Project_Monopoly
 
             lblKansKaart.Content = kans.omschrijving;
 
-            InitializeComponent();
+            if(kans.aantalPosities != 0)
+            {
+                spelbord.verzetSpeler(kans.aantalPosities ?? default(int));
+            }
+
+            if (kans.omschrijving.ToLower().Contains("gevangenis") && kans.omschrijving.ToLower().Contains("ga"))
+            {
+                spelbord.NaarDeGevangenis();
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

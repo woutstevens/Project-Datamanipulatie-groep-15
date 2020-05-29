@@ -1,4 +1,5 @@
 ﻿using Project_Monopoly_Models;
+using Monopoly_DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,18 @@ namespace Project_Monopoly
             Startscherm startscherm = new Startscherm();
             startscherm.Show();
             this.Close();
+        }
+
+        private void btnKansToevoegen_Click(object sender, RoutedEventArgs e)
+        {
+            KansToevoegen kansToevoegen = new KansToevoegen();
+            kansToevoegen.Show();
+        }
+
+        private void btnKansVerwijderen_Click(object sender, RoutedEventArgs e)
+        {
+            KansVerwijderen kansVerwijderen = new KansVerwijderen();
+            kansVerwijderen.Show();
         }
     }
 }

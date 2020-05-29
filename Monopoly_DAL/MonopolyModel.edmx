@@ -4,15 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MonopolyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MonopolyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AlgemeenFonds">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="naam" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="omschrijving" Type="varchar" MaxLength="45" />
+          <Property Name="omschrijving" Type="varchar" MaxLength="100" />
           <Property Name="bedrag" Type="int" />
           <Property Name="aantalPosities" Type="int" />
           <Property Name="houbij" Type="bit" Nullable="false" />
@@ -22,9 +21,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="naam" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="omschrijving" Type="varchar" MaxLength="45" />
+          <Property Name="omschrijving" Type="varchar" MaxLength="100" />
           <Property Name="bedrag" Type="int" />
           <Property Name="aantalPosities" Type="int" />
           <Property Name="houbij" Type="bit" Nullable="false" />
@@ -62,6 +60,13 @@
           <Property Name="aankoopwaarde" Type="int" Nullable="false" />
           <Property Name="hypotheekwaarde" Type="int" Nullable="false" />
           <Property Name="aantalOgen" Type="int" />
+          <Property Name="prijsZonderHuis" Type="int" />
+          <Property Name="positionLeft" Type="int" />
+          <Property Name="prijs1Station" Type="int" />
+          <Property Name="prijs2Stations" Type="int" />
+          <Property Name="prijs3Stations" Type="int" />
+          <Property Name="prijs4Stations" Type="int" />
+          <Property Name="positionTop" Type="int" />
         </EntityType>
         <Association Name="FK_Project_Speler">
           <End Role="Speler" Type="Self.Speler" Multiplicity="0..1" />
@@ -85,8 +90,7 @@
             <End Role="Spelvak" EntitySet="Spelvak" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MonopolyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -96,7 +100,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="omschrijving" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="omschrijving" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="bedrag" Type="Int32" />
           <Property Name="aantalPosities" Type="Int32" />
           <Property Name="houbij" Type="Boolean" Nullable="false" />
@@ -106,9 +110,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="naam" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="omschrijving" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="omschrijving" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="bedrag" Type="Int32" />
           <Property Name="aantalPosities" Type="Int32" />
           <Property Name="houbij" Type="Boolean" Nullable="false" />
@@ -148,6 +151,13 @@
           <Property Name="hypotheekwaarde" Type="Int32" Nullable="false" />
           <Property Name="aantalOgen" Type="Int32" />
           <NavigationProperty Name="Speler" Relationship="Self.FK_Project_Speler" FromRole="Spelvak" ToRole="Speler" />
+          <Property Name="prijsZonderHuis" Type="Int32" />
+          <Property Name="positionLeft" Type="Int32" />
+          <Property Name="prijs1Station" Type="Int32" />
+          <Property Name="prijs2Stations" Type="Int32" />
+          <Property Name="prijs3Stations" Type="Int32" />
+          <Property Name="prijs4Stations" Type="Int32" />
+          <Property Name="positionTop" Type="Int32" />
         </EntityType>
         <Association Name="FK_Project_Speler">
           <End Role="Speler" Type="Self.Speler" Multiplicity="0..1" />
@@ -193,7 +203,6 @@
             <EntityTypeMapping TypeName="MonopolyModel.Kans">
               <MappingFragment StoreEntitySet="Kans">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="naam" ColumnName="naam" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
                 <ScalarProperty Name="bedrag" ColumnName="bedrag" />
@@ -218,6 +227,13 @@
           <EntitySetMapping Name="Spelvak">
             <EntityTypeMapping TypeName="MonopolyModel.Spelvak">
               <MappingFragment StoreEntitySet="Spelvak">
+                <ScalarProperty Name="positionTop" ColumnName="positionTop" />
+                <ScalarProperty Name="prijs4Stations" ColumnName="prijs4Stations" />
+                <ScalarProperty Name="prijs3Stations" ColumnName="prijs3Stations" />
+                <ScalarProperty Name="prijs2Stations" ColumnName="prijs2Stations" />
+                <ScalarProperty Name="prijs1Station" ColumnName="prijs1Station" />
+                <ScalarProperty Name="positionLeft" ColumnName="positionLeft" />
+                <ScalarProperty Name="prijsZonderHuis" ColumnName="prijsZonderHuis" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="naam" ColumnName="naam" />
                 <ScalarProperty Name="type" ColumnName="type" />

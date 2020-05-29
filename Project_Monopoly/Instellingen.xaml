@@ -27,6 +27,7 @@
             <RowDefinition Height = "*" />
             <RowDefinition Height = "*" />
             <RowDefinition Height = "*" />
+            <RowDefinition Height = "*" />
         </Grid.RowDefinitions>
 
 
@@ -77,12 +78,21 @@
             <ToggleButton x:Name="geldParking" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Default ToggleButton Style" Background="#FF296AED" Foreground="#FF296AED" />
         </Grid>
 
-        <!--Terug of Doorgaan-->
+        <!--Kans toevoegen of verwijderen-->
         <Grid Grid.Column="0" Grid.Row="5">
-            <Button x:Name="knopInstellingenTerug" Content="Terug" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF008CFF" Margin="0" MinWidth="155" MinHeight="50" Click="knopInstellingenTerug_Click"/>
+            <Button x:Name="btnKansToevoegen" Content="Kanskaart toevoegen" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF008CFF" Margin="0" MinWidth="155" MinHeight="50" Click="btnKansToevoegen_Click"/>
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="5">
+            <Button x:Name="btnKansVerwijderen" Content="Kanskaart verwijderen" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF008CFF" Margin="0" MinWidth="155" MinHeight="50" Click="btnKansVerwijderen_Click"/>
+        </Grid>
+
+        <!--Terug of Doorgaan-->
+        <Grid Grid.Column="0" Grid.Row="6">
+            <Button x:Name="knopInstellingenTerug" Content="Terug" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF008CFF" Margin="0" MinWidth="155" MinHeight="50" Click="knopInstellingenTerug_Click"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="6">
             <Button x:Name="knopInstellingenDoorgaan" Content="Doorgaan" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FF008CFF" Margin="0" MinWidth="155" MinHeight="50" Click="knopInstellingenDoorgaan_Click"/>
         </Grid>
 
