@@ -243,8 +243,6 @@ namespace Project_Monopoly
 
         private void InitializeSpelbord()
         {
-            KanskaartenStapel kanskaarten = new KanskaartenStapel();
-            lblTest.Content = kanskaarten.neemKansKaart().Omschrijving;
             foreach (Spelvak huidigvak in spelvakken)
             {
                 SetCardText(huidigvak);
@@ -440,8 +438,8 @@ namespace Project_Monopoly
             else if (huidigvak.Graden == 180)
             {
                 nameTop = top + V;
-                imgCrdTop = nameTop;
-                imgCrdLeft = nameLeft;
+                imgCrdTop = nameTop - 20;
+                imgCrdLeft = nameLeft + 2;
                 imgCanBuyTop = nameTop - 20;
                 imgCanBuyLeft = nameLeft;
                 if (IsSpecialCard(huidigvak.Naam))
@@ -580,6 +578,8 @@ namespace Project_Monopoly
                 afbeelding.RenderTransform = rotate0;
                 nameLabel.FontSize = 20;
                 nameLabel.Width = 120;
+                priceLabel.Content = "";
+                nameLabel.Content = huidigvak.Naam;
             }
 
             else if(huidigvak.Positie == 30)
