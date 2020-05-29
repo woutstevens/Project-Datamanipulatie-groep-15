@@ -37,7 +37,7 @@ namespace Project_Monopoly
 
             if(kans.aantalPosities != 0)
             {
-                spelbord.verzetSpeler(kans.aantalPosities ?? default(int));
+                spelbord.VerzetSpeler(kans.aantalPosities ?? default(int));
             }
 
             if (kans.omschrijving.ToLower().Contains("gevangenis") && kans.omschrijving.ToLower().Contains("ga"))

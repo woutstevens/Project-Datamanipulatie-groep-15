@@ -15,8 +15,35 @@ namespace Monopoly_Model
         private bool _parking;
 
         //Properties
-        public int Bedrag { get => _bedrag; set => _bedrag = value; }
-        public int Spelers { get => _spelers; set => _spelers = value; }
+        public int Bedrag
+        {
+            get { return _bedrag; }
+            set
+            {
+                if (value > 100)
+                {
+                    _bedrag = value;
+                }
+                else
+                {
+                    _bedrag = 2000;
+                }
+            }
+        }
+        public int Spelers {
+            get { return _spelers; }
+            set
+            {
+                if(value > 6 || value < 2)
+                {
+                    _spelers = value;
+                }
+                else
+                {
+                    _spelers = 2;
+                }
+            }
+        }
         public bool Gevangenis { get => _gevangenis; set => _gevangenis = value; }
         public bool Parking { get => _parking; set => _parking = value; }
 
