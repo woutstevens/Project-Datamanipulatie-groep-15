@@ -55,7 +55,7 @@
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="2">
-            <Slider x:Name="spelerAantal" Minimum="2" Maximum="10" Style="{StaticResource MaterialDesignDiscreteSlider}" ToolTip="MaterialDesignDiscreteSlider" Value="1" Foreground="#FF296AED" />
+            <Slider x:Name="spelerAantal" Minimum="2" Maximum="6" Style="{StaticResource MaterialDesignDiscreteSlider}" ToolTip="MaterialDesignDiscreteSlider" Value="1" Foreground="#FF296AED" />
         </Grid>
 
         <!--Geld verzamelen in gevangenis-->

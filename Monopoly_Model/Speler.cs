@@ -33,6 +33,7 @@ namespace Monopoly_Model
             _huidigSaldo = 1500;
             _gevangenis = false;
             _verlaatGevangenis = 0;
+            rangschrikking = 1;
         }
 
         public void aanpassingSaldo(int aanpassing)

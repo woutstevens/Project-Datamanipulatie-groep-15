@@ -17,7 +17,6 @@ namespace Project_Monopoly
     {
         List<Spelvak> spelvakken = new List<Spelvak>();
         private const int V = 70;
-        private const int stapGrootte = 70;
         List<Speler> spelerslijst;
         bool dubbelGegooid;
         int pot;
@@ -65,20 +64,22 @@ namespace Project_Monopoly
                     {
                         do
                         {
-                            SpeelMetSpeler(speler);
-                            if (huidigeSpeler.IsFailliet())
-                            {
-                                MessageBox.Show("Sorry " + huidigeSpeler.Naam + ", je mag niet meer verder spelen want je bent failliet", "Je bent failliet!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                                speler.Rangschrikking = spelerslijst.Count;
-                                aantalSpelers--;
+                            if (aantalSpelers > 1) {
+                                SpeelMetSpeler(speler);
+                                if (huidigeSpeler.IsFailliet())
+                                {
+                                    MessageBox.Show("Sorry " + huidigeSpeler.Naam + ", je mag niet meer verder spelen want je bent failliet", "Je bent failliet!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                    speler.Rangschrikking = aantalSpelers;
+                                    aantalSpelers--;
+                                }
+                                SetOverzichtSaldi();
+
                             }
-                            SetOverzichtSaldi();
                         } while (dubbelGegooid && !speler.IsFailliet());
                     }
                 }
             }
-
-            Eindscherm eindscherm = new Eindscherm();
+            Eindscherm eindscherm = new Eindscherm(spelerslijst,spelvakken);
             eindscherm.ShowDialog();
             this.Close();
         }
@@ -242,7 +243,7 @@ namespace Project_Monopoly
 
         public void KoopHuis(StraatVak straat)
         {
-            spelLogica.huisKopen(straat);
+            spelLogica.HuisKopen(straat);
         }
 
         private void InitializeSpelbord()

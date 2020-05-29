@@ -21,29 +21,65 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Eindscherm : Window
     {
-        public Eindscherm()
+        List<Monopoly_Model.Speler> spelers;
+        Monopoly_Model.Speler eerste = null;
+        Monopoly_Model.Speler tweede = null;
+        Monopoly_Model.Speler derde = null;
+        List<Monopoly_Model.Spelvak> spelvakken;
+        public Eindscherm(List<Monopoly_Model.Speler> spelers,List<Monopoly_Model.Spelvak> spelvakken)
         {
-            List<Monopoly_DAL.Speler> spelers = DatabaseOperations.OphalenBesteSpelers();
-            GegevensPrinten(spelers);
+            this.spelers = spelers;
+            this.spelvakken = spelvakken;
             InitializeComponent();
+            GetPodiumPlaatsen();
+            GegevensPrinten(spelers);
         }
 
-        private void GegevensPrinten(List<Monopoly_DAL.Speler> spelers)
+        private void GetPodiumPlaatsen()
         {
-            if (spelers[0] != null)
+            foreach(Monopoly_Model.Speler speler in spelers)
             {
-                List<Monopoly_DAL.Spelvak> straten = DatabaseOperations.OphalenStraten(spelers[0].naam);
-                int hypotheek = 0;
-                foreach(Monopoly_DAL.Spelvak spelvak in straten)
+                if(speler.Rangschrikking == 1)
                 {
-                    hypotheek += spelvak.hypotheekwaarde;
+                    eerste = speler;
                 }
 
-                eersteNaam.Text = spelers[0].naam;
-                eersteOverschot.Text = spelers[0].huidigSaldo.ToString();
-                eersteGevangenis.Text = spelers[0].verlaatGevangenis.ToString();
-                eersteStraten.Text = straten.Count().ToString();
-                eersteHypotheek.Text = hypotheek.ToString();
+                else if (speler.Rangschrikking == 2)
+                {
+                    tweede = speler;
+                }
+
+                else if (speler.Rangschrikking == 3)
+                {
+                    derde = speler;
+                }
+            }
+        }
+
+        private void GegevensPrinten(List<Monopoly_Model.Speler> spelers)
+        {
+            if (eerste != null)
+            {
+                int hypotheek = 0;
+                int aantalStraten = 0;
+                foreach(Monopoly_Model.Spelvak spelvak in spelvakken)
+                {
+                    if(spelvak.GetType() == typeof(StraatVak) || spelvak.GetType() == typeof(Energievak) || spelvak.GetType() == typeof(StationVak))
+                    {
+                        EigendomVak eigendom = (EigendomVak)spelvak;
+                        if (eigendom.Eigenaar == eerste)
+                        {
+                            hypotheek += eigendom.HypotheekWaarde;
+                            aantalStraten++;
+                        }
+                    }
+                }
+
+                eersteNaam.Text = eerste.Naam;
+                eersteOverschot.Text = "Saldo bij afsluiten van het spel: "  + eerste.HuidigSaldo.ToString();
+                eersteGevangenis.Text = "Verlaat de gevangenis: " +  eerste.VerlaatGevangenis.ToString();
+                eersteStraten.Text = "Aantal straten: " + aantalStraten.ToString();
+                eersteHypotheek.Text = "Totale hypotheekwaarde: " + hypotheek.ToString();
                 
             } else
             {
@@ -52,23 +88,32 @@ namespace Project_Monopoly
                 eersteStraten.Text = "";
                 eersteHypotheek.Text = "";
                 eersteGevangenis.Text = "";
-                eersteVerzameld.Text = "";
+                
             }
 
-            if (spelers[1] != null)
+            if (tweede != null)
             {
-                List<Monopoly_DAL.Spelvak> straten = DatabaseOperations.OphalenStraten(spelers[1].naam);
                 int hypotheek = 0;
-                foreach (Monopoly_DAL.Spelvak spelvak in straten)
+                int aantalStraten = 0;
+                foreach (Monopoly_Model.Spelvak spelvak in spelvakken)
                 {
-                    hypotheek += spelvak.hypotheekwaarde;
+                    if (spelvak.GetType() == typeof(StraatVak) || spelvak.GetType() == typeof(Energievak) || spelvak.GetType() == typeof(StationVak))
+                    {
+                        EigendomVak eigendom = (EigendomVak)spelvak;
+                        if(eigendom.Eigenaar == tweede)
+                        {
+                            hypotheek += eigendom.HypotheekWaarde;
+                            aantalStraten++;
+                        }
+                        
+                    }
                 }
 
-                tweedeNaam.Text = spelers[1].naam;
-                tweedeOverschot.Text = spelers[1].huidigSaldo.ToString();
-                tweedeGevangenis.Text = spelers[1].verlaatGevangenis.ToString();
-                tweedeStraten.Text = straten.Count().ToString();
-                tweedeHypotheek.Text = hypotheek.ToString();
+                tweedeNaam.Text = tweede.Naam;
+                tweedeOverschot.Text = "Saldo bij afsluiten van het spel: " + tweede.HuidigSaldo.ToString();
+                tweedeGevangenis.Text = "Verlaat de gevangenis: " + tweede.VerlaatGevangenis.ToString();
+                tweedeStraten.Text = "Aantal straten: " + aantalStraten.ToString();
+                tweedeHypotheek.Text = "Totale hypotheekwaarde: " + hypotheek.ToString();
 
             }
             else
@@ -78,23 +123,30 @@ namespace Project_Monopoly
                 tweedeStraten.Text = "";
                 tweedeHypotheek.Text = "";
                 tweedeGevangenis.Text = "";
-                tweedeVerzameld.Text = "";
             }
 
-            if (spelers[2] != null)
+            if (derde != null)
             {
-                List<Monopoly_DAL.Spelvak> straten = DatabaseOperations.OphalenStraten(spelers[2].naam);
                 int hypotheek = 0;
-                foreach (Monopoly_DAL.Spelvak spelvak in straten)
+                int aantalStraten = 0;
+                foreach (Monopoly_Model.Spelvak spelvak in spelvakken)
                 {
-                    hypotheek += spelvak.hypotheekwaarde;
+                    if (spelvak.GetType() == typeof(StraatVak) || spelvak.GetType() == typeof(Energievak) || spelvak.GetType() == typeof(StationVak))
+                    {
+                        EigendomVak eigendom = (EigendomVak)spelvak;
+                        if (eigendom.Eigenaar == derde)
+                        {
+                            hypotheek += eigendom.HypotheekWaarde;
+                            aantalStraten++;
+                        }
+                    }
                 }
 
-                derdeNaam.Text = spelers[2].naam;
-                derdeOverschot.Text = spelers[2].huidigSaldo.ToString();
-                derdeGevangenis.Text = spelers[2].verlaatGevangenis.ToString();
-                derdeStraten.Text = straten.Count().ToString();
-                derdeHypotheek.Text = hypotheek.ToString();
+                derdeNaam.Text = derde.Naam;
+                derdeOverschot.Text = "Saldo bij afsluiten van het spel: " + derde.HuidigSaldo.ToString();
+                derdeGevangenis.Text = "Verlaat de gevangenis: " + derde.VerlaatGevangenis.ToString();
+                derdeStraten.Text = "Aantal straten: " + aantalStraten.ToString();
+                derdeHypotheek.Text = "Totale hypotheekwaarde: " + hypotheek.ToString();
 
             }
             else
@@ -104,7 +156,6 @@ namespace Project_Monopoly
                 derdeStraten.Text = "";
                 derdeHypotheek.Text = "";
                 derdeGevangenis.Text = "";
-                derdeVerzameld.Text = "";
             }
 
         }

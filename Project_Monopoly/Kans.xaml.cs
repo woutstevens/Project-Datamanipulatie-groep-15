@@ -21,12 +21,12 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Kans : Window
     {
-        int verzet = 0;
         Spelbord spelbord;
         Monopoly_DAL.Kans kans = null;
         public Kans(Spelbord spelbord)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.spelbord = spelbord;
             List<Monopoly_DAL.Kans> kanskaarten = DatabaseOperations.OphalenKanskaarten();
             
