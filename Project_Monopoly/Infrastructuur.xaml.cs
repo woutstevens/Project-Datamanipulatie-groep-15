@@ -27,6 +27,7 @@ namespace Project_Monopoly
         public Infrastructuur(EigendomVak eigendomVak,Spelbord spelBord)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             huidigVak = eigendomVak;
             spelbord = spelBord;
             EnableDisableButtons();
@@ -80,7 +81,6 @@ namespace Project_Monopoly
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
             Kaart.Stroke = Brushes.Black;
             Color.Stroke = Brushes.Black;
             
@@ -105,7 +105,7 @@ namespace Project_Monopoly
 
             else
             {
-                lblBoodschap.Content = "Deze kaart is van jou,\nals je wilt kan je huizen voor deze straat kopen.";
+                lblBoodschap.Content = "Deze kaart is van jou,\nals je wilt kan je huizen voor deze straat kopen.\nOp dit moment: " + huidigStraatVak.AantalHuizen + " huizen en " + huidigStraatVak.AantalHotels + " hotels";
             }
 
             lblStraatnaam.Content = huidigVak.Naam;
@@ -283,6 +283,7 @@ namespace Project_Monopoly
             {
                 btnHuisKopen.IsEnabled = false;
             }
+            setLabels();
         }
     }
     }
