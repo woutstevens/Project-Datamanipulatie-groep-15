@@ -46,14 +46,6 @@
                 <Grid Grid.Row="4" Background="#FFEEE8E8">
                     <TextBlock Name="tweedeGevangenis" VerticalAlignment="Center" Text="Aantal keren in de gevangenis" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
                 </Grid>
-
-                <Grid Grid.Row="5" Background="#FFEEE8E8">
-                    <TextBlock Name="tweedeVerzameld" VerticalAlignment="Center" Text="Geld verzameld door straten" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
-                </Grid>
-
-
-
-
             </Grid>
             <!--Eerste-->
             <Grid MinHeight="340" MinWidth="144" VerticalAlignment="Bottom" Margin="10">
@@ -84,10 +76,6 @@
 
                 <Grid Grid.Row="4" Background="#FFFFF2CC">
                     <TextBlock Name="eersteGevangenis" VerticalAlignment="Center" Text="Aantal keren in de gevangenis" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
-                </Grid>
-
-                <Grid Grid.Row="5" Background="#FFFFF2CC">
-                    <TextBlock Name="eersteVerzameld" VerticalAlignment="Center" Text="Geld verzameld door straten" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
                 </Grid>
             </Grid>
 
@@ -120,10 +108,6 @@
 
                 <Grid Grid.Row="4" Background="#FFFFE6CC">
                     <TextBlock Name="derdeGevangenis" VerticalAlignment="Center" Text="Aantal keren in de gevangenis" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
-                </Grid>
-
-                <Grid Grid.Row="5" Background="#FFFFE6CC">
-                    <TextBlock Name="derdeVerzameld" VerticalAlignment="Center" Text="Geld verzameld door straten" TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120" Margin="5"/>
                 </Grid>
             </Grid>
         </StackPanel>

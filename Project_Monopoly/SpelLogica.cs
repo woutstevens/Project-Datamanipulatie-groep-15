@@ -18,7 +18,7 @@ namespace Project_Monopoly
 
         }
 
-        public void huisKopen(StraatVak straat)
+        public void HuisKopen(StraatVak straat)
         {
             huidigeSpeler.aanpassingSaldo(straat.PrijsPerHuis * -1);
             if(straat.AantalHuizen < 4)
@@ -30,7 +30,6 @@ namespace Project_Monopoly
             {
                 straat.AantalHotels++;
             }
-            
         }
 
         public Spelvak HaalSpelvakOp(int vakID)

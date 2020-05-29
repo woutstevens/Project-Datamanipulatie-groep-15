@@ -33,12 +33,14 @@ namespace Project_Monopoly
         public Startscherm()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             startschermOperaties = new StartschermDatabaseOperaties();
         }
         
         public Startscherm(Settings settings)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             lblNaamSpeler.Content = "Naam speler " + spelerID + "/" + settings.Spelers;
             this.settings = settings;
             startschermOperaties = new StartschermDatabaseOperaties();
