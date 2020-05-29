@@ -57,6 +57,10 @@ namespace Project_Monopoly
         private void btnDoorgaan_Click(object sender, RoutedEventArgs e)
         {
             spelbord.WijzigSaldo(Convert.ToInt32(kans.bedrag));
+            if(Convert.ToInt32(kans.bedrag) < 0)
+            {
+                spelbord.WijzigPot(Convert.ToInt32(kans.bedrag) * -1);
+            }
 
             if (kans.omschrijving.Contains("naar")) 
             {

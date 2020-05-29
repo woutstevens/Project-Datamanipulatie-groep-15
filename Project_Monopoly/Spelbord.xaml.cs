@@ -26,8 +26,10 @@ namespace Project_Monopoly
         SpelbordDatabaseOperaties spelbordDatabase;
         public int aantalgegooid;
         List<Ellipse> ellipses;
-        public Spelbord(List<Speler> spelers)
+        Startscherm startscherm;
+        public Spelbord(List<Speler> spelers,Startscherm startscherm)
         {
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             spelerslijst = spelers;
             pot = 0;
@@ -36,7 +38,7 @@ namespace Project_Monopoly
             spelLogica = new SpelLogica(spelvakken);
             aantalgegooid = 0;
             ellipses = new List<Ellipse>();
-            
+            this.startscherm = startscherm;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -44,31 +46,41 @@ namespace Project_Monopoly
             InitializeSpelbord();
             SetOverzichtSaldi();
             StartSpel();
+            startscherm.Close();
         }
 
         private void StartSpel()
         {
             tekenPionnen();
+            int aantalSpelers = spelerslijst.Count;
 
-            while (spelerslijst.Count >1)
+            while (aantalSpelers > 1)
             {
                 foreach (Speler speler in spelerslijst)
                 {
                     huidigeSpeler = speler;
                     spelLogica.setHuidigeSpeler(huidigeSpeler);
-                    do
+
+                    if (!huidigeSpeler.IsFailliet())
                     {
-                        SpeelMetSpeler(speler);
-                        if(huidigeSpeler.IsFailliet())
+                        do
                         {
-                            spelerslijst.Remove(speler);
-                        }
-                        SetOverzichtSaldi();
-                    } while (dubbelGegooid);
-                    
+                            SpeelMetSpeler(speler);
+                            if (huidigeSpeler.IsFailliet())
+                            {
+                                MessageBox.Show("Sorry " + huidigeSpeler.Naam + ",je mag niet meer verder spelen want je bent failliet", "Je bent failliet!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                speler.Rangschrikking = spelerslijst.Count;
+                                aantalSpelers--;
+                            }
+                            SetOverzichtSaldi();
+                        } while (dubbelGegooid && !speler.IsFailliet());
+                    }
                 }
             }
-            
+
+            Eindscherm eindscherm = new Eindscherm();
+            eindscherm.ShowDialog();
+            this.Close();
         }
 
         
@@ -85,6 +97,15 @@ namespace Project_Monopoly
             Random gooien = new Random();
             int Dobbelsteen1 = gooien.Next(1, 7);
             int Dobbelsteen2 = gooien.Next(1, 7);
+            if(Dobbelsteen1 == Dobbelsteen2)
+            {
+                dubbelGegooid = true;
+            }
+
+            else
+            {
+                dubbelGegooid = false;
+            }
             aantalgegooid = Dobbelsteen1 + Dobbelsteen2;
             MessageBox.Show("Dobbelsteen 1: " + Dobbelsteen1 + "\nDobbelsteen 2: " + Dobbelsteen2 + "\nTotaal: " + aantalgegooid,"Gooien voor speler " + huidigeSpeler.Naam,MessageBoxButton.OK,MessageBoxImage.Information);
             VerzetSpeler(aantalgegooid);
@@ -93,49 +114,68 @@ namespace Project_Monopoly
 
             if(speler.VakID == 0)
             {
-                return;
+                Ellipse ellipse = getEllipseByID(speler.SpelerID);
+                ellipse.Margin = new Thickness(45, 850, 0, 0);
             }
             
-            if(spelvak.Type == "eigendom")
+            if(spelvak != null)
             {
-                EigendomVak eigendom = (EigendomVak)spelvak;
-                Infrastructuur infrastructuur = new Infrastructuur(eigendom, this);
-                infrastructuur.ShowDialog();
-            }
+                if (spelvak.Type == "eigendom")
+                {
+                    EigendomVak eigendom = (EigendomVak)spelvak;
+                    Infrastructuur infrastructuur = new Infrastructuur(eigendom, this);
+                    infrastructuur.ShowDialog();
+                }
 
-            else if (spelvak.GetType() == typeof(KanskaartVak))
-            {
-                Kans kans = new Kans(this);
-                kans.ShowDialog();
-            }
 
-            else if (spelvak.GetType() == typeof(AlgemeenFondsKaartVak))
-            {
-                //AlgemeenFonds algemeenFonds = new AlgemeenFonds(this);
-                WijzigSaldo(-50);
-                pot += (-50);
-            }
 
-            else if (spelvak.GetType() == typeof(Belangstingvak))
-            {
-                Belangstingvak belangstingvak = (Belangstingvak)spelvak;
-                WijzigSaldo(belangstingvak.Prijs * -1);
-                pot += belangstingvak.Prijs;
-            }
+                else if (spelvak.GetType() == typeof(KanskaartVak))
+                {
+                    Kans kans = new Kans(this);
+                    kans.ShowDialog();
+                }
 
-            else if (spelvak.GetType() == typeof(HoekVak) && spelvak.Positie == 30)
-            {
-                NaarDeGevangenis();
-            }
+                else if (spelvak.GetType() == typeof(AlgemeenFondsKaartVak))
+                {
+                    //AlgemeenFonds algemeenFonds = new AlgemeenFonds(this);
+                    WijzigSaldo(-50);
+                    pot += (50);
+                }
 
-            else if (spelvak.GetType() == typeof(HoekVak) && spelvak.Positie == 20)
-            {
-                WijzigSaldo(pot);
-            }
+                else if (spelvak.GetType() == typeof(Belangstingvak))
+                {
+                    Belangstingvak belangstingvak = (Belangstingvak)spelvak;
+                    WijzigSaldo(belangstingvak.Prijs * -1);
+                    pot += belangstingvak.Prijs;
+                }
 
-            verzetPion(huidigeSpeler);
+                else if (spelvak.GetType() == typeof(HoekVak) && spelvak.Positie == 30)
+                {
+                    NaarDeGevangenis();
+                }
+
+                else if (spelvak.GetType() == typeof(HoekVak) && spelvak.Positie == 20)
+                {
+                    WijzigSaldo(pot);
+                    pot = 0;
+                }
+
+
+                else if (spelvak.GetType() == typeof(GevangenisVak))
+                {
+                    if (huidigeSpeler.Gevangenis == true)
+                    {
+
+                    }
+                }
+                verzetPion(huidigeSpeler);
+            }
+            
         }
-
+        public void WijzigPot(int bedrag)
+        {
+            pot += bedrag;
+        }
         private void SetOverzichtSaldi()
         {
             string overzicht="";
@@ -161,6 +201,7 @@ namespace Project_Monopoly
         {
             spelLogica.VerzetSpelerNaarVak(vakID);
         }
+
 
         public void WijzigSaldo(int bedrag)
         {
@@ -251,7 +292,7 @@ namespace Project_Monopoly
                 ellipse.Width = pion.Grootte;
                 ellipse.Height = pion.Grootte;
                 ellipse.Fill = new SolidColorBrush(color);
-                ellipse.Margin = new Thickness(45, 924, 0, 0);
+                ellipse.Margin = new Thickness(45, 850, 0, 0);
                 ellipse.VerticalAlignment = VerticalAlignment.Top;
                 ellipse.HorizontalAlignment = HorizontalAlignment.Left;
                 ellipse.Stroke = new SolidColorBrush(Colors.Black);
@@ -281,10 +322,20 @@ namespace Project_Monopoly
 
             else
             {
-                vakLeft = huidigvak.Left;
-                vakTop = huidigvak.Top;
+                vakLeft = huidigvak.MiddelLeft;
+                vakTop = huidigvak.MiddelTop;
             }
-            ellipse.Margin = new Thickness(vakLeft, vakTop, 0, 0);
+
+            if (speler.Gevangenis == false)
+            {
+                ellipse.Margin = new Thickness(vakLeft, vakTop, 0, 0);
+            }
+
+            else
+            {
+                ellipse.Margin = new Thickness(90, 130, 0, 0);
+            }
+            
 
         }
 

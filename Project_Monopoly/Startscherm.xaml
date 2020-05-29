@@ -21,7 +21,7 @@
         <Button x:Name="btnOptions" Content="Options" Width="90" VerticalAlignment="Top" Margin="0,130,0,0" Click="btnOptions_Click"/>
         <ComboBox Name="CbxPionnen" Margin="0,170,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200" SelectionChanged="CbxPionnen_SelectionChanged"></ComboBox>
         <Label Name="lblNaamSpeler" Content="Naam speler 1/2:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="55,210,0,0" BorderBrush="Black" BorderThickness="2" Width="auto"/>
-        <TextBox x:Name="txtNaamSpeler" VerticalAlignment="Top" HorizontalAlignment="Center" Width="100" Margin="0,210,0,0" BorderBrush="Gray" BorderThickness="2"/>
-        <Button x:Name="btnToevoegen" Content="Toevoegen" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,210,80,0" Click="btnToevoegen_Click"/>
+        <TextBox x:Name="txtNaamSpeler" VerticalAlignment="Top" HorizontalAlignment="Center" Width="100" Margin="0,210,0,0" BorderBrush="Gray" BorderThickness="2" KeyUp="txtNaamSpeler_KeyUp"/>
+        <Button x:Name="btnToevoegen" Content="Toevoegen" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,210,80,0" Click="btnToevoegen_Click" IsDefault="True"/>
     </Grid>
 </Window>

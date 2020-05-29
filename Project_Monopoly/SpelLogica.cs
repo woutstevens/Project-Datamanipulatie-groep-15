@@ -20,7 +20,7 @@ namespace Project_Monopoly
 
         public void huisKopen(StraatVak straat)
         {
-            huidigeSpeler.aanpassingSaldo(straat.PrijsPerHuis);
+            huidigeSpeler.aanpassingSaldo(straat.PrijsPerHuis * -1);
             straat.AantalHuizen++;
         }
 

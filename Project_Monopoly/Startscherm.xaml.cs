@@ -66,9 +66,10 @@ namespace Project_Monopoly
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            spelbord = new Spelbord(spelerslijst);
+            spelbord = new Spelbord(spelerslijst,this);
             btnStart.IsEnabled = false;
             SetComboBox();
+
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
@@ -90,14 +91,20 @@ namespace Project_Monopoly
 
         private void btnToevoegen_Click(object sender, RoutedEventArgs e)
         {
+            SpelerToevoegen();
+
+        }
+
+        private void SpelerToevoegen()
+        {
             Speler huidigeSpeler = new Speler(txtNaamSpeler.Text);
             huidigeSpeler.Pion = (Pion)CbxPionnen.SelectedItem;
             huidigeSpeler.HuidigSaldo = settings.Bedrag;
             huidigeSpeler.SpelerID = spelerID;
             int resultaat = startschermOperaties.updateSpeler(huidigeSpeler);
-            if(resultaat < 0)
+            if (resultaat < 0)
             {
-                MessageBox.Show(startschermOperaties.getErrorMessage(), "Fout in de DAL",MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(startschermOperaties.getErrorMessage(), "Fout in de DAL", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             spelerslijst.Add(huidigeSpeler);
@@ -106,24 +113,37 @@ namespace Project_Monopoly
             {
                 btnToevoegen.IsEnabled = false;
                 btnStart.IsEnabled = true;
+                btnStart.IsDefault = true;
+                btnToevoegen.IsDefault = false;
             }
-            if(CbxPionnen.Items.Count > 0)
+            if (CbxPionnen.Items.Count > 0)
             {
                 CbxPionnen.SelectedItem = CbxPionnen.Items[0];
             }
-            
+
             txtNaamSpeler.Text = "";
             spelerID++;
-            if(spelerID <= settings.Spelers)
+            if (spelerID <= settings.Spelers)
             {
                 lblNaamSpeler.Content = "Naam speler " + spelerID + "/" + settings.Spelers + ":";
             }
-            
         }
 
         private void CbxPionnen_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void txtNaamSpeler_KeyUp(object sender, KeyEventArgs e)
+        {
+        //    if(e.Key == Key.Enter)
+        //    {
+        //        if(spelerslijst.Count == settings.Spelers)
+        //        {
+
+        //        }
+        //        SpelerToevoegen();
+        //    }
         }
     }
 }

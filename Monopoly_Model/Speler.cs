@@ -14,6 +14,7 @@ namespace Monopoly_Model
         int _huidigSaldo;
         bool _gevangenis;
         int _verlaatGevangenis;
+        int rangschrikking;
         Pion _pion;
 
         public string Naam { get => _naam; set => _naam = value; }
@@ -23,6 +24,7 @@ namespace Monopoly_Model
         public Pion Pion { get => _pion; set => _pion = value; }
         public bool Gevangenis { get => _gevangenis; set => _gevangenis = value; }
         public int SpelerID { get => spelerID; set => spelerID = value; }
+        public int Rangschrikking { get => rangschrikking; set => rangschrikking = value; }
 
         public Speler(string naam)
         {
