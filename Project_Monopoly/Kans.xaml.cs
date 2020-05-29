@@ -21,18 +21,32 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Kans : Window
     {
-        
-
-        public Kans()
+        Spelbord spelbord;
+        Monopoly_DAL.Kans kans = null;
+        public Kans(Spelbord spelbord)
         {
+            InitializeComponent();
+            this.spelbord = spelbord;
             List<Monopoly_DAL.Kans> kanskaarten = DatabaseOperations.OphalenKanskaarten();
-            Monopoly_DAL.Kans kans = null;
+            
             Random rand = new Random();
             kans = kanskaarten[rand.Next(0,kanskaarten.Count())];
 
-            lblKansKaart.Content = kans.omschrijving;
+            lblKansKaart.Content = VervangBackslash(kans.omschrijving);
 
-            InitializeComponent();
+            
+        }
+
+        private string VervangBackslash(string naam)
+        {
+
+            string vervangNaam = naam;
+
+            if (naam != null)
+            {
+                vervangNaam = naam.Replace("\\n", "\n");
+            }
+            return vervangNaam;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -42,6 +56,21 @@ namespace Project_Monopoly
 
         private void btnDoorgaan_Click(object sender, RoutedEventArgs e)
         {
+            spelbord.WijzigSaldo(Convert.ToInt32(kans.bedrag));
+            if(Convert.ToInt32(kans.bedrag) < 0)
+            {
+                spelbord.WijzigPot(Convert.ToInt32(kans.bedrag) * -1);
+            }
+
+            if (kans.omschrijving.Contains("naar")) 
+            {
+                spelbord.VerzetSpelerNaarVak(Convert.ToInt32(kans.aantalPosities));
+            } else
+            {
+                spelbord.VerzetSpeler(Convert.ToInt32(kans.aantalPosities));
+            }
+                
+
             this.Close();
         }
     }

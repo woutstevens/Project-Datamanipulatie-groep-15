@@ -21,12 +21,59 @@ namespace Project_Monopoly
     public partial class Infrastructuur : Window
     {
         EigendomVak huidigVak;
+        StraatVak huidigStraatVak;
         Spelbord spelbord;
+        Speler huidigeSpeler;
         public Infrastructuur(EigendomVak eigendomVak,Spelbord spelBord)
         {
             InitializeComponent();
             huidigVak = eigendomVak;
             spelbord = spelBord;
+            EnableDisableButtons();
+            this.Title = "Infrastructuur - " + spelbord.getHuidigeSpeler().Naam;
+            huidigeSpeler = spelbord.getHuidigeSpeler();
+        }
+
+        private void EnableDisableButtons()
+        {
+            
+
+            if(huidigVak.Eigenaar != null && huidigVak.Eigenaar != spelbord.getHuidigeSpeler())
+            {
+                btnHuisKopen.IsEnabled = false;
+                btnKopen.IsEnabled = false;
+                btnNietKopen.IsEnabled = false;
+                btnBetalen.IsEnabled = true;
+            }
+
+            else if(huidigVak.Eigenaar != null && huidigVak.Eigenaar == spelbord.getHuidigeSpeler())
+            {
+                if(huidigVak.GetType() == typeof(StraatVak))
+                {
+                    huidigStraatVak = (StraatVak)huidigVak;
+                    if(spelbord.getHuidigeSpeler().HuidigSaldo > huidigStraatVak.PrijsPerHuis)
+                    {
+                        btnHuisKopen.IsEnabled = true;
+                        btnKopen.IsEnabled = false;
+                        btnNietKopen.IsEnabled = false;
+                        btnBetalen.IsEnabled = false;
+                    }
+                }
+                else
+                {
+                    btnHuisKopen.IsEnabled = false;
+                    btnKopen.IsEnabled = false;
+                    btnNietKopen.IsEnabled = false;
+                    btnBetalen.IsEnabled = false;
+                }
+            }
+            else
+            {
+                btnHuisKopen.IsEnabled = false;
+                btnKopen.IsEnabled = true;
+                btnNietKopen.IsEnabled = true;
+                btnBetalen.IsEnabled = false;
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -44,8 +91,20 @@ namespace Project_Monopoly
             StraatVak straatVak;
             Energievak energievak;
             StationVak stationVak;
+            if(huidigVak.Eigenaar == null)
+            {
+                lblBoodschap.Content = "Deze kaart is nog niet in iemands bezit.\nU kunt deze kaart dus kopen.";
+            }
+            
+            else if(huidigVak.Eigenaar != spelbord.getHuidigeSpeler())
+            {
+                lblBoodschap.Content = "Deze kaart is van " + huidigVak.Eigenaar.Naam + ". Betaal €" + spelbord.Berekenprijs(huidigVak, spelbord.aantalgegooid); 
+            }
 
-            lblBoodschap.Content = "Deze kaart is nog niet in iemands bezit.\nU kunt deze kaart dus kopen.";
+            else
+            {
+                lblBoodschap.Content = "Deze kaart is van jou,\nals je wilt kan je huizen voor deze straat kopen.";
+            }
 
             lblStraatnaam.Content = huidigVak.Naam;
 
@@ -185,17 +244,35 @@ namespace Project_Monopoly
 
         private void btnKopen_Click(object sender, RoutedEventArgs e)
         {
+            
+            spelbord.Kopen(huidigVak);
+            this.Close();
+        }
 
+        private bool CheckSaldo(int bedrag)
+        {
+            bool kanKopen = true;
+            if(bedrag >= huidigeSpeler.HuidigSaldo)
+            {
+                kanKopen = false;
+            }
+            return kanKopen;
         }
 
         private void btnNietKopen_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnBetalen_Click(object sender, RoutedEventArgs e)
         {
+            spelbord.Betalen(huidigVak,spelbord.aantalgegooid);
+            this.Close();
+        }
 
+        private void btnHuisKopen_Click(object sender, RoutedEventArgs e)
+        {
+            spelbord.KoopHuis(huidigStraatVak);
         }
     }
     }

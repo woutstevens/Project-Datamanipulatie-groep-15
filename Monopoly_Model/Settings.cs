@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project_Monopoly_Models
+namespace Monopoly_Model
 {
     public class Settings
     {

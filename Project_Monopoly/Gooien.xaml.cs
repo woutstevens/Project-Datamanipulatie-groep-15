@@ -23,17 +23,16 @@ namespace Project_Monopoly
         int Dobbelsteen2 = 0;
         int AantalStappen = 0;
         int AantalKeerDubbel = 0;
+        Spelbord spelbord;
 
-        public Gooien()
+        public Gooien(Spelbord spelbord)
         {
-
-
+            this.spelbord = spelbord;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             btnGooien.IsEnabled = true;
-
         }
 
         private void BtnGooien_Click(object sender, RoutedEventArgs e)
@@ -65,6 +64,7 @@ namespace Project_Monopoly
 
         private void BtnDoorgaan_Click(object sender, RoutedEventArgs e)
         {
+            spelbord.VerzetSpeler(AantalStappen);
             this.Close();
         }
     }

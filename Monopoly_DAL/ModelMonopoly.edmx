@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MonopolyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Data_r0718763Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AlgemeenFonds">
           <Key>
             <PropertyRef Name="id" />
@@ -80,7 +80,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MonopolyModelStoreContainer">
+        <EntityContainer Name="Data_r0718763ModelStoreContainer">
           <EntitySet Name="AlgemeenFonds" EntityType="Self.AlgemeenFonds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kans" EntityType="Self.Kans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Speler" EntityType="Self.Speler" Schema="dbo" store:Type="Tables" />
@@ -90,10 +90,11 @@
             <End Role="Spelvak" EntitySet="Spelvak" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MonopolyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Data_r0718763Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AlgemeenFonds">
           <Key>
             <PropertyRef Name="id" />
@@ -150,7 +151,6 @@
           <Property Name="aankoopwaarde" Type="Int32" Nullable="false" />
           <Property Name="hypotheekwaarde" Type="Int32" Nullable="false" />
           <Property Name="aantalOgen" Type="Int32" />
-          <NavigationProperty Name="Speler" Relationship="Self.FK_Project_Speler" FromRole="Spelvak" ToRole="Speler" />
           <Property Name="prijsZonderHuis" Type="Int32" />
           <Property Name="positionLeft" Type="Int32" />
           <Property Name="prijs1Station" Type="Int32" />
@@ -158,6 +158,7 @@
           <Property Name="prijs3Stations" Type="Int32" />
           <Property Name="prijs4Stations" Type="Int32" />
           <Property Name="positionTop" Type="Int32" />
+          <NavigationProperty Name="Speler" Relationship="Self.FK_Project_Speler" FromRole="Spelvak" ToRole="Speler" />
         </EntityType>
         <Association Name="FK_Project_Speler">
           <End Role="Speler" Type="Self.Speler" Multiplicity="0..1" />
@@ -171,7 +172,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Data_r0718763Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Data_r0718763Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlgemeenFonds" EntityType="Self.AlgemeenFonds" />
           <EntitySet Name="Kans" EntityType="Self.Kans" />
           <EntitySet Name="Speler" EntityType="Self.Speler" />
@@ -186,9 +187,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MonopolyModelStoreContainer" CdmEntityContainer="Data_r0718763Entities">
+        <EntityContainerMapping StorageEntityContainer="Data_r0718763ModelStoreContainer" CdmEntityContainer="Data_r0718763Entities1">
           <EntitySetMapping Name="AlgemeenFonds">
-            <EntityTypeMapping TypeName="MonopolyModel.AlgemeenFonds">
+            <EntityTypeMapping TypeName="Data_r0718763Model.AlgemeenFonds">
               <MappingFragment StoreEntitySet="AlgemeenFonds">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="type" ColumnName="type" />
@@ -200,7 +201,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Kans">
-            <EntityTypeMapping TypeName="MonopolyModel.Kans">
+            <EntityTypeMapping TypeName="Data_r0718763Model.Kans">
               <MappingFragment StoreEntitySet="Kans">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="type" ColumnName="type" />
@@ -212,7 +213,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Speler">
-            <EntityTypeMapping TypeName="MonopolyModel.Speler">
+            <EntityTypeMapping TypeName="Data_r0718763Model.Speler">
               <MappingFragment StoreEntitySet="Speler">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="naam" ColumnName="naam" />
@@ -225,15 +226,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Spelvak">
-            <EntityTypeMapping TypeName="MonopolyModel.Spelvak">
+            <EntityTypeMapping TypeName="Data_r0718763Model.Spelvak">
               <MappingFragment StoreEntitySet="Spelvak">
-                <ScalarProperty Name="positionTop" ColumnName="positionTop" />
-                <ScalarProperty Name="prijs4Stations" ColumnName="prijs4Stations" />
-                <ScalarProperty Name="prijs3Stations" ColumnName="prijs3Stations" />
-                <ScalarProperty Name="prijs2Stations" ColumnName="prijs2Stations" />
-                <ScalarProperty Name="prijs1Station" ColumnName="prijs1Station" />
-                <ScalarProperty Name="positionLeft" ColumnName="positionLeft" />
-                <ScalarProperty Name="prijsZonderHuis" ColumnName="prijsZonderHuis" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="naam" ColumnName="naam" />
                 <ScalarProperty Name="type" ColumnName="type" />
@@ -251,6 +245,13 @@
                 <ScalarProperty Name="aankoopwaarde" ColumnName="aankoopwaarde" />
                 <ScalarProperty Name="hypotheekwaarde" ColumnName="hypotheekwaarde" />
                 <ScalarProperty Name="aantalOgen" ColumnName="aantalOgen" />
+                <ScalarProperty Name="prijsZonderHuis" ColumnName="prijsZonderHuis" />
+                <ScalarProperty Name="positionLeft" ColumnName="positionLeft" />
+                <ScalarProperty Name="prijs1Station" ColumnName="prijs1Station" />
+                <ScalarProperty Name="prijs2Stations" ColumnName="prijs2Stations" />
+                <ScalarProperty Name="prijs3Stations" ColumnName="prijs3Stations" />
+                <ScalarProperty Name="prijs4Stations" ColumnName="prijs4Stations" />
+                <ScalarProperty Name="positionTop" ColumnName="positionTop" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

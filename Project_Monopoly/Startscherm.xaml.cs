@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Monopoly_Model;
-using Project_Monopoly_Models;
 
 namespace Project_Monopoly
 {
@@ -27,18 +26,22 @@ namespace Project_Monopoly
         Instellingen instellingen = new Instellingen();
         List<Speler> spelerslijst = new List<Speler>();
         Spelbord spelbord;
-        int aantal = 2;
         List<Pion> pionnen = new List<Pion>();
-        
+        int spelerID = 1;
+        StartschermDatabaseOperaties startschermOperaties;
+
         public Startscherm()
         {
             InitializeComponent();
+            startschermOperaties = new StartschermDatabaseOperaties();
         }
         
         public Startscherm(Settings settings)
         {
-            this.settings = settings;
             InitializeComponent();
+            lblNaamSpeler.Content = "Naam speler " + spelerID + "/" + settings.Spelers;
+            this.settings = settings;
+            startschermOperaties = new StartschermDatabaseOperaties();
         }
 
         private void setPionnenLijst()
@@ -63,9 +66,10 @@ namespace Project_Monopoly
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            spelbord = new Spelbord(spelerslijst);
+            spelbord = new Spelbord(spelerslijst,this);
             btnStart.IsEnabled = false;
             SetComboBox();
+
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
@@ -87,22 +91,59 @@ namespace Project_Monopoly
 
         private void btnToevoegen_Click(object sender, RoutedEventArgs e)
         {
+            SpelerToevoegen();
+
+        }
+
+        private void SpelerToevoegen()
+        {
             Speler huidigeSpeler = new Speler(txtNaamSpeler.Text);
-            huidigeSpeler.Pion = pionnen[CbxPionnen.SelectedIndex];
+            huidigeSpeler.Pion = (Pion)CbxPionnen.SelectedItem;
+            huidigeSpeler.HuidigSaldo = settings.Bedrag;
+            huidigeSpeler.SpelerID = spelerID;
+            int resultaat = startschermOperaties.updateSpeler(huidigeSpeler);
+            if (resultaat < 0)
+            {
+                MessageBox.Show(startschermOperaties.getErrorMessage(), "Fout in de DAL", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             spelerslijst.Add(huidigeSpeler);
             CbxPionnen.Items.Remove(CbxPionnen.SelectedItem);
-            if (spelerslijst.Count == aantal)
+            if (spelerslijst.Count == settings.Spelers)
             {
                 btnToevoegen.IsEnabled = false;
                 btnStart.IsEnabled = true;
+                btnStart.IsDefault = true;
+                btnToevoegen.IsDefault = false;
             }
-            CbxPionnen.SelectedItem = CbxPionnen.Items[0];
+            if (CbxPionnen.Items.Count > 0)
+            {
+                CbxPionnen.SelectedItem = CbxPionnen.Items[0];
+            }
+
             txtNaamSpeler.Text = "";
+            spelerID++;
+            if (spelerID <= settings.Spelers)
+            {
+                lblNaamSpeler.Content = "Naam speler " + spelerID + "/" + settings.Spelers + ":";
+            }
         }
 
         private void CbxPionnen_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void txtNaamSpeler_KeyUp(object sender, KeyEventArgs e)
+        {
+        //    if(e.Key == Key.Enter)
+        //    {
+        //        if(spelerslijst.Count == settings.Spelers)
+        //        {
+
+        //        }
+        //        SpelerToevoegen();
+        //    }
         }
     }
 }

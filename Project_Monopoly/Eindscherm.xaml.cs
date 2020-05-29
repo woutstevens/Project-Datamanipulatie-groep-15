@@ -21,9 +21,6 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Eindscherm : Window
     {
-        
-
-
         public Eindscherm()
         {
             List<Monopoly_DAL.Speler> spelers = DatabaseOperations.OphalenBesteSpelers();
