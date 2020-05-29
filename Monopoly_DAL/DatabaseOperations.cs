@@ -42,7 +42,38 @@ namespace Monopoly_DAL
                 return query.ToList();
             }
         }
+      
+        public static int KansToevoegen(Kans kans)
+        {
+            try
+            {
+                using(Data_r0718763Entities entities = new Data_r0718763Entities())
+                {
+                    entities.Kans.Add(kans);
+                    return entities.SaveChanges();
+                }
+            }
+            catch(Exception ex)
+            {
+                return 0;
+            }
+        }
 
+        public static int VerwijderenKanskaart(Kans kans)
+        {
+            try
+            {
+                using (Data_r0718763Entities entities = new Data_r0718763Entities())
+                {
+                    entities.Entry(kans).State = EntityState.Deleted;
+                    return entities.SaveChanges();
+                }
+            }
+            catch(Exception ex)
+            {
+                return 0;
+            }
+        }
         public static List<Spelvak> OphalenSpelvakken()
         {
             using (Data_r0718763Entities entities = new Data_r0718763Entities())

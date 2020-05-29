@@ -21,6 +21,7 @@ namespace Project_Monopoly
     /// </summary>
     public partial class Kans : Window
     {
+        int verzet = 0;
         Spelbord spelbord;
         Monopoly_DAL.Kans kans = null;
         public Kans(Spelbord spelbord)
@@ -34,6 +35,15 @@ namespace Project_Monopoly
 
             lblKansKaart.Content = VervangBackslash(kans.omschrijving);
 
+            if(kans.aantalPosities != 0)
+            {
+                spelbord.verzetSpeler(kans.aantalPosities ?? default(int));
+            }
+
+            if (kans.omschrijving.ToLower().Contains("gevangenis") && kans.omschrijving.ToLower().Contains("ga"))
+            {
+                spelbord.NaarDeGevangenis();
+            }
             
         }
 

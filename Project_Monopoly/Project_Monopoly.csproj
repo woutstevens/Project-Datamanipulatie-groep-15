@@ -132,6 +132,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="KansToevoegen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KansVerwijderen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Spelbord.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +190,12 @@
     </Compile>
     <Compile Include="Kans.xaml.cs">
       <DependentUpon>Kans.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KansToevoegen.xaml.cs">
+      <DependentUpon>KansToevoegen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KansVerwijderen.xaml.cs">
+      <DependentUpon>KansVerwijderen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Spelbord.xaml.cs">
       <DependentUpon>Spelbord.xaml</DependentUpon>

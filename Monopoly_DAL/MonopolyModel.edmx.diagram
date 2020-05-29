@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="57e35fccf915465c8da6dfd4ee60fb36" Name="Diagram1" ZoomLevel="97">
         <EntityTypeShape EntityType="MonopolyModel.AlgemeenFonds" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MonopolyModel.Kans" Width="1.5" PointX="6.125" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MonopolyModel.Kans" Width="1.5" PointX="5.75" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MonopolyModel.Speler" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="MonopolyModel.Spelvak" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="MonopolyModel.FK_Project_Speler" ManuallyRouted="false" />

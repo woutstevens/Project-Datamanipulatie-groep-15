@@ -35,7 +35,7 @@ namespace Project_Monopoly
             btnGooien.IsEnabled = true;
         }
 
-        private void BtnGooien_Click(object sender, RoutedEventArgs e)
+        private void btnGooien_Click(object sender, RoutedEventArgs e)
         {
 
 
@@ -62,7 +62,7 @@ namespace Project_Monopoly
 
         }
 
-        private void BtnDoorgaan_Click(object sender, RoutedEventArgs e)
+        private void btnDoorgaan_Click(object sender, RoutedEventArgs e)
         {
             spelbord.VerzetSpeler(AantalStappen);
             this.Close();
