@@ -76,6 +76,8 @@ namespace Project_Monopoly
             }
         }
 
+
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             
@@ -119,6 +121,10 @@ namespace Project_Monopoly
                 lblPrijs1Hotel.Content = straatVak.PrijsMet1Hotel.ToString();
                 lblPrijsHuis.Content = straatVak.PrijsPerHuis.ToString();
                 lblPrijsHypotheek.Content = straatVak.HypotheekWaarde.ToString();
+                if (straatVak.AantalHuizen == 4 && straatVak.AantalHotels == 1)
+                {
+                    btnHuisKopen.IsEnabled = false;
+                }
             }
 
             else if(huidigVak.GetType() == typeof(StationVak))
@@ -273,6 +279,10 @@ namespace Project_Monopoly
         private void btnHuisKopen_Click(object sender, RoutedEventArgs e)
         {
             spelbord.KoopHuis(huidigStraatVak);
+            if(huidigStraatVak.AantalHuizen == 4 && huidigStraatVak.AantalHotels == 1)
+            {
+                btnHuisKopen.IsEnabled = false;
+            }
         }
     }
     }

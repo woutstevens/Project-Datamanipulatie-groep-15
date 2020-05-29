@@ -21,7 +21,16 @@ namespace Project_Monopoly
         public void huisKopen(StraatVak straat)
         {
             huidigeSpeler.aanpassingSaldo(straat.PrijsPerHuis * -1);
-            straat.AantalHuizen++;
+            if(straat.AantalHuizen < 4)
+            {
+                straat.AantalHuizen++;
+            }
+
+            else
+            {
+                straat.AantalHotels++;
+            }
+            
         }
 
         public Spelvak HaalSpelvakOp(int vakID)
@@ -53,7 +62,7 @@ namespace Project_Monopoly
         public void VerzetSpeler(int aantalVakjes)
         {
             huidigeSpeler.VakID += aantalVakjes;
-            if (huidigeSpeler.VakID >= spelvakken.Count)
+            if (huidigeSpeler.VakID > spelvakken.Count)
             {
                 GaLangsStart();
             }
@@ -154,10 +163,19 @@ namespace Project_Monopoly
             int aantal = 0;
             foreach(Spelvak spelvak in spelvakken)
             {
-                if(spelvak.GetType() == typeof(EigendomVak))
+                if(spelvak.GetType() == typeof(StationVak))
                 {
-                    EigendomVak eigendom = (EigendomVak)spelvak;
-                    if(eigendom.TypeEigendomVak == type && eigendom.Eigenaar == eigenaarHuidigVak)
+                    StationVak station = (StationVak)spelvak;
+                    if(station.TypeEigendomVak == type && station.Eigenaar == eigenaarHuidigVak)
+                    {
+                        aantal++;
+                    }
+                }
+
+                else if (spelvak.GetType() == typeof(Energievak))
+                {
+                    Energievak energievak = (Energievak)spelvak;
+                    if (energievak.TypeEigendomVak == type && energievak.Eigenaar == eigenaarHuidigVak)
                     {
                         aantal++;
                     }

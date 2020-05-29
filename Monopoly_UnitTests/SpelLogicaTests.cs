@@ -123,21 +123,46 @@ namespace Monopoly_UnitTests
         [TestMethod]
         public void TestBetalen()
         {
+            InitializeVakken();
             StraatVak eigendom = new StraatVak("lichtblauw", "Steenstraat\nBrugge", 6, 30, 90, 270, 400, 550, 50, 50, 100, 400, 6);
             Speler huidigeSpeler = new Speler("Speler1");
             Speler eigenaar = new Speler("Speler2");
             eigendom.Eigenaar = eigenaar;
             SpelLogica spelLogica = new SpelLogica(spelvakken);
             spelLogica.setHuidigeSpeler(huidigeSpeler);
-            spelLogica.Betalen(eigendom);
+            spelLogica.Betalen(eigendom,5);
 
             Assert.AreEqual(1494, huidigeSpeler.HuidigSaldo);
             Assert.AreEqual(1506, eigenaar.HuidigSaldo);
 
             eigendom.AantalHuizen = 2;
-            spelLogica.Betalen(eigendom);
+            spelLogica.Betalen(eigendom,5);
             Assert.AreEqual(1404, huidigeSpeler.HuidigSaldo);
             Assert.AreEqual(1596, eigenaar.HuidigSaldo);
+
+            Energievak energie = (Energievak)spelLogica.HaalSpelvakOp(12);
+            energie.Eigenaar = eigenaar;
+            spelLogica.Betalen(energie, 5);
+            Assert.AreEqual(1384, huidigeSpeler.HuidigSaldo);
+            Assert.AreEqual(1616, eigenaar.HuidigSaldo);
+
+            StationVak stationVak = (StationVak)spelLogica.HaalSpelvakOp(15);
+            stationVak.Eigenaar = eigenaar;
+            spelLogica.Betalen(stationVak, 5);
+            Assert.AreEqual(1359, huidigeSpeler.HuidigSaldo);
+            Assert.AreEqual(1641, eigenaar.HuidigSaldo);
+
+            Energievak energie2 = (Energievak)spelLogica.HaalSpelvakOp(28);
+            energie2.Eigenaar = eigenaar;
+            spelLogica.Betalen(energie2, 5);
+            Assert.AreEqual(1309, huidigeSpeler.HuidigSaldo);
+            Assert.AreEqual(1691, eigenaar.HuidigSaldo);
+
+            StationVak stationVak2 = (StationVak)spelLogica.HaalSpelvakOp(5);
+            stationVak2.Eigenaar = eigenaar;
+            spelLogica.Betalen(stationVak2, 5);
+            Assert.AreEqual(1259, huidigeSpeler.HuidigSaldo);
+            Assert.AreEqual(1741, eigenaar.HuidigSaldo);
         }
     }
 }

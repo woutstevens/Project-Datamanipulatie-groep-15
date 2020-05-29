@@ -68,7 +68,7 @@ namespace Project_Monopoly
                             SpeelMetSpeler(speler);
                             if (huidigeSpeler.IsFailliet())
                             {
-                                MessageBox.Show("Sorry " + huidigeSpeler.Naam + ",je mag niet meer verder spelen want je bent failliet", "Je bent failliet!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                MessageBox.Show("Sorry " + huidigeSpeler.Naam + ", je mag niet meer verder spelen want je bent failliet", "Je bent failliet!", MessageBoxButton.OK, MessageBoxImage.Warning);
                                 speler.Rangschrikking = spelerslijst.Count;
                                 aantalSpelers--;
                             }
@@ -92,6 +92,7 @@ namespace Project_Monopoly
 
         private void SpeelMetSpeler(Speler speler)
         {
+            speler.Gevangenis = false;
             //Gooien gooien = new Gooien(this);
             //gooien.ShowDialog();
             Random gooien = new Random();
@@ -109,6 +110,7 @@ namespace Project_Monopoly
             aantalgegooid = Dobbelsteen1 + Dobbelsteen2;
             MessageBox.Show("Dobbelsteen 1: " + Dobbelsteen1 + "\nDobbelsteen 2: " + Dobbelsteen2 + "\nTotaal: " + aantalgegooid,"Gooien voor speler " + huidigeSpeler.Naam,MessageBoxButton.OK,MessageBoxImage.Information);
             VerzetSpeler(aantalgegooid);
+
 
             Spelvak spelvak = spelLogica.HaalSpelvakOp(speler.VakID);
 
@@ -168,7 +170,7 @@ namespace Project_Monopoly
 
                     }
                 }
-                verzetPion(huidigeSpeler);
+                
             }
             
         }
@@ -195,11 +197,13 @@ namespace Project_Monopoly
         public void VerzetSpeler(int aantalVakjes)
         {
             spelLogica.VerzetSpeler(aantalVakjes);
+            verzetPion(huidigeSpeler);
         }
 
         public void VerzetSpelerNaarVak(int vakID)
         {
             spelLogica.VerzetSpelerNaarVak(vakID);
+            verzetPion(huidigeSpeler);
         }
 
 
@@ -314,8 +318,8 @@ namespace Project_Monopoly
             int vakTop = 0;
             if (huidigvak == null)
             {
-                vakLeft = 50;
-                vakTop = 450;
+                vakLeft = 45;
+                vakTop = 850;
             }
 
             else
