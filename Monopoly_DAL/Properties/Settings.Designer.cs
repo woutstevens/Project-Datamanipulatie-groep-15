@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Monopoly.Properties {
+namespace Monopoly_DAL.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -20,6 +20,17 @@ namespace Project_Monopoly.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=edudb.thomasmore.be,3000;Initial Catalog=Data_r0718763;Persist Securi" +
+            "ty Info=True;User ID=sql_r0718763;Password=sql4you")]
+        public string Data_r0718763Entities {
+            get {
+                return ((string)(this["Data_r0718763Entities"]));
             }
         }
     }

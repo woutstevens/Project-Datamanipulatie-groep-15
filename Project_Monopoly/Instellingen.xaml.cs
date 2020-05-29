@@ -1,4 +1,3 @@
-﻿using Project_Monopoly_Models;
 using Monopoly_DAL;
 using System;
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Monopoly_Model;
 
 namespace Project_Monopoly
 {

@@ -38,7 +38,7 @@ namespace Monopoly_DAL
         public Nullable<int> prijs3Stations { get; set; }
         public Nullable<int> prijs4Stations { get; set; }
         public Nullable<int> positionTop { get; set; }
-    
+
         public virtual Speler Speler { get; set; }
     }
 }

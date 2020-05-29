@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Data_r0718763Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AlgemeenFonds">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="omschrijving" Type="varchar" MaxLength="100" />
+          <Property Name="bedrag" Type="int" />
+          <Property Name="aantalPosities" Type="int" />
+          <Property Name="houbij" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kans">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="omschrijving" Type="varchar" MaxLength="100" />
+          <Property Name="bedrag" Type="int" />
+          <Property Name="aantalPosities" Type="int" />
+          <Property Name="houbij" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Speler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naam" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="figuur" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="spelvakId" Type="int" />
+          <Property Name="huidigSaldo" Type="int" />
+          <Property Name="gevangenis" Type="bit" Nullable="false" />
+          <Property Name="verlaatGevangenis" Type="int" />
+        </EntityType>
+        <EntityType Name="Spelvak">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naam" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="kleur" Type="varchar" MaxLength="45" />
+          <Property Name="spelerId" Type="int" />
+          <Property Name="prijsMet1Huis" Type="int" />
+          <Property Name="prijsMet2Huizen" Type="int" />
+          <Property Name="prijsMet3Huizen" Type="int" />
+          <Property Name="prijsMet4Huizen" Type="int" />
+          <Property Name="prijsMet1Hotel" Type="int" />
+          <Property Name="aantalHuizen" Type="int" />
+          <Property Name="aantalHotels" Type="int" />
+          <Property Name="prijsPerHotel" Type="int" />
+          <Property Name="prijsPerHuis" Type="int" />
+          <Property Name="aankoopwaarde" Type="int" Nullable="false" />
+          <Property Name="hypotheekwaarde" Type="int" Nullable="false" />
+          <Property Name="aantalOgen" Type="int" />
+          <Property Name="prijsZonderHuis" Type="int" />
+          <Property Name="positionLeft" Type="int" />
+          <Property Name="prijs1Station" Type="int" />
+          <Property Name="prijs2Stations" Type="int" />
+          <Property Name="prijs3Stations" Type="int" />
+          <Property Name="prijs4Stations" Type="int" />
+          <Property Name="positionTop" Type="int" />
+        </EntityType>
+        <Association Name="FK_Project_Speler">
+          <End Role="Speler" Type="Self.Speler" Multiplicity="0..1" />
+          <End Role="Spelvak" Type="Self.Spelvak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Speler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Spelvak">
+              <PropertyRef Name="spelerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Data_r0718763ModelStoreContainer">
+          <EntitySet Name="AlgemeenFonds" EntityType="Self.AlgemeenFonds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kans" EntityType="Self.Kans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Speler" EntityType="Self.Speler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Spelvak" EntityType="Self.Spelvak" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Project_Speler" Association="Self.FK_Project_Speler">
+            <End Role="Speler" EntitySet="Speler" />
+            <End Role="Spelvak" EntitySet="Spelvak" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Data_r0718763Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AlgemeenFonds">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="omschrijving" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="bedrag" Type="Int32" />
+          <Property Name="aantalPosities" Type="Int32" />
+          <Property Name="houbij" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kans">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="omschrijving" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="bedrag" Type="Int32" />
+          <Property Name="aantalPosities" Type="Int32" />
+          <Property Name="houbij" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Speler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naam" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="figuur" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="spelvakId" Type="Int32" />
+          <Property Name="huidigSaldo" Type="Int32" />
+          <Property Name="gevangenis" Type="Boolean" Nullable="false" />
+          <Property Name="verlaatGevangenis" Type="Int32" />
+          <NavigationProperty Name="Spelvak" Relationship="Self.FK_Project_Speler" FromRole="Speler" ToRole="Spelvak" />
+        </EntityType>
+        <EntityType Name="Spelvak">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naam" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kleur" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="spelerId" Type="Int32" />
+          <Property Name="prijsMet1Huis" Type="Int32" />
+          <Property Name="prijsMet2Huizen" Type="Int32" />
+          <Property Name="prijsMet3Huizen" Type="Int32" />
+          <Property Name="prijsMet4Huizen" Type="Int32" />
+          <Property Name="prijsMet1Hotel" Type="Int32" />
+          <Property Name="aantalHuizen" Type="Int32" />
+          <Property Name="aantalHotels" Type="Int32" />
+          <Property Name="prijsPerHotel" Type="Int32" />
+          <Property Name="prijsPerHuis" Type="Int32" />
+          <Property Name="aankoopwaarde" Type="Int32" Nullable="false" />
+          <Property Name="hypotheekwaarde" Type="Int32" Nullable="false" />
+          <Property Name="aantalOgen" Type="Int32" />
+          <Property Name="prijsZonderHuis" Type="Int32" />
+          <Property Name="positionLeft" Type="Int32" />
+          <Property Name="prijs1Station" Type="Int32" />
+          <Property Name="prijs2Stations" Type="Int32" />
+          <Property Name="prijs3Stations" Type="Int32" />
+          <Property Name="prijs4Stations" Type="Int32" />
+          <Property Name="positionTop" Type="Int32" />
+          <NavigationProperty Name="Speler" Relationship="Self.FK_Project_Speler" FromRole="Spelvak" ToRole="Speler" />
+        </EntityType>
+        <Association Name="FK_Project_Speler">
+          <End Role="Speler" Type="Self.Speler" Multiplicity="0..1" />
+          <End Role="Spelvak" Type="Self.Spelvak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Speler">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Spelvak">
+              <PropertyRef Name="spelerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Data_r0718763Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AlgemeenFonds" EntityType="Self.AlgemeenFonds" />
+          <EntitySet Name="Kans" EntityType="Self.Kans" />
+          <EntitySet Name="Speler" EntityType="Self.Speler" />
+          <EntitySet Name="Spelvak" EntityType="Self.Spelvak" />
+          <AssociationSet Name="FK_Project_Speler" Association="Self.FK_Project_Speler">
+            <End Role="Speler" EntitySet="Speler" />
+            <End Role="Spelvak" EntitySet="Spelvak" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Data_r0718763ModelStoreContainer" CdmEntityContainer="Data_r0718763Entities1">
+          <EntitySetMapping Name="AlgemeenFonds">
+            <EntityTypeMapping TypeName="Data_r0718763Model.AlgemeenFonds">
+              <MappingFragment StoreEntitySet="AlgemeenFonds">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+                <ScalarProperty Name="bedrag" ColumnName="bedrag" />
+                <ScalarProperty Name="aantalPosities" ColumnName="aantalPosities" />
+                <ScalarProperty Name="houbij" ColumnName="houbij" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kans">
+            <EntityTypeMapping TypeName="Data_r0718763Model.Kans">
+              <MappingFragment StoreEntitySet="Kans">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="omschrijving" ColumnName="omschrijving" />
+                <ScalarProperty Name="bedrag" ColumnName="bedrag" />
+                <ScalarProperty Name="aantalPosities" ColumnName="aantalPosities" />
+                <ScalarProperty Name="houbij" ColumnName="houbij" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Speler">
+            <EntityTypeMapping TypeName="Data_r0718763Model.Speler">
+              <MappingFragment StoreEntitySet="Speler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="figuur" ColumnName="figuur" />
+                <ScalarProperty Name="spelvakId" ColumnName="spelvakId" />
+                <ScalarProperty Name="huidigSaldo" ColumnName="huidigSaldo" />
+                <ScalarProperty Name="gevangenis" ColumnName="gevangenis" />
+                <ScalarProperty Name="verlaatGevangenis" ColumnName="verlaatGevangenis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Spelvak">
+            <EntityTypeMapping TypeName="Data_r0718763Model.Spelvak">
+              <MappingFragment StoreEntitySet="Spelvak">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naam" ColumnName="naam" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="kleur" ColumnName="kleur" />
+                <ScalarProperty Name="spelerId" ColumnName="spelerId" />
+                <ScalarProperty Name="prijsMet1Huis" ColumnName="prijsMet1Huis" />
+                <ScalarProperty Name="prijsMet2Huizen" ColumnName="prijsMet2Huizen" />
+                <ScalarProperty Name="prijsMet3Huizen" ColumnName="prijsMet3Huizen" />
+                <ScalarProperty Name="prijsMet4Huizen" ColumnName="prijsMet4Huizen" />
+                <ScalarProperty Name="prijsMet1Hotel" ColumnName="prijsMet1Hotel" />
+                <ScalarProperty Name="aantalHuizen" ColumnName="aantalHuizen" />
+                <ScalarProperty Name="aantalHotels" ColumnName="aantalHotels" />
+                <ScalarProperty Name="prijsPerHotel" ColumnName="prijsPerHotel" />
+                <ScalarProperty Name="prijsPerHuis" ColumnName="prijsPerHuis" />
+                <ScalarProperty Name="aankoopwaarde" ColumnName="aankoopwaarde" />
+                <ScalarProperty Name="hypotheekwaarde" ColumnName="hypotheekwaarde" />
+                <ScalarProperty Name="aantalOgen" ColumnName="aantalOgen" />
+                <ScalarProperty Name="prijsZonderHuis" ColumnName="prijsZonderHuis" />
+                <ScalarProperty Name="positionLeft" ColumnName="positionLeft" />
+                <ScalarProperty Name="prijs1Station" ColumnName="prijs1Station" />
+                <ScalarProperty Name="prijs2Stations" ColumnName="prijs2Stations" />
+                <ScalarProperty Name="prijs3Stations" ColumnName="prijs3Stations" />
+                <ScalarProperty Name="prijs4Stations" ColumnName="prijs4Stations" />
+                <ScalarProperty Name="positionTop" ColumnName="positionTop" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

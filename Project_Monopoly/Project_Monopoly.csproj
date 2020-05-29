@@ -32,6 +32,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -86,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="StartschermDatabaseOperaties.cs" />
     <Page Include="AlgemeenFonds.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,6 +174,8 @@
     <Compile Include="BezittingenSpeler4.xaml.cs">
       <DependentUpon>BezittingenSpeler4.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SpelbordDatabaseOperaties.cs" />
+    <Compile Include="SpelLogica.cs" />
     <Compile Include="Eindscherm.xaml.cs">
       <DependentUpon>Eindscherm.xaml</DependentUpon>
     </Compile>
@@ -245,6 +249,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitIgnore" />
+    <Resource Include="afbeeldingen\logoMonopoly.jpg" />
+    <Resource Include="afbeeldingen\gevangenis.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
